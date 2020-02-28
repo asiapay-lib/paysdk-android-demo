@@ -1,4 +1,4 @@
-package com.asiapay.paysdkdemo;
+package com.asiapay.SDKApp;
 
 import org.junit.Test;
 

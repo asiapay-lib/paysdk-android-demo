@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">android-paysdk-demo</string>
+    <string name="webview_payment">WebView Payment</string>
+    <string name="direct_payment">Direct Payment</string>
 </resources>

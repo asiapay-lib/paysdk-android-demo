@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".VASActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+
+    <LinearLayout
+        android:id="@+id/ll_promocode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/promotion_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/RedErrorTextInput">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Promotion Code"
+            android:text="TEXT1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/promotion_rule_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Promotion Rule Code (Optional)"
+                android:text="TESTR25" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/promotion_org_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Promotion Original Amount (Optional)"
+                android:text="100" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_promopay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="PROMO CODE"
+            style="@style/Button.Blue.Padded_32"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#fff"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_installpay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/install_period"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Installment Period In Months (In Digit)"
+                android:text="3" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/install_only"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Only Install (T/F)"
+                android:text="T" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_installpay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Installment Pay"
+            style="@style/Button.Blue.Padded_32"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#fff"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_memberpay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/memberid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Member Id"
+                android:text="member03" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/memberpay_token"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput"
+            android:visibility="gone">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="MemberPay Token"
+                android:text="8472265e546643a095be287b9db3906d788b32cc5005" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <Button
+            android:id="@+id/btn_memberpay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="NEW MEMBER PAY"
+            style="@style/Button.Blue.Padded_32"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#fff"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_schedulepay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sch_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Schedule Type (Day/Month/Year)"
+                android:text="Day" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sch_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Schedule Status (Active/Suspend)"
+                android:text="Active" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sch_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number Of Schedule"
+                android:text="3" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sch_sday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Start Day"
+                android:text="20" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sch_smonth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Start Month"
+                android:text="4" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sch_syear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Start Year"
+                android:text="2021" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sch_eday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="End Day"
+                android:text="21" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sch_emonth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="End Month"
+                android:text="12" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sch_eyear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="End Year"
+                android:text="2025" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sch_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:text="Julius Jha" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sch_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email Id"
+                android:text="julis.jha@gmail.com" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sch_appid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Application Id"
+                android:text="SP" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sch_appref"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Merchant reference"
+                android:text="2018102409220001" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_schpay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Schedule Pay"
+            style="@style/Button.Blue.Padded_32"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#fff"/>
+    </LinearLayout>
+
+</LinearLayout>
+    </ScrollView>

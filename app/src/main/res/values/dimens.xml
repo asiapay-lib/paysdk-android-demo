@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="spinner_width_74">74dp</dimen>
+    <dimen name="spinner_width_82">82dp</dimen>
+    <dimen name="spinner_underline">68dp</dimen>
+</resources>
+

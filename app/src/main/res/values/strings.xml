@@ -1,5 +1,34 @@
 <resources>
-    <string name="app_name">android-paysdk-demo</string>
-    <string name="webview_payment">WebView Payment</string>
-    <string name="direct_payment">Direct Payment</string>
+    <string name="app_name">Payment Options</string>
+    <string-array name="months_payment">
+        <item>MM</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="year_payment">
+        <item>YYYY</item>
+        <item>2020</item>
+        <item>2021</item>
+        <item>2022</item>
+        <item>2023</item>
+        <item>2024</item>
+        <item>2025</item>
+        <item>2026</item>
+        <item>2027</item>
+        <item>2028</item>
+        <item>2029</item>
+        <item>2030</item>
+        <item>2031</item>
+    </string-array>
 </resources>

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#263c87</color>
+    <color name="colorPrimaryDark">#263c87</color>
+    <color name="colorAccent">#263c87</color>
+    <color name="colorTextSecondary">#72727D</color>
+    <color name="spinner_underline">#95949d</color>
+    <color name="nav_circular_notify_pending">#E53A41</color>
+    <color name="selector">#3700B3</color>
+    <color name="light_grey">#b1b3b9</color>
+    <color name="button_theme_color">#263c87</color>
+    <color name="colorTextPrimary">#51505D</color>
+    <color name="bg_color">#f2f2f3</color>
 </resources>

@@ -264,7 +264,9 @@ Add above parameters with [Direct Payment](#Direct-Payment).
                     }
                 });
 ```
-For detailed description kindly follow [PayDollar Guide](http://paydollar.com/pdf/op/enpdintguide.pdf).
+For detailed parameters description kindly follow [PayDollar Guide](http://paydollar.com/pdf/op/enpdintguide.pdf).
+
+For Complete Integration guide follow [PaySdk_ANdroid_IntegrationGuide.docx](https://github.com/asiapay-lib/paysdk-android-lib/files/4444819/PaySdk_ANdroid_IntegrationGuide.docx)
                 
                 
 

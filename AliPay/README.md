@@ -1,5 +1,15 @@
 
 #### Payment via AliPay
+
+*	Add alipaySdk-15.5.9-20181123210601.aar  to libs folder
+
+* Add following dependencies in gradle file
+
+  implementation(name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
+  
+  implementation "com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+"
+  
+
 ```
                 PayData payData = new PayData();
                 payData.setChannel(EnvBase.PayChannel.DIRECT);

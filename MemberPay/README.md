@@ -25,7 +25,7 @@
                 payData.setCardDetails(cardDetails);
                 payData.setRemark("additional remark");
 
-                Map<String,String> extraDataMP=new HashMap<>();
+                Map<String,String> extraData=new HashMap<>();
                 extraData.put("memberPay_service","T");
                 extraData.put("memberPay_memberId","member01");
                 extraData.put("addNewMember","True"); // If merchant making payment for first time 

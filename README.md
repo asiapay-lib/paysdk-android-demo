@@ -96,7 +96,7 @@ Promo Pay | [Promo Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/
                 });
 ```
 
-For detailed parameters description kindly follow [PayDollar Guide](http://paydollar.com/pdf/op/enpdintguide.pdf).
+For Complete Integration guide follow [PaySdk_ANdroid_IntegrationGuide.docx](https://github.com/asiapay-lib/paysdk-android-lib/files/4444819/PaySdk_ANdroid_IntegrationGuide.docx)
 
 ### Support
 Asiapay is a tech company. All our engineers handle support too. You can write to us at asiapay.com/support and expect a response from the devs responsible for the Android SDK.

@@ -4,7 +4,7 @@
 
 ```
                 PayData payData = new PayData();
-                payData.setChannel(EnvBase.PayChannel.DIRECT);
+                payData.setChannel(EnvBase.PayChannel.WEBVIEW);
                 payData.setEnvType(EnvBase.EnvType.SANDBOX);
                 payData.setAmount("10");
                 payData.setPayGate(EnvBase.PayGate.PAYDOLLAR);
@@ -16,13 +16,7 @@
                 payData.setMerchantId("1");
 
 
-                CardDetails cardDetails=new CardDetails();
-                cardDetails.setCardNo("1234567890123456");
-                cardDetails.setEpMonth("01");
-                cardDetails.setEpYear("2020");
-                cardDetails.setSecurityCode("123");
-                cardDetails.setCardHolder("abc abc");
-                payData.setCardDetails(cardDetails);
+           
                 payData.setRemark("additional remark");
 
                 Map<String,String> extraData=new HashMap<>();
@@ -34,6 +28,7 @@
                 payData.setExtraData(extraData);
 
                 paySDK.setRequestData(payData);
+                
                 paySDK.process();
 
 ```

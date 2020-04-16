@@ -66,4 +66,4 @@ payData.setActivity(AuthActivity.this);
 ![image](https://user-images.githubusercontent.com/57220911/78636216-85637680-78c5-11ea-925a-d320e58723a5.png)  ![image](https://user-images.githubusercontent.com/57220911/78636231-8bf1ee00-78c5-11ea-80a5-5d6abcd9762f.png)
 
 
-Add above parameters with [Direct Payment](#Direct-Payment).
+Add above parameters with Direct Payment.

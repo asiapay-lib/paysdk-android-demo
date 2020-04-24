@@ -77,13 +77,13 @@ api.handleIntent(getIntent(), this);
 public void onResp(BaseResp resp) {
  switch (resp.errCode){
         case BaseResp.ErrCode.ERR_OK:
-        //Handle payment response here
+        // Here you will get Payment Succes response.
             break;
         case BaseResp.ErrCode.ERR_USER_CANCEL:
-            finish();
+            // Here you will get Payment Cancel response.
             break;
             case BaseResp.ErrCode.ERR_AUTH_DENIED:
-                finish();
+                // Here you will get Payment Denied response.
                 break;
     }
 }

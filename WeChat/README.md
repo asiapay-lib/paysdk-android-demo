@@ -20,12 +20,21 @@ e.g
  
  
  * Use Wechat_app_id in  WXPayEntryActivity
-private IWXAPI api;
+ 
+ ```
+ //Declare IWXAPI
+ private IWXAPI api;
+
+```
 
 Add below code in onCreate method of WXPayEntryActivity
+
+```
+
 api = WXAPIFactory.createWXAPI(this, "Wechat_app_id");
 api.handleIntent(getIntent(), this);
 
+```
 
 *  Add below PayData to PaySdk
 

@@ -14,7 +14,7 @@
                 
                 paySDK.query("TX_QUERY");
 
-                //NOTE : FOr Trans Query Response will come in below format 
+                //NOTE : For Trans Query Response will come in below format 
                         paySDK.queryResponseHandler(new QueryResponse() {
                             @Override
                             public void getResponse(TransactionStatus transactionStatus) {

@@ -81,6 +81,7 @@ Member Pay | [Member Pay](https://github.com/asiapay-lib/paysdk-android-demo/blo
 Installment Pay | [Installmet Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/InstallmentPay/README.md)
 Schedule Pay | [Schedule Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/SchedulePay/README.md)
 Promo Pay | [Promo Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/PromoPay/README.md)
+Trans Query | [Trans Query](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/TRANSQUERY/README.md)
 
 ### Collect Payment Result
 

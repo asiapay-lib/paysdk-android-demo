@@ -3,6 +3,8 @@ package com.asiapay.SDKApp;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.asiapay.sdk.integration.EnvBase;
+
 public class ThreeDSData implements Parcelable {
 
 

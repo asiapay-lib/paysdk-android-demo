@@ -12,6 +12,7 @@ public class PaySdkConstants {
     public static final String INSTALLMENT_PAY= "Installment Pay";
     public static final String SCHEDULE_PAY= "Schedule Pay";
     public static final String THREE_DS= "Three DS 2.0";
+    public static final String QUERY_ACTION= "Transaction Status";
 
 
     public enum PAY_METHOD{

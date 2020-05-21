@@ -1,6 +1,6 @@
 package com.asiapay.SDKApp;
 
-import com.asiapay.SDKApp.PaySdkConstants.CARD_TYPE;
+import com.asiapay.SDKApp.PaySdkConstants.*;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.regex.Matcher;

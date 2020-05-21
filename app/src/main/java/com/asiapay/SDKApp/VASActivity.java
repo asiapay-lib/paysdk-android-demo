@@ -1,5 +1,8 @@
 package com.asiapay.SDKApp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -7,16 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.textfield.TextInputLayout;
 
 import static com.asiapay.SDKApp.PaySdkConstants.INSTALLMENT_PAY;
 import static com.asiapay.SDKApp.PaySdkConstants.NEW_MEMBER;
 import static com.asiapay.SDKApp.PaySdkConstants.OLD_MEMBER;
 import static com.asiapay.SDKApp.PaySdkConstants.PROMO_CODE;
+import static com.asiapay.SDKApp.PaySdkConstants.QUERY_ACTION;
 import static com.asiapay.SDKApp.PaySdkConstants.SCHEDULE_PAY;
+import static com.asiapay.SDKApp.PaySdkConstants.THREE_DS;
 
 public class VASActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,6 +26,7 @@ public class VASActivity extends AppCompatActivity implements View.OnClickListen
     Button btnInstallmentPay;
     Button btnSchedulePay;
     Button btnPromoPay;
+    Button btnTransStatus;
 
 
 
@@ -31,6 +34,7 @@ public class VASActivity extends AppCompatActivity implements View.OnClickListen
     LinearLayout llPromoCode;
     LinearLayout llInstallPay;
     LinearLayout llSchedulePay;
+    LinearLayout llTransStatus;
 
     TextInputLayout textPromocode;
     TextInputLayout textPromoRuleCode;
@@ -52,6 +56,7 @@ public class VASActivity extends AppCompatActivity implements View.OnClickListen
     TextInputLayout textScheduleUserEmail;
     TextInputLayout textScheduleAppId;
     TextInputLayout textScheduleAppRef;
+    TextInputLayout textPayRef;
 
 
     String paymentMode;
@@ -91,6 +96,9 @@ public class VASActivity extends AppCompatActivity implements View.OnClickListen
             case INSTALLMENT_PAY:
                 llInstallPay.setVisibility(View.VISIBLE);
                 break;
+            case QUERY_ACTION:
+                llTransStatus.setVisibility(View.VISIBLE);
+                break;
         }
     }
 
@@ -100,17 +108,20 @@ public class VASActivity extends AppCompatActivity implements View.OnClickListen
         btnSchedulePay = findViewById(R.id.btn_schpay);
         btnInstallmentPay = findViewById(R.id.btn_installpay);
         btnPromoPay = findViewById(R.id.btn_promopay);
+        btnTransStatus = findViewById(R.id.btn_transquery);
 
 
         btnMemberPay.setOnClickListener(this);
         btnSchedulePay.setOnClickListener(this);
         btnInstallmentPay.setOnClickListener(this);
         btnPromoPay.setOnClickListener(this);
+        btnTransStatus.setOnClickListener(this);
 
         llMemberPay = findViewById(R.id.ll_memberpay);
         llPromoCode = findViewById(R.id.ll_promocode);
         llInstallPay = findViewById(R.id.ll_installpay);
         llSchedulePay = findViewById(R.id.ll_schedulepay);
+        llTransStatus = findViewById(R.id.ll_trans_status);
 
         textPromocode = findViewById(R.id.promotion_code);
         textPromoRuleCode = findViewById(R.id.promotion_rule_code);
@@ -132,6 +143,7 @@ public class VASActivity extends AppCompatActivity implements View.OnClickListen
         textScheduleUserEmail = findViewById(R.id.sch_email);
         textScheduleAppId = findViewById(R.id.sch_appid);
         textScheduleAppRef = findViewById(R.id.sch_appref);
+        textPayRef = findViewById(R.id.pay_ref);
 
     }
 
@@ -206,6 +218,18 @@ public class VASActivity extends AppCompatActivity implements View.OnClickListen
                     } else {
                         intent.putExtra("promotionOriginalAmt", "");
                     }
+
+                    setResult(RESULT_OK, intent);
+
+                    finish();
+
+                }
+                break;
+            case R.id.btn_transquery:
+                if (PaySdkUtils.hasText(textPayRef)) {
+                    Intent intent = getIntent();
+
+                    intent.putExtra("payRef", textPayRef.getEditText().getText().toString());
 
                     setResult(RESULT_OK, intent);
 

@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ThreeDSActivity"></activity>
+        <activity android:name=".MemberPayActivity" />
         <activity
             android:name=".PaymentActivity"
             android:windowSoftInputMode="stateAlwaysHidden">

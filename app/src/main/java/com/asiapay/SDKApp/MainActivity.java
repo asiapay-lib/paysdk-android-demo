@@ -1,5 +1,8 @@
 package com.asiapay.SDKApp;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatEditText;
+
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,9 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatEditText;
 
 import com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout;
 import com.asiapay.sdk.PaySDK;
@@ -39,6 +39,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
+import static com.asiapay.SDKApp.PaySdkConstants.CARD_TYPE.*;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener , View.OnTouchListener {
     Button btnDirectCall;

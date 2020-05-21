@@ -1,5 +1,8 @@
 package com.asiapay.SDKApp;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -10,9 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.asiapay.sdk.PaySDK;
 import com.asiapay.sdk.integration.CardDetails;
@@ -21,6 +22,8 @@ import com.asiapay.sdk.integration.EnvBase;
 import com.asiapay.sdk.integration.PayData;
 import com.asiapay.sdk.integration.PayResult;
 import com.asiapay.sdk.integration.PaymentResponse;
+import com.asiapay.sdk.integration.QueryResponse;
+import com.asiapay.sdk.integration.TransactionStatus;
 import com.asiapay.sdk.integration.xecure3ds.ThreeDSParams;
 import com.asiapay.sdk.integration.xecure3ds.spec.ConfigParameters;
 import com.asiapay.sdk.integration.xecure3ds.spec.Factory;
@@ -37,6 +40,7 @@ import static com.asiapay.SDKApp.PaySdkConstants.INSTALLMENT_PAY;
 import static com.asiapay.SDKApp.PaySdkConstants.NEW_MEMBER;
 import static com.asiapay.SDKApp.PaySdkConstants.OLD_MEMBER;
 import static com.asiapay.SDKApp.PaySdkConstants.PROMO_CODE;
+import static com.asiapay.SDKApp.PaySdkConstants.QUERY_ACTION;
 import static com.asiapay.SDKApp.PaySdkConstants.SCHEDULE_PAY;
 import static com.asiapay.SDKApp.PaySdkConstants.THREE_DS;
 
@@ -54,6 +58,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     Button btnSchedulePay;
     Button btnInstallmentPay;
     Button btnThreeDS;
+    Button btnQueryStatus;
 
 
     PayData payData;
@@ -97,6 +102,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         btnSchedulePay = findViewById(R.id.btn_schedule_pay);
         btnInstallmentPay = findViewById(R.id.btn_installment);
         btnThreeDS = findViewById(R.id.btn_threeds);
+        btnQueryStatus = findViewById(R.id.btn_querystatus);
 
         textOrderRef = findViewById(R.id.et_orderref);
         textAmount = findViewById(R.id.et_amount);
@@ -121,6 +127,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         btnInstallmentPay.setOnClickListener(this);
         btnOldMember.setOnClickListener(this);
         btnThreeDS.setOnClickListener(this);
+        btnQueryStatus.setOnClickListener(this);
 
         spCurrency.setOnItemSelectedListener(this);
         spnrPayGate.setOnItemSelectedListener(this);
@@ -515,6 +522,26 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
                 break;
 
+            case R.id.btn_querystatus:
+
+                if(validateQueryPayData())
+                {
+                    strPayMethod=QUERY_ACTION;
+
+                    payData = new PayData();
+                    payData.setMerchantId(textMerchantId.getEditText().getText().toString());
+                    payData.setEnvType(selectedEnvType);
+                    payData.setPayGate(selectedPayGate);
+                    payData.setOrderRef(textOrderRef.getEditText().getText().toString());
+                    payData.setRemark(" ");
+
+                    Intent intent = new Intent(PaymentActivity.this, VASActivity.class);
+                    intent.putExtra("mode", strPayMethod);
+                    startActivityForResult(intent, PAY_CODE);
+
+                }
+                break;
+
         }
     }
 
@@ -721,7 +748,31 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                         });
 
                         break;
+                    case QUERY_ACTION:
 
+                        payData.setPayRef(data.getStringExtra("payRef"));
+
+                        paySDK.setRequestData(payData);
+
+                        paySDK.query("TX_QUERY");
+
+                        paySDK.queryResponseHandler(new QueryResponse() {
+                            @Override
+                            public void getResponse(TransactionStatus transactionStatus) {
+
+                                cancelProgressDialog();
+                                showAlert(transactionStatus.getResultCode());
+                            }
+
+                            @Override
+                            public void onError(Data data) {
+
+                                cancelProgressDialog();
+                                showAlert(data.getMessage());
+                            }
+                        });
+
+                        break;
                     case THREE_DS:
 
                         ThreeDSData threeDSData = data.getParcelableExtra("Data");
@@ -858,6 +909,15 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         return isMID && isOrdREf && isAmount;
     }
 
+    private boolean validateQueryPayData() {
+
+        boolean isMID, isOrdREf;
+
+        isMID = PaySdkUtils.hasText(textMerchantId);
+        isOrdREf = PaySdkUtils.hasText(textOrderRef);
+
+        return isMID && isOrdREf;
+    }
     private boolean validateCardDetaiils() {
         boolean isCardNo, isMonth, isYear, isName, isCode;
 

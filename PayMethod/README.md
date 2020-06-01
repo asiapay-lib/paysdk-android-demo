@@ -1,26 +1,27 @@
 
-
-# Transaction Query
+# Pay Method
 
 ```
                 PayData payData = new PayData();
                 payData = new PayData();
+                
                 payData.setMerchantId(textMerchantId.getEditText().getText().toString());
                 payData.setEnvType(selectedEnvType);
                 payData.setPayGate(selectedPayGate);
-                payData.setOrderRef(textOrderRef.getEditText().getText().toString());
+     
                 payData.setRemark(" ");
+                
                 paySDK.setRequestData(payData);
                 
-                paySDK.query(EnvBase.Action.TX_QUERY);
+                paySDK.query(EnvBase.Action.PAY_METHOD);
 
-                //NOTE : For Trans Query Response will come in below format 
-                        paySDK.queryResponseHandler(new QueryResponse() {
+                //NOTE : For allowed Pay Method Response will come in below format 
+                        paySDK.payMethodResponseHandler(new PayMethodResponse() {
                             @Override
-                            public void getResponse(TransactionStatus transactionStatus) {
+                            public void getResponse(PayMethodResult payMethodResult) {
 
                                 cancelProgressDialog();
-                                showAlert(transactionStatus.getResultCode());
+                                showAlert(payMethodResult.getMethods());
                             }
 
                             @Override
@@ -32,5 +33,3 @@
                         });
 
 ```
-
-![image](https://user-images.githubusercontent.com/57220911/82582763-207f8980-9bb0-11ea-8ab3-3f7619bcd98d.png) ![image](https://user-images.githubusercontent.com/57220911/82582688-0b0a5f80-9bb0-11ea-9336-f9d3c44cdbfd.png)

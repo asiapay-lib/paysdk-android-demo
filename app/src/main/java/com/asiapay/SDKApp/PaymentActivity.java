@@ -20,6 +20,8 @@ import com.asiapay.sdk.integration.CardDetails;
 import com.asiapay.sdk.integration.Data;
 import com.asiapay.sdk.integration.EnvBase;
 import com.asiapay.sdk.integration.PayData;
+import com.asiapay.sdk.integration.PayMethodResponse;
+import com.asiapay.sdk.integration.PayMethodResult;
 import com.asiapay.sdk.integration.PayResult;
 import com.asiapay.sdk.integration.PaymentResponse;
 import com.asiapay.sdk.integration.QueryResponse;
@@ -59,6 +61,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     Button btnInstallmentPay;
     Button btnThreeDS;
     Button btnQueryStatus;
+    Button btnPayMethod;
 
 
     PayData payData;
@@ -103,6 +106,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         btnInstallmentPay = findViewById(R.id.btn_installment);
         btnThreeDS = findViewById(R.id.btn_threeds);
         btnQueryStatus = findViewById(R.id.btn_querystatus);
+        btnPayMethod = findViewById(R.id.btn_paymethods);
 
         textOrderRef = findViewById(R.id.et_orderref);
         textAmount = findViewById(R.id.et_amount);
@@ -128,6 +132,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         btnOldMember.setOnClickListener(this);
         btnThreeDS.setOnClickListener(this);
         btnQueryStatus.setOnClickListener(this);
+        btnPayMethod.setOnClickListener(this);
 
         spCurrency.setOnItemSelectedListener(this);
         spnrPayGate.setOnItemSelectedListener(this);
@@ -347,8 +352,6 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                         @Override
                         public void getResponse(PayResult payResult) {
 
-                            Gson gson = new Gson();
-                            String json = gson.toJson(payResult);
                             cancelProgressDialog();
                             showAlert(payResult.getErrMsg());
 
@@ -539,6 +542,38 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     intent.putExtra("mode", strPayMethod);
                     startActivityForResult(intent, PAY_CODE);
 
+                }
+                break;
+
+            case R.id.btn_paymethods:
+                showProgressDialog("Fetching List of Pay Methods, please wait ...");
+
+                //This will SHow list of PayMethods available
+                if(PaySdkUtils.hasText(textMerchantId)) {
+                    payData = new PayData();
+                    payData.setMerchantId(textMerchantId.getEditText().getText().toString());
+                    payData.setEnvType(selectedEnvType);
+                    payData.setPayGate(selectedPayGate);
+
+                    payData.setRemark(" ");
+
+                    paySDK.setRequestData(payData);
+
+                    paySDK.query(EnvBase.Action.PAY_METHOD);
+
+                    paySDK.payMethodResponseHandler(new PayMethodResponse() {
+                        @Override
+                        public void getResponse(PayMethodResult payMethodResult) {
+                            cancelProgressDialog();
+                            showAlert("List Of PayMethods available in payMethodResult obj");
+                        }
+
+                        @Override
+                        public void onError(Data data) {
+                            cancelProgressDialog();
+                            showAlert(data.getError());
+                        }
+                    });
                 }
                 break;
 
@@ -754,7 +789,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
                         paySDK.setRequestData(payData);
 
-                        paySDK.query("TX_QUERY");
+                        paySDK.query(EnvBase.Action.TX_QUERY);
 
                         paySDK.queryResponseHandler(new QueryResponse() {
                             @Override

@@ -333,11 +333,12 @@
                 android:textColor="#fff"/>
 
             <Button
+                android:id="@+id/btn_paymethods"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="3DS 2.0"
-                android:visibility="gone"
+                android:text="Pay Methods"
+                android:visibility="visible"
                 style="@style/Button.Blue.Padded_32"
                 android:textColor="#fff"
                 />

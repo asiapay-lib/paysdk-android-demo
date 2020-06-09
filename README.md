@@ -57,7 +57,7 @@ Android Gradle Plugin 3.5.1
 
 Create the paysdk.properties file in the assets folder with the following attribute.
 
-sdk_rsa_publickey=<<SECURITY_KEY>>
+merchant_rsa_publickey=<<SECURITY_KEY>>
 
 ### Initialize Payload
 

@@ -100,8 +100,7 @@ Pay Methods | [Pay Methods](https://github.com/asiapay-lib/paysdk-android-demo/t
 
 For Complete Integration guide follow [PaySdk_Android_IntegrationGuide.docx](https://github.com/asiapay-lib/paysdk-android-lib/files/4444819/PaySdk_ANdroid_IntegrationGuide.docx)
 
-## Related Sample:
-
+## Related Sample
 [Deeplinking Demo](https://github.com/asiapay-lib/android-deeplink-demo)
 
 ### Support

@@ -38,7 +38,7 @@ Android Gradle Plugin 3.5.1
 * Add following libraries to gradle file
 
 	```  
-    implementation(name: 'PaySDK-2.1.0', ext: 'aar')
+    implementation(name: 'PaySDK-2.1.1', ext: 'aar')
     implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
     implementation 'com.google.code.gson:gson:2.3.1'
     implementation 'org.bouncycastle:bcprov-jdk15on:1.60'
@@ -99,6 +99,9 @@ Pay Methods | [Pay Methods](https://github.com/asiapay-lib/paysdk-android-demo/t
 ```
 
 For Complete Integration guide follow [PaySdk_Android_IntegrationGuide.docx](https://github.com/asiapay-lib/paysdk-android-lib/files/4444819/PaySdk_ANdroid_IntegrationGuide.docx)
+
+## Related Sample
+[Deeplinking Demo](https://github.com/asiapay-lib/android-deeplink-demo)
 
 ### Support
 Asiapay is a tech company. All our engineers handle support too. You can write to us at it@pesopay.com ,it@paydollar.com , it@siampy.com and expect a response from the devs from the Android SDK.

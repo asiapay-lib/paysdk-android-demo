@@ -343,5 +343,34 @@
                 android:textColor="#fff"
                 />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/btn_google_pay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Google Pay"
+                style="@style/Button.Blue.Padded_32"
+                android:layout_marginRight="5dp"
+                android:textColor="#fff"/>
+
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pay Methods"
+                android:visibility="invisible"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"
+                />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

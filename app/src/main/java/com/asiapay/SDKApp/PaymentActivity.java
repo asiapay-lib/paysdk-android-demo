@@ -3,11 +3,14 @@ package com.asiapay.SDKApp;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,17 +29,27 @@ import com.asiapay.sdk.integration.PayResult;
 import com.asiapay.sdk.integration.PaymentResponse;
 import com.asiapay.sdk.integration.QueryResponse;
 import com.asiapay.sdk.integration.TransactionStatus;
+import com.asiapay.sdk.integration.googlepay.GooglePay;
+import com.asiapay.sdk.integration.googlepay.PaymentsUtil;
 import com.asiapay.sdk.integration.xecure3ds.ThreeDSParams;
 import com.asiapay.sdk.integration.xecure3ds.spec.ConfigParameters;
 import com.asiapay.sdk.integration.xecure3ds.spec.Factory;
 import com.asiapay.sdk.integration.xecure3ds.spec.UiCustomization;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.wallet.AutoResolveHelper;
+import com.google.android.gms.wallet.PaymentData;
+import com.google.android.gms.wallet.PaymentDataRequest;
+import com.google.android.gms.wallet.PaymentsClient;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static com.asiapay.SDKApp.PaySdkConstants.INSTALLMENT_PAY;
 import static com.asiapay.SDKApp.PaySdkConstants.NEW_MEMBER;
@@ -45,11 +58,15 @@ import static com.asiapay.SDKApp.PaySdkConstants.PROMO_CODE;
 import static com.asiapay.SDKApp.PaySdkConstants.QUERY_ACTION;
 import static com.asiapay.SDKApp.PaySdkConstants.SCHEDULE_PAY;
 import static com.asiapay.SDKApp.PaySdkConstants.THREE_DS;
+import static com.asiapay.sdk.PaySDK.LOAD_PAYMENT_DATA_REQUEST_CODE;
 
 public class PaymentActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private static final int PAY_CODE = 0;
     private static final String TAG = "PaymentACt";
+
+    // A client for interacting with the Google Pay API
+    private PaymentsClient mPaymentsClient;
 
     String strPayMethod;
     Button btnDirectCall;
@@ -62,6 +79,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     Button btnThreeDS;
     Button btnQueryStatus;
     Button btnPayMethod;
+    Button btnGooglePay;
 
 
     PayData payData;
@@ -97,6 +115,25 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         //Initialize PaySDK
         paySDK = new PaySDK(getApplicationContext());
 
+        //Initialize PaymentCLient for GooglePay with Environment Specification
+        mPaymentsClient = PaymentsUtil.createPaymentsClient(this, EnvBase.EnvType.PRODUCTION);
+
+        //Implement isGooglePayAvailable to know wheter your app is ready for GooglePay transaction or not
+
+        PaymentsUtil.isGooglePayAvailable(this, mPaymentsClient, new PaymentsUtil.ICheckGooglePay() {
+            @Override
+            public void success() {
+
+                //Visible GooglePay Button here
+            }
+
+            @Override
+            public void error() {
+
+            }
+        });
+
+
         btnDirectCall = findViewById(R.id.btn_directcall);
         btnWebviewCall = findViewById(R.id.btn_webview);
         btnNewMember = findViewById(R.id.btn_new_member);
@@ -107,6 +144,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         btnThreeDS = findViewById(R.id.btn_threeds);
         btnQueryStatus = findViewById(R.id.btn_querystatus);
         btnPayMethod = findViewById(R.id.btn_paymethods);
+        btnGooglePay = findViewById(R.id.btn_google_pay);
 
         textOrderRef = findViewById(R.id.et_orderref);
         textAmount = findViewById(R.id.et_amount);
@@ -133,6 +171,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         btnThreeDS.setOnClickListener(this);
         btnQueryStatus.setOnClickListener(this);
         btnPayMethod.setOnClickListener(this);
+        btnGooglePay.setOnClickListener(this);
 
         spCurrency.setOnItemSelectedListener(this);
         spnrPayGate.setOnItemSelectedListener(this);
@@ -577,6 +616,40 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 }
                 break;
 
+            case R.id.btn_google_pay:
+                showProgressDialog("Checking Google Pay, please wait ...");
+
+
+                payData = new PayData();
+                payData.setChannel(EnvBase.PayChannel.DIRECT);
+                payData.setEnvType(selectedEnvType);
+                payData.setGooglePayAuth(EnvBase.GooglePayAuth.PAN_CRYPTO);
+                payData.setAmount(textAmount.getEditText().getText().toString());
+                payData.setPayGate(selectedPayGate);
+                payData.setCurrCode(selectedCurrency);
+                payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
+                payData.setOrderRef(textOrderRef.getEditText().getText().toString());
+                payData.setOrderRef(textOrderRef.getEditText().getText().toString());
+                payData.setPayMethod("");  //PayMethod should be blank
+                payData.setLang(EnvBase.Language.ENGLISH);
+                payData.setMerchantId(textMerchantId.getEditText().getText().toString());
+
+
+                payData.setRemark(" ");
+
+                Optional<JSONObject> paymentDataRequestJson = GooglePay.getPaymentDataRequest(payData);
+
+                if (!paymentDataRequestJson.isPresent()) {
+                    return;
+                }
+                PaymentDataRequest request =
+                        PaymentDataRequest.fromJson(paymentDataRequestJson.get().toString());
+                if (request != null) {
+                    AutoResolveHelper.resolveTask(
+                            mPaymentsClient.loadPaymentData(request), this, LOAD_PAYMENT_DATA_REQUEST_CODE);
+                }
+                break;
+
         }
     }
 
@@ -903,9 +976,99 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 }
 
             }
+        } else if(requestCode == LOAD_PAYMENT_DATA_REQUEST_CODE){
+
+            switch (resultCode) {
+                case Activity.RESULT_OK:
+                    PaymentData paymentData = PaymentData.getFromIntent(data);
+                        /*Gson gson=new Gson();
+                        String strData= gson.toJson(paymentData);
+                        GooglePayResp googlePayResp=gson.fromJson(strData,GooglePayResp.class);
+
+                        Log.d("GP", "onActivityResult: "+googlePayResp.getZzbw());*/
+
+                    // Token will be null if PaymentDataRequest was not constructed using fromJson(String).
+                    final String paymentInfo = paymentData.toJson();
+                    if (paymentInfo == null) {
+                        return;
+                    }
+
+                    try {
+                        JSONObject paymentMethodData = new JSONObject(paymentInfo).getJSONObject("paymentMethodData");
+                        // If the gateway is set to "example", no payment information is returned - instead, the
+                        // token will only consist of "examplePaymentMethodToken".
+
+                        final JSONObject tokenizationData = paymentMethodData.getJSONObject("tokenizationData");
+                        final String tokenizationType = tokenizationData.getString("type");
+                        final String token = tokenizationData.getString("token");
+
+                        handleGooglePay(paymentInfo);
+                    }catch (Exception e)
+                    {
+
+                    }
+
+                    //handleGooglePay(googlePayResp.getZzbw());
+                    break;
+                case Activity.RESULT_CANCELED:
+                    // Nothing to here normally - the user simply cancelled without selecting a
+                    // payment method.
+                    Log.d("GP", "onActivityResult: Cancel");
+                    break;
+                case AutoResolveHelper.RESULT_ERROR:
+                    Status status = AutoResolveHelper.getStatusFromIntent(data);
+                    Log.d("GP", "onActivityResult: Error");
+                    break;
+                default:
+                    // Do nothing.
+            }
         }
     }
+    void handleGooglePay(String strResp){
+        String base64encodedString=null;
 
+        try {
+
+            byte[] byteString=strResp.getBytes("UTF-8");
+            base64encodedString= android.util.Base64.encodeToString(byteString, Base64.NO_WRAP);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+        //Pass Google Pay response to PaySdk
+        Map<String, String> extraDataGP = new HashMap<String, String>();
+
+        extraDataGP.put("eWalletPaymentData",base64encodedString);
+        extraDataGP.put("eWalletService","T");
+        extraDataGP.put("eWalletBrand","GOOGLE");
+
+        payData.setExtraData(extraDataGP);
+
+        paySDK.setRequestData(payData);
+
+        paySDK.process();
+
+        paySDK.responseHandler(new PaymentResponse() {
+            @Override
+            public void getResponse(PayResult payResult) {
+
+
+                cancelProgressDialog();
+                showAlert(payResult.getErrMsg());
+
+            }
+
+            @Override
+            public void onError(Data data) {
+
+                cancelProgressDialog();
+                showAlert(data.getError());
+            }
+        });
+    }
     private void showProgressDialog(String message) {
         if (progressDialog == null) {
             progressDialog = new ProgressDialog(PaymentActivity.this);

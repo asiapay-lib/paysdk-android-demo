@@ -53,20 +53,23 @@ PaymentsUtil.isGooglePayAvailable(this, mPaymentsClient, new PaymentsUtil.ICheck
 * Request Payment Via Google Pay using PayData
 
 ```
-payData = new PayData();
-payData.setChannel(EnvBase.PayChannel.DIRECT);
-payData.setEnvType(EnvBase.EnvType.PRODUCTION);
-payData.setGooglePayAuth(EnvBase.GooglePayAuth.PAN_ONLY);
-payData.setAmount(textAmount.getEditText().getText().toString());
-payData.setPayGate(EnvBase.PayGate.PAYDOLLAR);
-payData.setCurrCode(EnvBase.Currency.HKD);
-payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
-payData.setOrderRef(getOrderRef());
-payData.setPayMethod("");
-payData.setLang(EnvBase.Language.ENGLISH);
-payData.setMerchantId("123456");
+ 		payData = new PayData();
+                payData.setChannel(EnvBase.PayChannel.DIRECT);
+                payData.setEnvType(selectedEnvType);
+                payData.setGooglePayAuth(EnvBase.GooglePayAuth.PAN_CRYPTO);
+                payData.setAmount(textAmount.getEditText().getText().toString());
+                payData.setPayGate(selectedPayGate);
+                payData.setCurrCode(selectedCurrency);
+                payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
+                payData.setOrderRef(textOrderRef.getEditText().getText().toString());
+                payData.setOrderRef(textOrderRef.getEditText().getText().toString());
+                payData.setPayMethod("");  //PayMethod should be blank
+                payData.setLang(EnvBase.Language.ENGLISH);
+                payData.setMerchantId(textMerchantId.getEditText().getText().toString());
 
-payData.setRemark(" ");
+
+                payData.setRemark(" ");
+
 
 Optional<JSONObject> paymentDataRequestJson = GooglePay.getPaymentDataRequest(payData);
 

@@ -30,3 +30,15 @@
                 paySDK.process();
 
 ```
+* Collect Payment Response
+```
+paySDK.responseHandler(new PaymentResponse() {
+                    @Override
+                    public void getResponse(PayResult payResult) {
+                    }
+
+                    @Override
+                    public void onError(Data data) {
+                    }
+                });
+  ```

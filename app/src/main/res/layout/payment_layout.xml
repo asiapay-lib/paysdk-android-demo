@@ -362,12 +362,12 @@
                 android:textColor="#fff"/>
 
             <Button
-                android:id="@+id/btn"
+                android:id="@+id/btn_alipay"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Pay Methods"
-                android:visibility="invisible"
+                android:text="Ali Pay"
+                android:visibility="visible"
                 style="@style/Button.Blue.Padded_32"
                 android:textColor="#fff"
                 />

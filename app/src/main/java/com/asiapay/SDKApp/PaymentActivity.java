@@ -45,7 +45,9 @@ import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -80,6 +82,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     Button btnQueryStatus;
     Button btnPayMethod;
     Button btnGooglePay;
+    Button btnAliPay;
 
 
     PayData payData;
@@ -145,6 +148,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         btnQueryStatus = findViewById(R.id.btn_querystatus);
         btnPayMethod = findViewById(R.id.btn_paymethods);
         btnGooglePay = findViewById(R.id.btn_google_pay);
+        btnAliPay = findViewById(R.id.btn_alipay);
 
         textOrderRef = findViewById(R.id.et_orderref);
         textAmount = findViewById(R.id.et_amount);
@@ -172,6 +176,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         btnQueryStatus.setOnClickListener(this);
         btnPayMethod.setOnClickListener(this);
         btnGooglePay.setOnClickListener(this);
+        btnAliPay.setOnClickListener(this);
 
         spCurrency.setOnItemSelectedListener(this);
         spnrPayGate.setOnItemSelectedListener(this);
@@ -650,9 +655,52 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 }
                 break;
 
+            case R.id.btn_alipay:
+
+                payData = new PayData();
+                payData.setChannel(EnvBase.PayChannel.DIRECT);
+                payData.setEnvType(EnvBase.EnvType.SANDBOX);
+                payData.setPayGate(EnvBase.PayGate.PAYDOLLAR);
+                payData.setCurrCode(EnvBase.Currency.HKD);
+                payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
+                payData.setLang(EnvBase.Language.ENGLISH);
+                payData.setAmount(textAmount.getEditText().getText().toString());
+                payData.setPayMethod("ALIPAYHKAPP");
+                payData.setMerchantId(textMerchantId.getEditText().getText().toString());
+                payData.setOrderRef(getOrderRef());
+                payData.setRemark("test remark");
+                payData.setActivity(PaymentActivity.this);
+
+                paySDK.setRequestData(payData);
+                paySDK.process();
+
+                paySDK.responseHandler(new PaymentResponse() {
+                    @Override
+                    public void getResponse(PayResult payResult) {
+
+                        cancelProgressDialog();
+                        showAlert(payResult.getErrMsg());
+
+                    }
+
+                    @Override
+                    public void onError(Data data) {
+
+                        cancelProgressDialog();
+                        showAlert(data.getMessage());
+                    }
+                });
+
+                break;
+
         }
     }
 
+    String getOrderRef(){
+        SimpleDateFormat s = new SimpleDateFormat("ddMMyyyyhhmmss");
+        String format = s.format(new Date());
+        return format;
+    }
     private void cardDetails(boolean isOldMember) {
 
         CardDetails cardDetails = new CardDetails();

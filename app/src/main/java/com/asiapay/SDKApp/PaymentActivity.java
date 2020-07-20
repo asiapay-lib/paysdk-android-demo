@@ -330,9 +330,9 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
             payGate = new SpinnerData("paydollar", EnvBase.PayGate.PAYDOLLAR);
             listPayGate.add(payGate);
-            payGate = new SpinnerData("siampay", EnvBase.PayGate.PESOPAY);
+            payGate = new SpinnerData("siampay", EnvBase.PayGate.SIAMPAY);
             listPayGate.add(payGate);
-            payGate = new SpinnerData("pesopay", EnvBase.PayGate.SIAMPAY);
+            payGate = new SpinnerData("pesopay", EnvBase.PayGate.PESOPAY);
             listPayGate.add(payGate);
 
             ArrayAdapter<SpinnerData> payGateAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listPayGate);

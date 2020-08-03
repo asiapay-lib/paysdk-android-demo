@@ -4,6 +4,11 @@
 
 *	Create your app in the admin panel: https://open.weixin.qq.com
 
+*   Add below line in gradle file
+```
+implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+```
+
 * Create Activity  WXPayEntryActivity under package wxapi & export in Manifest
 e.g
 

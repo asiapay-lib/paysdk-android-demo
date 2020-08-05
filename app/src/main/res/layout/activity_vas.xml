@@ -12,7 +12,36 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginTop="10dp">
+        <LinearLayout
+            android:id="@+id/ll_evoucher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/evoucher_class_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/RedErrorTextInput">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="EVoucher Class Code"
+                    android:text="0001" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_evoucher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="E Voucher"
+                style="@style/Button.Blue.Padded_32"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#fff"/>
+        </LinearLayout>
     <LinearLayout
         android:id="@+id/ll_promocode"
         android:layout_width="match_parent"
@@ -30,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Promotion Code"
-            android:text="TEXT1" />
+            android:text="TEST1" />
     </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -43,20 +72,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Promotion Rule Code (Optional)"
-                android:text="TESTR25" />
+                android:text="RULE1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/promotion_org_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/RedErrorTextInput">
+            style="@style/RedErrorTextInput"
+            android:visibility="gone">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Promotion Original Amount (Optional)"
-                android:text="100" />
+                android:text="0" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

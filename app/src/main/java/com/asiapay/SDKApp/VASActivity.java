@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import static com.asiapay.SDKApp.PaySdkConstants.E_VOUCHER;
 import static com.asiapay.SDKApp.PaySdkConstants.INSTALLMENT_PAY;
 import static com.asiapay.SDKApp.PaySdkConstants.NEW_MEMBER;
 import static com.asiapay.SDKApp.PaySdkConstants.OLD_MEMBER;
@@ -26,17 +27,20 @@ public class VASActivity extends AppCompatActivity implements View.OnClickListen
     Button btnInstallmentPay;
     Button btnSchedulePay;
     Button btnPromoPay;
+    Button btnEVoucher;
     Button btnTransStatus;
 
 
 
     LinearLayout llMemberPay;
     LinearLayout llPromoCode;
+    LinearLayout llEVoucher;
     LinearLayout llInstallPay;
     LinearLayout llSchedulePay;
     LinearLayout llTransStatus;
 
     TextInputLayout textPromocode;
+    TextInputLayout textEVoucherClassCode;
     TextInputLayout textPromoRuleCode;
     TextInputLayout textMemberID;
     TextInputLayout textPromoOriginalAmnt;
@@ -93,6 +97,9 @@ public class VASActivity extends AppCompatActivity implements View.OnClickListen
             case PROMO_CODE:
                 llPromoCode.setVisibility(View.VISIBLE);
                 break;
+            case E_VOUCHER:
+                llEVoucher.setVisibility(View.VISIBLE);
+                break;
             case INSTALLMENT_PAY:
                 llInstallPay.setVisibility(View.VISIBLE);
                 break;
@@ -108,6 +115,7 @@ public class VASActivity extends AppCompatActivity implements View.OnClickListen
         btnSchedulePay = findViewById(R.id.btn_schpay);
         btnInstallmentPay = findViewById(R.id.btn_installpay);
         btnPromoPay = findViewById(R.id.btn_promopay);
+        btnEVoucher = findViewById(R.id.btn_evoucher);
         btnTransStatus = findViewById(R.id.btn_transquery);
 
 
@@ -115,15 +123,18 @@ public class VASActivity extends AppCompatActivity implements View.OnClickListen
         btnSchedulePay.setOnClickListener(this);
         btnInstallmentPay.setOnClickListener(this);
         btnPromoPay.setOnClickListener(this);
+        btnEVoucher.setOnClickListener(this);
         btnTransStatus.setOnClickListener(this);
 
         llMemberPay = findViewById(R.id.ll_memberpay);
         llPromoCode = findViewById(R.id.ll_promocode);
+        llEVoucher = findViewById(R.id.ll_evoucher);
         llInstallPay = findViewById(R.id.ll_installpay);
         llSchedulePay = findViewById(R.id.ll_schedulepay);
         llTransStatus = findViewById(R.id.ll_trans_status);
 
         textPromocode = findViewById(R.id.promotion_code);
+        textEVoucherClassCode = findViewById(R.id.evoucher_class_code);
         textPromoRuleCode = findViewById(R.id.promotion_rule_code);
         textMemberID = findViewById(R.id.memberid);
         textPromoOriginalAmnt = findViewById(R.id.promotion_org_amount);
@@ -225,6 +236,18 @@ public class VASActivity extends AppCompatActivity implements View.OnClickListen
 
                 }
                 break;
+            case R.id.btn_evoucher:
+                if (validateEvoucherData()) {
+                    Intent intent = getIntent();
+
+                    intent.putExtra("eVClassCode", textEVoucherClassCode.getEditText().getText().toString());
+
+                    setResult(RESULT_OK, intent);
+
+                    finish();
+
+                }
+                break;
             case R.id.btn_transquery:
                 if (PaySdkUtils.hasText(textPayRef)) {
                     Intent intent = getIntent();
@@ -280,6 +303,15 @@ public class VASActivity extends AppCompatActivity implements View.OnClickListen
         isPromoCode = PaySdkUtils.hasText(textPromocode);
 
         return isPromoCode;
+    }
+
+    private boolean validateEvoucherData() {
+
+        boolean isevoucherCode;
+
+        isevoucherCode = PaySdkUtils.hasText(textEVoucherClassCode);
+
+        return isevoucherCode;
     }
 
     private boolean validateSchedulePayData() {

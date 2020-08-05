@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Merchant Id"
-                android:text="88144151" />
+                android:text="88146271" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Order Reference"
-                android:text="4444333322221111" />
+                android:text="123" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Amount"
-                android:text="0.01" />
+                android:text="2" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -173,7 +173,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Card Holder Name (Not required for old Member, Webview)"
-                android:text="Abc" />
+                android:text="Test Card" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -263,7 +263,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:visibility="gone">
 
             <Button
                 android:id="@+id/btn_schedule_pay"
@@ -304,15 +305,19 @@
                 android:layout_marginRight="5dp"
                 android:textColor="#fff"/>
 
+
             <Button
-                android:id="@+id/btn_threeds"
+                android:id="@+id/btn_evoucher"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="3DS 2.0"
+                android:text="EVoucher"
                 android:visibility="visible"
                 style="@style/Button.Blue.Padded_32"
-                android:textColor="#fff"/>
+                android:textColor="#fff"
+                />
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -320,7 +325,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:visibility="gone">
 
             <Button
                 android:id="@+id/btn_querystatus"
@@ -359,7 +365,39 @@
                 android:text="Google Pay"
                 style="@style/Button.Blue.Padded_32"
                 android:layout_marginRight="5dp"
-                android:textColor="#fff"/>
+                android:textColor="#fff"
+                android:visibility="gone"/>
+
+
+            <Button
+                android:id="@+id/btn_threeds"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="3DS 2.0"
+                android:visibility="gone"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/btn_alipayhk"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ali Pay HK"
+                style="@style/Button.Blue.Padded_32"
+                android:layout_marginRight="5dp"
+                android:textColor="#fff"
+                android:visibility="visible"/>
 
             <Button
                 android:id="@+id/btn_alipay"
@@ -371,6 +409,71 @@
                 style="@style/Button.Blue.Padded_32"
                 android:textColor="#fff"
                 />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/btn_octopus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Octopus"
+                style="@style/Button.Blue.Padded_32"
+                android:layout_marginRight="5dp"
+                android:textColor="#fff"
+                android:visibility="visible"/>
+
+            <Button
+                android:id="@+id/btn_wechat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="WeChat"
+                android:visibility="visible"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/btn_memberpay_direc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="OldMember-Direct"
+                style="@style/Button.Blue.Padded_32"
+                android:layout_marginRight="5dp"
+                android:textColor="#fff"
+                android:visibility="visible"/>
+
+            <Button
+                android:id="@+id/btn_"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="WeChat"
+                android:visibility="gone"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"
+                />
+
+
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

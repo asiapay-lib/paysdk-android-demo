@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ThreeDSActivity"></activity>
+        <activity android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"/>
+
+        <activity android:name=".ThreeDSActivity" />
         <activity android:name=".MemberPayActivity" />
         <activity
             android:name=".PaymentActivity"

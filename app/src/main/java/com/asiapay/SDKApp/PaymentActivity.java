@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -53,6 +54,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static com.asiapay.SDKApp.PaySdkConstants.E_VOUCHER;
 import static com.asiapay.SDKApp.PaySdkConstants.INSTALLMENT_PAY;
 import static com.asiapay.SDKApp.PaySdkConstants.NEW_MEMBER;
 import static com.asiapay.SDKApp.PaySdkConstants.OLD_MEMBER;
@@ -66,6 +68,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
     private static final int PAY_CODE = 0;
     private static final String TAG = "PaymentACt";
+    public final static int OCTOPUS_APP_REQUEST_CODE = 10000; // This CODE is subject to change by SI
 
     // A client for interacting with the Google Pay API
     private PaymentsClient mPaymentsClient;
@@ -76,6 +79,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     Button btnNewMember;
     Button btnOldMember;
     Button btnPromoCode;
+    Button btnEVoucher;
     Button btnSchedulePay;
     Button btnInstallmentPay;
     Button btnThreeDS;
@@ -83,6 +87,10 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     Button btnPayMethod;
     Button btnGooglePay;
     Button btnAliPay;
+    Button btnAliPayHK;
+    Button btnWeChat;
+    Button btnOctopus;
+    Button btnMemberDirectPay;
 
 
     PayData payData;
@@ -108,6 +116,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
     private PaySDK paySDK;
     private ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,6 +151,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         btnNewMember = findViewById(R.id.btn_new_member);
         btnOldMember = findViewById(R.id.btn_old_member);
         btnPromoCode = findViewById(R.id.btn_promocode);
+        btnEVoucher = findViewById(R.id.btn_evoucher);
         btnSchedulePay = findViewById(R.id.btn_schedule_pay);
         btnInstallmentPay = findViewById(R.id.btn_installment);
         btnThreeDS = findViewById(R.id.btn_threeds);
@@ -149,6 +159,10 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         btnPayMethod = findViewById(R.id.btn_paymethods);
         btnGooglePay = findViewById(R.id.btn_google_pay);
         btnAliPay = findViewById(R.id.btn_alipay);
+        btnAliPayHK = findViewById(R.id.btn_alipayhk);
+        btnWeChat = findViewById(R.id.btn_wechat);
+        btnOctopus = findViewById(R.id.btn_octopus);
+        btnMemberDirectPay = findViewById(R.id.btn_memberpay_direc);
 
         textOrderRef = findViewById(R.id.et_orderref);
         textAmount = findViewById(R.id.et_amount);
@@ -163,12 +177,14 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         spnrPayGate = findViewById(R.id.spnr_paygate);
         spnrEnvType = findViewById(R.id.spnr_envtype);
 
+        textOrderRef.getEditText().setText(getOrderRef());
         setSpinnerValue();
 
         btnDirectCall.setOnClickListener(this);
         btnWebviewCall.setOnClickListener(this);
         btnNewMember.setOnClickListener(this);
         btnPromoCode.setOnClickListener(this);
+        btnEVoucher.setOnClickListener(this);
         btnSchedulePay.setOnClickListener(this);
         btnInstallmentPay.setOnClickListener(this);
         btnOldMember.setOnClickListener(this);
@@ -177,6 +193,10 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         btnPayMethod.setOnClickListener(this);
         btnGooglePay.setOnClickListener(this);
         btnAliPay.setOnClickListener(this);
+        btnAliPayHK.setOnClickListener(this);
+        btnWeChat.setOnClickListener(this);
+        btnOctopus.setOnClickListener(this);
+        btnMemberDirectPay.setOnClickListener(this);
 
         spCurrency.setOnItemSelectedListener(this);
         spnrPayGate.setOnItemSelectedListener(this);
@@ -418,9 +438,9 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     strPayMethod = NEW_MEMBER;
 
                     payData = new PayData();
-                    payData.setChannel(EnvBase.PayChannel.DIRECT);
+                    payData.setChannel(EnvBase.PayChannel.WEBVIEW);
                     basicDetails(payData);
-                    cardDetails(false);
+                   // cardDetails(false);
                     payData.setPayMethod("VISA");
                     payData.setRemark(" ");
 
@@ -433,6 +453,25 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 break;
 
             case R.id.btn_old_member:
+
+                if (validatePayData() && PaySdkUtils.hasText(textSecurityCode)) {  //For old member security code is required
+                    strPayMethod = OLD_MEMBER;
+
+                    payData = new PayData();
+                    payData.setChannel(EnvBase.PayChannel.WEBVIEW);
+                    basicDetails(payData);
+                   // cardDetails(true);
+                    payData.setPayMethod("CC");
+                    payData.setRemark(" ");
+
+
+                    Intent intent = new Intent(PaymentActivity.this, VASActivity.class);
+                    intent.putExtra("mode", strPayMethod);
+                    startActivityForResult(intent, PAY_CODE);
+                }
+
+                break;
+            case R.id.btn_memberpay_direc:
 
                 if (validatePayData() && PaySdkUtils.hasText(textSecurityCode)) {  //For old member security code is required
                     strPayMethod = OLD_MEMBER;
@@ -464,6 +503,8 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
                     // Optional Parameter (For Value-Added Service)
                     Map<String, String> extraData = new HashMap<String, String>();
+
+                    extraData.put("redirect","30");
 
                     payData.setExtraData(extraData);
 
@@ -514,13 +555,14 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
             case R.id.btn_promocode:
 
-                if (validatePayData()) {
+                if (validatePayData() && validateCardDetaiils()) {
                     strPayMethod = PROMO_CODE;
 
                     payData = new PayData();
-                    payData.setChannel(EnvBase.PayChannel.WEBVIEW);
+                    payData.setChannel(EnvBase.PayChannel.DIRECT);
                     basicDetails(payData);
-                    payData.setPayMethod("CC");
+                    cardDetails(false);
+                    payData.setPayMethod("VISA");
                     payData.setRemark(" ");
 
 
@@ -530,7 +572,24 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 }
 
                 break;
+            case R.id.btn_evoucher:
 
+                if (validatePayData() ) {
+                    strPayMethod = E_VOUCHER;
+
+                    payData = new PayData();
+                    payData.setChannel(EnvBase.PayChannel.WEBVIEW);
+                    basicDetails(payData);
+                    payData.setPayMethod("VISA");
+                    payData.setRemark(" ");
+
+
+                    Intent intent = new Intent(PaymentActivity.this, VASActivity.class);
+                    intent.putExtra("mode", strPayMethod);
+                    startActivityForResult(intent, PAY_CODE);
+                }
+
+                break;
             case R.id.btn_installment:
 
                 if (validatePayData() && validateCardDetaiils()) {
@@ -665,13 +724,50 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
                 payData.setLang(EnvBase.Language.ENGLISH);
                 payData.setAmount(textAmount.getEditText().getText().toString());
-                payData.setPayMethod("ALIPAYHKAPP");
+                payData.setPayMethod("ALIPAYAPP");
                 payData.setMerchantId(textMerchantId.getEditText().getText().toString());
                 payData.setOrderRef(getOrderRef());
                 payData.setRemark("test remark");
                 payData.setActivity(PaymentActivity.this);
 
                 paySDK.setRequestData(payData);
+                paySDK.process();
+
+                paySDK.responseHandler(new PaymentResponse() {
+                    @Override
+                    public void getResponse(PayResult payResult) {
+
+                        cancelProgressDialog();
+                        showAlert(payResult.getSuccessMsg());
+
+                    }
+
+                    @Override
+                    public void onError(Data data) {
+
+                        cancelProgressDialog();
+                        showAlert(data.getMessage());
+                    }
+                });
+
+                break;
+
+            case R.id.btn_wechat:
+                payData = new PayData();
+                payData.setChannel(EnvBase.PayChannel.DIRECT);
+                payData.setEnvType(EnvBase.EnvType.SANDBOX);
+                payData.setAmount(textAmount.getEditText().getText().toString());
+                payData.setPayGate(EnvBase.PayGate.PAYDOLLAR);
+                payData.setCurrCode(EnvBase.Currency.HKD);
+                payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
+                payData.setActivity(PaymentActivity.this);
+                payData.setOrderRef(getOrderRef());
+                payData.setPayMethod("WECHATAPP");
+                payData.setLang(EnvBase.Language.ENGLISH);
+                payData.setMerchantId(textMerchantId.getEditText().getText().toString());
+                payData.setRemark("additional remark");
+                paySDK.setRequestData(payData);
+
                 paySDK.process();
 
                 paySDK.responseHandler(new PaymentResponse() {
@@ -687,7 +783,95 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     public void onError(Data data) {
 
                         cancelProgressDialog();
-                        showAlert(data.getMessage());
+                        showAlert(data.getMessage()+data.getError());
+                    }
+                });
+                break;
+            case R.id.btn_octopus:
+
+                payData = new PayData();
+                payData.setChannel(EnvBase.PayChannel.DIRECT);
+                payData.setEnvType(EnvBase.EnvType.SANDBOX);
+                payData.setPayGate(EnvBase.PayGate.PAYDOLLAR);
+                payData.setCurrCode(EnvBase.Currency.HKD);
+                payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
+                payData.setLang(EnvBase.Language.ENGLISH);
+                payData.setAmount(textAmount.getEditText().getText().toString());
+                payData.setPayMethod("OCTOPUS");
+                payData.setMerchantId(textMerchantId.getEditText().getText().toString());
+                payData.setOrderRef(getOrderRef());
+                payData.setRemark("test remark");
+                payData.setActivity(PaymentActivity.this);
+
+                paySDK.setRequestData(payData);
+                paySDK.process();
+
+                paySDK.responseHandler(new PaymentResponse() {
+                    @Override
+                    public void getResponse(PayResult payResult) {
+
+                        cancelProgressDialog();
+                       // showAlert(payResult.getSuccessMsg());
+
+                        try {
+                            byte[] data = Base64.decode(payResult.getErrMsg(), Base64.DEFAULT);
+                            String text = new String(data, "UTF-8");
+
+                            // method to get the URI in response data.
+                            String octopusuri = text;
+                            // if installed package is OctopusApp
+                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri
+                                    .parse(octopusuri));
+                            startActivityForResult(intent, OCTOPUS_APP_REQUEST_CODE);
+                        }catch (Exception e){
+
+                            Log.d(TAG, "octopus: exp "+e.getMessage());
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Data data) {
+
+                        cancelProgressDialog();
+                        //showAlert(data.getMessage()+data.getError());
+                    }
+                });
+
+                break;
+            case R.id.btn_alipayhk:
+
+                payData = new PayData();
+                payData.setChannel(EnvBase.PayChannel.DIRECT);
+                payData.setEnvType(EnvBase.EnvType.SANDBOX);
+                payData.setPayGate(EnvBase.PayGate.PAYDOLLAR);
+                payData.setCurrCode(EnvBase.Currency.HKD);
+                payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
+                payData.setLang(EnvBase.Language.ENGLISH);
+                payData.setAmount(textAmount.getEditText().getText().toString());
+                payData.setPayMethod("ALIPAYHKAPP");
+                payData.setMerchantId(textMerchantId.getEditText().getText().toString());
+                payData.setOrderRef(getOrderRef());
+                payData.setRemark("test remark");
+                payData.setActivity(PaymentActivity.this);
+
+                paySDK.setRequestData(payData);
+                paySDK.process();
+
+                paySDK.responseHandler(new PaymentResponse() {
+                    @Override
+                    public void getResponse(PayResult payResult) {
+
+                        cancelProgressDialog();
+                        showAlert(payResult.getSuccessMsg());
+
+                    }
+
+                    @Override
+                    public void onError(Data data) {
+
+                        cancelProgressDialog();
+                        showAlert(data.getMessage()+data.getError());
                     }
                 });
 
@@ -777,7 +961,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
                         extraData.put("memberPay_service", "T");
                         extraData.put("memberPay_memberId", data.getStringExtra("memberPay_memberId"));
-                        extraData.put("memberPay_token", data.getStringExtra("memberPay_memberId"));
+                        extraData.put("memberPay_token", data.getStringExtra("memberPay_token"));
                         extraData.put("addNewMember", "False"); // If merchant making payment for first time then value should be true else false
 
                         payData.setExtraData(extraData);
@@ -799,7 +983,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                             public void onError(Data data) {
 
                                 cancelProgressDialog();
-                                showAlert(data.getMessage());
+                                showAlert(data.getError());
                             }
                         });
                         break;
@@ -850,6 +1034,35 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                         extraData.put("promotionCode", data.getStringExtra("promotionCode"));
                         extraData.put("promotionRuleCode", data.getStringExtra("promotionRuleCode"));
                         extraData.put("promotionOriginalAmt", data.getStringExtra("promotionOriginalAmt"));
+
+                        payData.setExtraData(extraData);
+
+                        paySDK.setRequestData(payData);
+
+                        paySDK.process();
+
+                        paySDK.responseHandler(new PaymentResponse() {
+                            @Override
+                            public void getResponse(PayResult payResult) {
+
+                                cancelProgressDialog();
+                                showAlert(payResult.getErrMsg());
+
+                            }
+
+                            @Override
+                            public void onError(Data data) {
+
+                                cancelProgressDialog();
+                                showAlert(data.getMessage());
+                            }
+                        });
+                        break;
+
+                    case E_VOUCHER:
+
+                        extraData.put("eVoucher", "T");
+                        extraData.put("eVClassCode", data.getStringExtra("eVClassCode"));
 
                         payData.setExtraData(extraData);
 
@@ -1070,6 +1283,9 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 default:
                     // Do nothing.
             }
+        } else if(requestCode == OCTOPUS_APP_REQUEST_CODE &&
+                resultCode == Activity.RESULT_OK){
+            showAlert("Transaction Completed.");
         }
     }
     void handleGooglePay(String strResp){
@@ -1202,5 +1418,6 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
 
 }

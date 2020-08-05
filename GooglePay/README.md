@@ -1,24 +1,24 @@
 
-# Google Pay
+# Google Pay™
 
 ## Prerequisites
 
 #### Before you get started, review the following prerequisites:
 
-* Install the Google Play services version 18.0.0 or greater.
+* Install the Google Play™ services version 18.0.0 or greater.
 * Add a payment method to Google.
-* Adhere to [Google Pay API Acceptable Use Policy](https://payments.developers.google.com/terms/aup) and the [Google Play developer policy](https://support.google.com/googleplay/android-developer/answer/9858738).
+* Adhere to [Google Pay™ API Acceptable Use Policy](https://payments.developers.google.com/terms/aup) and the [Google Play developer policy](https://support.google.com/googleplay/android-developer/answer/9858738).
 
 ## Sdk Setup
 
-* Enable Google Pay in your app by adding below line to Manifest file.
+* Enable Google Pay™ in your app by adding below line to Manifest file.
 ```
 <meta-data
         android:name="com.google.android.gms.wallet.api.enabled"
         android:value="true" />
         
  ```
-* Add below library for Google Pay Services in build.gradle file.
+* Add below library for Google Pay™ Services in build.gradle file.
 ```
 implementation 'com.google.android.gms:play-services-wallet:16.0.1'
 
@@ -27,7 +27,7 @@ implementation 'com.google.android.gms:play-services-wallet:16.0.1'
 * Initialize PaymentClient in onCreate method 
 
 ```
-// A client for interacting with the Google Pay API
+// A client for interacting with the Google Pay™ API
 private PaymentsClient mPaymentsClient;
 //GooglePay
 mPaymentsClient = PaymentsUtil.createPaymentsClient(this);
@@ -50,7 +50,7 @@ PaymentsUtil.isGooglePayAvailable(this, mPaymentsClient, new PaymentsUtil.ICheck
 
 ```
 
-* Request Payment Via Google Pay using PayData
+* Request Payment Via Google Pay™ using PayData
 
 ```
  		payData = new PayData();
@@ -117,7 +117,7 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
                     // Do nothing.
             }
 
-            // Re-enables the Google Pay payment button.
+            // Re-enables the Google Pay™ payment button.
             //mGooglePayButton.setClickable(true);
             break;
     }

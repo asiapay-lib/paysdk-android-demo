@@ -63,7 +63,8 @@ if(requestCode == OCTOPUS_APP_REQUEST_CODE && resultCode == Activity.RESULT_OK)
 
 ```
 
-![image](https://user-images.githubusercontent.com/57220911/90009584-f1167f80-dcbb-11ea-9287-fffc07d9040d.png)
+![image](https://user-images.githubusercontent.com/57220911/90011624-8b2bf700-dcbf-11ea-9f26-83510582ed23.png)
+
 
 
 

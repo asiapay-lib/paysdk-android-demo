@@ -84,6 +84,8 @@ Schedule Pay | [Schedule Pay](https://github.com/asiapay-lib/paysdk-android-demo
 Promo Pay | [Promo Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/PromoPay/README.md)
 Trans Query | [Trans Query](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/TRANSQUERY/README.md)
 Pay Methods | [Pay Methods](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/PayMethod/README.md)
+EVoucher | [EVoucher](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/EVoucher)
+Octopus | [Octopus](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/Octopus)
 
 ### Collect Payment Result
 

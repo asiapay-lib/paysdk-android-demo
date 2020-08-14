@@ -49,7 +49,6 @@ Android Gradle Plugin 3.5.1
     implementation 'com.google.android.material:material:1.2.0-alpha04'
     implementation 'com.google.android.material:material:1.0.0-beta01'
 
-    //Updated lib
     implementation 'com.google.android.gms:play-services-ads:17.2.1'
     implementation 'com.google.android.gms:play-services-location:16.0.0'
 

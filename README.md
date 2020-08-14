@@ -39,17 +39,25 @@ Android Gradle Plugin 3.5.1
 
 	```  
     implementation(name: 'PaySDK-2.2.6', ext: 'aar')
+    implementation(name: 'alipaySdk-15.6.2-20190416165036', ext: 'aar')
     implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
     implementation 'com.google.code.gson:gson:2.3.1'
     implementation 'org.bouncycastle:bcprov-jdk15on:1.60'
     implementation 'com.android.volley:volley:1.1.1'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.7.3'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.7.3'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.7.3'
+
     implementation 'org.greenrobot:eventbus:3.0.0'
-    implementation 'com.google.android.gms:play-services-ads:11.8.0'
-    implementation 'com.google.android.gms:play-services-location:11.8.0'
     implementation 'com.google.android.material:material:1.2.0-alpha04'
+    implementation 'com.google.android.material:material:1.0.0-beta01'
+
+    //Updated lib
+    implementation 'com.google.android.gms:play-services-ads:17.2.1'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+
+    // for google pay
+    implementation 'com.google.android.gms:play-services-wallet:16.0.1'
+
+    //WeChat
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 	``` 
 
 

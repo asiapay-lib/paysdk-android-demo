@@ -82,9 +82,10 @@ Payment Services | Example
 --- | --- 
 Direct Payment | [Direct Payment](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/DirectPay/README.md)
 Webview Payment | [Webview Payment](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/Webview/README.md)
-Add 3DS  | [3DS](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/3DS/README.md)
+3Ds 2.0 Extra Paramters  | [3DS](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/3DS/README.md)
 AliPay  | [AliPay](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/AliPay/README.md)
 Google Pay™  | [Google Pay™](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/GooglePay/README.md)
+Octopus | [Octopus](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/Octopus)
 Member Pay | [Member Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/MemberPay/README.md)
 Installment Pay | [Installmet Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/InstallmentPay/README.md)
 Schedule Pay | [Schedule Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/SchedulePay/README.md)
@@ -92,7 +93,6 @@ Promo Pay | [Promo Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/
 Trans Query | [Trans Query](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/TRANSQUERY/README.md)
 Pay Methods Query | [Pay Methods](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/PayMethod/README.md)
 EVoucher | [EVoucher](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/EVoucher)
-Octopus | [Octopus](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/Octopus)
 
 ### Collect Payment Result
 

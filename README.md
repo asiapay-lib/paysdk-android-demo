@@ -111,7 +111,7 @@ EVoucher | [EVoucher](https://github.com/asiapay-lib/paysdk-android-demo/tree/ma
 For Complete Integration guide follow [PaySdk_Android_IntegrationGuide.docx](https://github.com/asiapay-lib/paysdk-android-lib/files/4444819/PaySdk_ANdroid_IntegrationGuide.docx)
 
 ## Related Sample
-[Deeplinking Demo](https://github.com/asiapay-lib/android-deeplink-demo)
+[Deeplink Demo](https://github.com/asiapay-lib/android-deeplink-demo)
 
 ### Support
 Asiapay is a tech company. All our engineers handle support too. You can write to us at it@pesopay.com ,it@paydollar.com , it@siampy.com and expect a response from the devs from the Android SDK.

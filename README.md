@@ -73,12 +73,12 @@ merchant_rsa_publickey=<<SECURITY_KEY>>
     PaySDK paySDK = new PaySDK(getApplicationContext());
     ```
 
-* Use following payment options.
+* Use following payment services.
  
 
     
 
-Payment Option | Example
+Payment Services | Example
 --- | --- 
 Direct Payment | [Direct Payment](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/DirectPay/README.md)
 Webview Payment | [Webview Payment](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/Webview/README.md)
@@ -90,7 +90,7 @@ Installment Pay | [Installmet Pay](https://github.com/asiapay-lib/paysdk-android
 Schedule Pay | [Schedule Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/SchedulePay/README.md)
 Promo Pay | [Promo Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/PromoPay/README.md)
 Trans Query | [Trans Query](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/TRANSQUERY/README.md)
-Pay Methods | [Pay Methods](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/PayMethod/README.md)
+Pay Methods Query | [Pay Methods](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/PayMethod/README.md)
 EVoucher | [EVoucher](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/EVoucher)
 Octopus | [Octopus](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/Octopus)
 

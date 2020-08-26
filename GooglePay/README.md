@@ -53,6 +53,13 @@ PaymentsUtil.isGooglePayAvailable(this, mPaymentsClient, new PaymentsUtil.ICheck
 
 * Request Payment Via Google Pay™ using PayData
 
+Kindly select GooglePayAuth param according to below description -:
+
+GooglePay Auth Method | Description
+--- | --- 
+GooglePayAuth.PAN_ONLY | This authentication method is associated with payment cards stored on file with the user's Google Account. Returned payment data includes personal account number (PAN) with the expiration month and the expiration year.
+GooglePayAuth.PAN_CRYPTO | This authentication method is associated with cards stored as Android device tokens. Returned payment data includes a 3-D Secure (3DS) cryptogram generated on the device. (This method will add GooglePay's PAN_ONLY & CRYPTOGRAM_3DS)
+
 ```
  		payData = new PayData();
                 payData.setChannel(EnvBase.PayChannel.DIRECT);
@@ -64,7 +71,7 @@ PaymentsUtil.isGooglePayAvailable(this, mPaymentsClient, new PaymentsUtil.ICheck
                 payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
                 payData.setOrderRef(textOrderRef.getEditText().getText().toString());
                 payData.setOrderRef(textOrderRef.getEditText().getText().toString());
-                payData.setPayMethod("");  //PayMethod should be blank
+                payData.setPayMethod("");  
                 payData.setLang(EnvBase.Language.ENGLISH);
                 payData.setMerchantId(textMerchantId.getEditText().getText().toString());
 
@@ -134,8 +141,7 @@ void handleGooglePay(String strResp){
 
 try {
 
- byte[] byteString=strResp.getBytes("UTF-8");
- base64encodedString= android.util.Base64.encodeToString(byteString, Base64.NO_WRAP);
+ base64encodedString= paySDK.encodeData(strResp);
 
 } catch (Exception e) {
     e.printStackTrace();
@@ -148,6 +154,7 @@ try {
     extraDataGP.put("eWalletPaymentData",base64encodedString);
     extraDataGP.put("eWalletService","T");
     extraDataGP.put("eWalletBrand","GOOGLE");
+    
     payData.setExtraData(extraDataGP);
 
     paySDK.setRequestData(payData);

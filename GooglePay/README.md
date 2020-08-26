@@ -58,7 +58,8 @@ Kindly select GooglePayAuth param according to below description -:
 GooglePay Auth Method | Description
 --- | --- 
 GooglePayAuth.PAN_ONLY | This authentication method is associated with payment cards stored on file with the user's Google Account. Returned payment data includes personal account number (PAN) with the expiration month and the expiration year.
-GooglePayAuth.PAN_CRYPTO | This authentication method is associated with cards stored as Android device tokens. Returned payment data includes a 3-D Secure (3DS) cryptogram generated on the device. (This method will add GooglePay's PAN_ONLY & CRYPTOGRAM_3DS)
+GooglePayAuth.CRYPTOGRAM_3DS | This authentication method is associated with cards stored as Android device tokens. Returned payment data includes a 3-D Secure (3DS) cryptogram generated on the device. 
+GooglePayAuth.PAN_CRYPTO | This method will support payment cards and Android device tokens from all supported card networks , i.e GooglePayAuth.PAN_ONLY & GooglePayAuth.CRYPTOGRAM_3DS
 
 ```
  		payData = new PayData();

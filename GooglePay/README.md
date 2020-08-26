@@ -7,7 +7,8 @@
 
 * Install the Google Play™ services version 18.0.0 or greater.
 * Add a payment method to Google.
-* Adhere to [Google Pay™ API Acceptable Use Policy](https://payments.developers.google.com/terms/aup) and the [Google Play developer policy](https://support.google.com/googleplay/android-developer/answer/9858738).
+* Adhere to [Google Pay™ API Acceptable Use Policy](https://payments.developers.google.com/terms/aup), [Google Pay™ API Terms of Service](https://payments.developers.google.com/terms/sellertos) and the [Google Play™ Developer Policy](https://support.google.com/googleplay/android-developer/answer/9858738).
+* For the "Buy with G Pay" button, please follow [Google Pay™ Android Brand Guide](https://developers.google.com/pay/api/android/guides/brand-guidelines)
 
 ## Sdk Setup
 

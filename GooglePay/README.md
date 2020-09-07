@@ -7,7 +7,7 @@
 
 * Install the Google Play™ services version 18.0.0 or greater.
 * Add a payment method to Google.
-* Adhere to [Google Pay™ API Acceptable Use Policy](https://payments.developers.google.com/terms/aup), [Google Pay™ API Terms of Service](https://payments.developers.google.com/terms/sellertos) and the [Google Play™ Developer Policy](https://support.google.com/googleplay/android-developer/answer/9858738).
+* Please read and accept the following policy for Google Pay™: [Google Pay™ API Acceptable Use Policy](https://payments.developers.google.com/terms/aup) and [Google Pay™ API Terms of Service](https://payments.developers.google.com/terms/sellertos).
 * For the "Buy with G Pay" button, please follow [Google Pay™ Android Brand Guide](https://developers.google.com/pay/api/android/guides/brand-guidelines)
 
 ## Sdk Setup
@@ -55,10 +55,10 @@ PaymentsUtil.isGooglePayAvailable(this, mPaymentsClient, new PaymentsUtil.ICheck
 
 Kindly select GooglePayAuth param according to below description -:
 
-GooglePay Auth Method | Description
+Google Pay™ Auth Method | Description
 --- | --- 
 GooglePayAuth.PAN_ONLY | This authentication method is associated with payment cards stored on file with the user's Google Account. Returned payment data includes personal account number (PAN) with the expiration month and the expiration year.
-GooglePayAuth.CRYPTOGRAM_3DS | This authentication method is associated with cards stored as Android device tokens. Returned payment data includes a 3-D Secure (3DS) cryptogram generated on the device. 
+GooglePayAuth.CRYPTOGRAM_3DS | This authentication method is associated with cards stored as Android device tokens. Returned payment data includes a cryptogram generated on the device. 
 GooglePayAuth.PAN_CRYPTO | This method will support payment cards and Android device tokens from all supported card networks , i.e GooglePayAuth.PAN_ONLY & GooglePayAuth.CRYPTOGRAM_3DS
 
 ```

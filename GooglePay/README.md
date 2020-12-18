@@ -72,7 +72,7 @@ GooglePayAuth.PAN_CRYPTO | This method will support payment cards and Android de
                 payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
                 payData.setOrderRef(textOrderRef.getEditText().getText().toString());
                 payData.setOrderRef(textOrderRef.getEditText().getText().toString());
-                payData.setPayMethod("");  
+                payData.setPayMethod("GOOGLE");  
                 payData.setLang(EnvBase.Language.ENGLISH);
                 payData.setMerchantId(textMerchantId.getEditText().getText().toString());
 

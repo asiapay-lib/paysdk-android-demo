@@ -694,7 +694,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
                 payData.setOrderRef(textOrderRef.getEditText().getText().toString());
                 payData.setOrderRef(textOrderRef.getEditText().getText().toString());
-                payData.setPayMethod("");  //PayMethod should be blank
+                payData.setPayMethod("GOOGLE");  
                 payData.setLang(EnvBase.Language.ENGLISH);
                 payData.setMerchantId(textMerchantId.getEditText().getText().toString());
 

@@ -65,6 +65,7 @@ Android Gradle Plugin 3.5.1
 Create the paysdk.properties file in the assets folder with the following attribute.
 
 merchant_rsa_publickey=<<SECURITY_KEY>>
+
 domain=<<Third level Domain>>
 
 ##NOTE: Naming of the property file and its attributes must be same.

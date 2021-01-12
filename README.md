@@ -69,7 +69,7 @@ merchant_rsa_publickey=<<SECURITY_KEY>>
 domain=<<Third_Level_Domain>>
 	
 
-## NOTE: Naming of the property file and its attributes must be same.
+#### NOTE: Naming of the property file and its attributes must be same.
 
 ### Initialize Payload
 

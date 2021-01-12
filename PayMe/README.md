@@ -11,7 +11,7 @@
                 payData.setCurrCode(EnvBase.Currency.HKD);
                 payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
                 payData.setOrderRef("abcde12345");
-                payData.setPayMethod("VISA");
+                payData.setPayMethod("PayMe");
                 payData.setLang(EnvBase.Language.ENGLISH);
                 payData.setMerchantId("1");
 

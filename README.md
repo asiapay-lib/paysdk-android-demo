@@ -66,7 +66,8 @@ Create the paysdk.properties file in the assets folder with the following attrib
 
 merchant_rsa_publickey=<<SECURITY_KEY>>
 
-domain=<<Third level Domain>>
+domain=<<Third_level_Domain>>
+	
 
 ##NOTE: Naming of the property file and its attributes must be same.
 

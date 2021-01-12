@@ -12,7 +12,7 @@
 ### Get Started
 
 1. [PaySdk Configuration](#paysdk-configuration)
-2. [Add Security Key & Domain](#add-security-key)
+2. [Add Security Key & Domain](#add-security-key-&-domain)
 3. [Initialize Payload](#initialize-payload)
 4. [Collect Payment Result](#collect-payment-result)
 

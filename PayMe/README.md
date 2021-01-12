@@ -14,21 +14,12 @@
                 payData.setPayMethod("PayMe");
                 payData.setLang(EnvBase.Language.ENGLISH);
                 payData.setMerchantId("1");
-
-
-                CardDetails cardDetails=new CardDetails();
-                cardDetails.setCardNo("1234567890123456");
-                cardDetails.setEpMonth("01");
-                cardDetails.setEpYear("2020");
-                cardDetails.setSecurityCode("123");
-                cardDetails.setCardHolder("abc abc");
-                payData.setCardDetails(cardDetails);
                 
                 //Optional Parameters
-                payData.setCallbackSuccess("successUrl");
-                payData.setCallbackCancel("cancelUrl");
-                payData.setCallbackError("errorUrl");
-                payData.setCallbackFail("failUrl");
+                payData.setCallbackSuccess("https://abc.com//success");
+                payData.setCallbackCancel("https://abc.com//cancelled");
+                payData.setCallbackError("https://abc.com//error");
+                payData.setCallbackFail("https://abc.com//fail");
                 payData.setRemark("additional remark");
                 
                 paySDK.setRequestData(payData);

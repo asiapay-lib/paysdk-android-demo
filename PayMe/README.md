@@ -35,7 +35,6 @@
                 paySDK.process();
                 
                 
-                //For PayMe we need to use encoded response to show callback url
                 paySDK.responseHandler(new PaymentResponse() {
                     @Override
                     public void getResponse(PayResult payResult) {

@@ -12,7 +12,7 @@
 ### Get Started
 
 1. [PaySdk Configuration](#paysdk-configuration)
-2. [Add Security Key & Domain](#add-security-key-&-domain)
+2. [Add Security Key & Domain](#add-security-key-and-domain)
 3. [Initialize Payload](#initialize-payload)
 4. [Collect Payment Result](#collect-payment-result)
 
@@ -60,7 +60,7 @@ Android Gradle Plugin 3.5.1
 	``` 
 
 
-### Add Security Key & Domain
+### Add Security Key and Domain
 
 Create the paysdk.properties file in the assets folder with the following attribute.
 

@@ -99,6 +99,7 @@ Promo Pay | [Promo Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/
 Transaction Query | [Transaction Query](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/TRANSQUERY/README.md)
 Payment Methods Query | [Payment Methods Query](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/PayMethod/README.md)
 EVoucher | [EVoucher](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/EVoucher)
+PayMe | [PayMe](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/PayMe)
 
 ### Collect Payment Result
 

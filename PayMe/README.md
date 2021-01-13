@@ -47,7 +47,7 @@ void handlePayment() {
                     startActivity(intent);
 
                     handleIntent(getIntent());
-                    Log.d("PayMeData", "getResponse: "+callbackUrl);
+                   
 
                 }catch (Exception e){
                     Log.d(TAG, "getResponse: "+e.getMessage());

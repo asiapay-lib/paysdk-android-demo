@@ -30,9 +30,38 @@ void handlePayment() {
                 paySDK.process();
 }
 
-void handleCallback() {
 
-handleIntent(getIntent);  //Decode orderid from URL
+          private void handleCallback() {
+          
+            paySDK.responseHandler(new PaymentResponse() {
+            @Override
+            public void getResponse(PayResult payResult) {
+
+                cancelProgressDialog();
+
+                try {
+                    String callbackUrl = paySDK.decodeData(payResult.getErrMsg());
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri
+                            .parse(callbackUrl));
+
+                    startActivity(intent);
+
+                    handleIntent(getIntent());
+                    Log.d("PayMeData", "getResponse: "+callbackUrl);
+
+                }catch (Exception e){
+                    Log.d(TAG, "getResponse: "+e.getMessage());
+                }
+            }
+
+            @Override
+            public void onError(Data data) {
+
+                cancelProgressDialog();
+                showAlert(data.getMessage());
+            }
+        });
+    }
 
 }
      
@@ -92,4 +121,4 @@ handleIntent(getIntent);  //Decode orderid from URL
     }
 
 ```
-For Deeplinking Demo kindly check  https://github.com/asiapay-lib/paysdk-android-demo
+For Deeplinking Demo kindly check  https://github.com/seema-asiapay/deeplinking-sample/blob/master/app/src/main/AndroidManifest.xml

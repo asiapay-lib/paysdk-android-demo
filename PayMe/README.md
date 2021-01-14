@@ -34,9 +34,7 @@
          
 ```
 
-![image](https://user-images.githubusercontent.com/57220911/104548556-13d80600-5657-11eb-9a54-3dfe340449bc.png)   ![image](https://user-images.githubusercontent.com/57220911/104548576-1dfa0480-5657-11eb-81ad-05c624bed79a.png)   ![image](https://user-images.githubusercontent.com/57220911/104548598-29e5c680-5657-11eb-9655-7e60be327627.png)
-
-
+![image](https://user-images.githubusercontent.com/57220911/104548750-77faca00-5657-11eb-8250-ba3763594cdf.png) ![image](https://user-images.githubusercontent.com/57220911/104548765-82b55f00-5657-11eb-909b-fbbe698051bb.png) ![image](https://user-images.githubusercontent.com/57220911/104548772-86e17c80-5657-11eb-8dba-cebdd7a77643.png)
 
 
 For Deeplinking Demo kindly check  https://github.com/seema-asiapay/deeplinking-sample/blob/master/app/src/main/AndroidManifest.xml

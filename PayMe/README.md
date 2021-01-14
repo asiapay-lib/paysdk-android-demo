@@ -5,6 +5,7 @@
 ```
 
                 void handlePayment() {
+                
                 PayData payData = new PayData();
                 payData.setChannel(EnvBase.PayChannel.DIRECT);
                 payData.setEnvType(EnvBase.EnvType.SANDBOX);
@@ -28,6 +29,7 @@
                 
                 paySDK.setRequestData(payData);
                 paySDK.process();
+                
                 }
 
 

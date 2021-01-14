@@ -4,11 +4,12 @@
 
 ```
 
-void handlePayment() {
+                void handlePayment() {
+                
                 PayData payData = new PayData();
                 payData.setChannel(EnvBase.PayChannel.DIRECT);
                 payData.setEnvType(EnvBase.EnvType.SANDBOX);
-                payData.setAmount("10");
+                payData.setAmount("1.81");
                 payData.setPayGate(EnvBase.PayGate.PAYDOLLAR);
                 payData.setCurrCode(EnvBase.Currency.HKD);
                 payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
@@ -28,97 +29,14 @@ void handlePayment() {
                 
                 paySDK.setRequestData(payData);
                 paySDK.process();
-}
-
-
-          private void handleCallback() {
-          
-            paySDK.responseHandler(new PaymentResponse() {
-            @Override
-            public void getResponse(PayResult payResult) {
-
-                cancelProgressDialog();
-
-                try {
-                    String callbackUrl = paySDK.decodeData(payResult.getErrMsg());
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri
-                            .parse(callbackUrl));
-
-                    startActivity(intent);
-
-                    handleIntent(getIntent());
-                   
-
-                }catch (Exception e){
-                    Log.d(TAG, "getResponse: "+e.getMessage());
-                }
-            }
-
-            @Override
-            public void onError(Data data) {
-
-                cancelProgressDialog();
-                showAlert(data.getMessage());
-            }
-        });
-    }
-
-}
-     
-        void handleIntent(Intent intent){
-
-        String appLinkAction=intent.getAction();
-        Uri appLinkData=intent.getData();
-
-        // 1
-        if (Intent.ACTION_VIEW == appLinkAction && appLinkData != null) {
-            // 2
-            String orderId = appLinkData.getQueryParameter("order");
-            if (!orderId.isEmpty()) {
-
-                String payRef;
-                try {
-                    payRef = paySDK.decodeData(orderId);
-
-                    //Handle Query function
-                    queryStatus(payRef);
-
-                }catch (Exception e){
-                    Log.d("paymeData", "handleIntent: "+e.getMessage());
-                }
                 
-
-            }
-        }
-
-    }
-
-    void queryStatus(String payRef){
-
-        payData.setPayRef(payRef);
-
-        paySDK.setRequestData(payData);
-
-        paySDK.query(EnvBase.Action.TX_QUERY);
-
-        paySDK.queryResponseHandler(new QueryResponse() {
-            @Override
-            public void getResponse(TransactionStatus transactionStatus) {
-
-                cancelProgressDialog();
-                showAlert(transactionStatus.getResultCode());
-            }
-
-            @Override
-            public void onError(Data data) {
-
-                cancelProgressDialog();
-                showAlert(data.getMessage());
-            }
-        });
+                }
 
 
-    }
-
+         
 ```
+
+![image](https://user-images.githubusercontent.com/57220911/104548750-77faca00-5657-11eb-8250-ba3763594cdf.png) ![image](https://user-images.githubusercontent.com/57220911/104548765-82b55f00-5657-11eb-909b-fbbe698051bb.png) ![image](https://user-images.githubusercontent.com/57220911/104548772-86e17c80-5657-11eb-8dba-cebdd7a77643.png)
+
+
 For Deeplinking Demo kindly check  https://github.com/seema-asiapay/deeplinking-sample/blob/master/app/src/main/AndroidManifest.xml

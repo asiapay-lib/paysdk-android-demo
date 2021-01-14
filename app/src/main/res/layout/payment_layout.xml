@@ -241,7 +241,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="New Member Pay"
+                android:text="New Member"
                 style="@style/Button.Blue.Padded_32"
                 android:textColor="#fff"
                 android:layout_marginRight="5dp"/>
@@ -456,19 +456,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="OldMember-Direct"
+                android:text="OldMember"
                 style="@style/Button.Blue.Padded_32"
                 android:layout_marginRight="5dp"
                 android:textColor="#fff"
                 android:visibility="visible"/>
 
             <Button
-                android:id="@+id/btn_"
+                android:id="@+id/btn_payme"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="WeChat"
-                android:visibility="gone"
+                android:text="PayMe"
+                android:visibility="visible"
                 style="@style/Button.Blue.Padded_32"
                 android:textColor="#fff"
                 />

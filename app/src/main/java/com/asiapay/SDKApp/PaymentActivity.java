@@ -91,6 +91,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     Button btnWeChat;
     Button btnOctopus;
     Button btnMemberDirectPay;
+     Button btnPayMe;
 
 
     PayData payData;
@@ -163,6 +164,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         btnWeChat = findViewById(R.id.btn_wechat);
         btnOctopus = findViewById(R.id.btn_octopus);
         btnMemberDirectPay = findViewById(R.id.btn_memberpay_direc);
+        btnPayMe = findViewById(R.id.btn_payme);
 
         textOrderRef = findViewById(R.id.et_orderref);
         textAmount = findViewById(R.id.et_amount);
@@ -197,6 +199,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         btnWeChat.setOnClickListener(this);
         btnOctopus.setOnClickListener(this);
         btnMemberDirectPay.setOnClickListener(this);
+        btnPayMe.setOnClickListener(this);
 
         spCurrency.setOnItemSelectedListener(this);
         spnrPayGate.setOnItemSelectedListener(this);
@@ -533,6 +536,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 }
 
                 break;
+
             case R.id.btn_schedule_pay:
 
                 if (validatePayData() && validateCardDetaiils()) {
@@ -648,6 +652,65 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 }
                 break;
 
+            case R.id.btn_payme:
+                if (validatePayData()) {
+
+                    showProgressDialog("Processing payment, please wait...");
+
+                    payData = new PayData();
+                    payData.setChannel(EnvBase.PayChannel.DIRECT);
+                    basicDetails(payData);
+                    payData.setPayMethod("PayMe");
+
+                    // handle result callback with deeplink
+                    payData.setCallbackSuccess("xxx://abc//success");
+                    payData.setCallbackCancel("xxx://abc//cancelled");
+                    payData.setCallbackError("xxx://abc//error");
+                    payData.setCallbackFail("xxx://abc//fail");
+
+                    //optional parameter
+                    payData.setRemark(" ");
+
+                    // Optional Parameter (For Value-Added Service)
+                    Map<String, String> extraData = new HashMap<String, String>();
+
+                    payData.setExtraData(extraData);
+
+                    paySDK.setRequestData(payData);
+
+                    paySDK.process();
+
+
+                    paySDK.responseHandler(new PaymentResponse() {
+                        @Override
+                        public void getResponse(PayResult payResult) {
+
+                            cancelProgressDialog();
+                            //showAlert(payResult.getErrMsg());
+
+                            try {
+                                String callbackUrl = paySDK.decodeData(payResult.getErrMsg());
+                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri
+                                        .parse(callbackUrl));
+
+                                startActivity(intent);
+
+
+                            }catch (Exception e){
+                                Log.d(TAG, "getResponse: "+e.getMessage());
+                            }
+                        }
+
+                        @Override
+                        public void onError(Data data) {
+
+                            cancelProgressDialog();
+                            showAlert(data.getMessage());
+                        }
+                    });
+                }
+
+                break;
             case R.id.btn_paymethods:
                 showProgressDialog("Fetching List of Pay Methods, please wait ...");
 
@@ -879,6 +942,8 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
         }
     }
+
+
 
     String getOrderRef(){
         SimpleDateFormat s = new SimpleDateFormat("ddMMyyyyhhmmss");

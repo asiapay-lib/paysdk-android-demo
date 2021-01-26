@@ -9,6 +9,7 @@
                 payData.setEnvType(selectedEnvType);
                 payData.setPayGate(selectedPayGate);
                 payData.setOrderRef(textOrderRef.getEditText().getText().toString());
+                payData.setPayRef(data.getStringExtra("payRef"));
                 payData.setRemark(" ");
                 paySDK.setRequestData(payData);
                 

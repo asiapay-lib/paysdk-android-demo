@@ -663,10 +663,10 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     payData.setPayMethod("PayMe");
 
                     // handle result callback with deeplink
-                    payData.setCallbackSuccess("xxx://abc//success");
-                    payData.setCallbackCancel("xxx://abc//cancelled");
-                    payData.setCallbackError("xxx://abc//error");
-                    payData.setCallbackFail("xxx://abc//fail");
+                    payData.setSuccessUrl("xxx://abc//success");
+                    payData.setCancelUrl("xxx://abc//cancelled");
+                    payData.setFailUrl("xxx://abc//error");
+                    payData.setErrorUrl("xxx://abc//fail");
 
                     //optional parameter
                     payData.setRemark(" ");

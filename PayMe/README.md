@@ -18,7 +18,7 @@
                 payData.setLang(EnvBase.Language.ENGLISH);
                 payData.setMerchantId("1");
                 
-                // handle result callback with deeplink 
+               // handle result callback with deeplink 
                payData.setSuccessUrl("xxx://abc//success");
                payData.setCancelUrl("xxx://abc//cancelled");
                payData.setFailUrl("xxx://abc//error");

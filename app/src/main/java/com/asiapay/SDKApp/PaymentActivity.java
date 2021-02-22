@@ -663,9 +663,9 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     payData.setPayMethod("PayMe");
 
                     // handle result callback with deeplink
-                    payData.setSuccessUrl("xxx://abc//success");
+                    payData.setSuccessUrl("mcd://www.apin.com//succ");
                     payData.setCancelUrl("xxx://abc//cancelled");
-                    payData.setFailUrl("xxx://abc//error");
+                    payData.setFailUrl("mcd://www.apin.com//fail");
                     payData.setErrorUrl("xxx://abc//fail");
 
                     //optional parameter
@@ -694,6 +694,8 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                                         .parse(callbackUrl));
 
                                 startActivity(intent);
+
+                                handleIntent(intent);
 
 
                             }catch (Exception e){
@@ -852,6 +854,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.btn_octopus:
 
+                showProgressDialog("Processing payment, please wait...");
                 payData = new PayData();
                 payData.setChannel(EnvBase.PayChannel.DIRECT);
                 payData.setEnvType(EnvBase.EnvType.SANDBOX);
@@ -1483,6 +1486,27 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+    private void handleIntent(Intent intent){
 
+        String appLinkAction=intent.getAction();
+        Uri appLinkData=intent.getData();
+        showDeepLinkOffer(appLinkAction, appLinkData);
+    }
+
+    private void showDeepLinkOffer(String appLinkAction,Uri appLinkData) {
+        // 1
+        if (Intent.ACTION_VIEW == appLinkAction && appLinkData != null) {
+            // 2
+            String orderID = appLinkData.getQueryParameter("order");
+            if (orderID.isEmpty()) {
+
+                //tv.setText("Empty Data");
+
+            } else {
+                //tv.setText("Order id -: "+orderID);
+
+            }
+        }
+    }
 
 }

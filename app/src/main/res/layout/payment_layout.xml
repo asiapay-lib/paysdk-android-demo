@@ -134,7 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Card Number (Not required for old Member, Webview)"
-                android:text="4444333322221111" />
+                android:text="4111111111110071" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -147,7 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Expiry Month (Not required for old Member, Webview)"
-                android:text="12" />
+                android:text="07" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -160,7 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Expiry Year (Not required for old Member, Webview)"
-                android:text="2020" />
+                android:text="2030" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -375,7 +375,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="3DS 2.0"
-                android:visibility="gone"
+                android:visibility="visible"
                 style="@style/Button.Blue.Padded_32"
                 android:textColor="#fff"
                 />

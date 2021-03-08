@@ -663,7 +663,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     payData.setPayMethod("PayMe");
 
                     // handle result callback with deeplink
-                    payData.setSuccessUrl("mcd://www.apin.com//succ");
+                    payData.setSuccessUrl("mcd://www.apin.com/succ");
                     payData.setCancelUrl("xxx://abc//cancelled");
                     payData.setFailUrl("mcd://www.apin.com//fail");
                     payData.setErrorUrl("xxx://abc//fail");
@@ -685,29 +685,18 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                         @Override
                         public void getResponse(PayResult payResult) {
 
+                            //For successful transaction order will get using payResult.getOrderId()
                             cancelProgressDialog();
+
                             //showAlert(payResult.getErrMsg());
 
-                            try {
-                                String callbackUrl = paySDK.decodeData(payResult.getErrMsg());
-                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri
-                                        .parse(callbackUrl));
-
-                                startActivity(intent);
-
-                                handleIntent(intent);
-
-
-                            }catch (Exception e){
-                                Log.d(TAG, "getResponse: "+e.getMessage());
-                            }
                         }
 
                         @Override
                         public void onError(Data data) {
 
                             cancelProgressDialog();
-                            showAlert(data.getMessage());
+                            showAlert(data.getError());
                         }
                     });
                 }

@@ -107,12 +107,6 @@ PayMe | [PayMe](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/P
                paySDK.responseHandler(new PaymentResponse() {
                     @Override
                     public void getResponse(PayResult payResult) {
-		    
-		    //For PayMe handle response in following way
-		    
-		     String callbackUrl = paySDK.decodeData(payResult.getErrMsg());
-                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(callbackUrl));
-		     startActivity(intent);
                     }
 
                     @Override

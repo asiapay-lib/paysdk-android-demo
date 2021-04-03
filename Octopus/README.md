@@ -29,11 +29,8 @@
 
                         try {
 
-                            // method to get the URI 
-                            String octopusuri = paySDK.decodeData(payResult.getErrMsg());
-
                             Intent intent = new Intent(Intent.ACTION_VIEW, Uri
-                                    .parse(octopusuri));
+                                    .parse(payResult.getErrMsg()));
                             startActivityForResult(intent, OCTOPUS_APP_REQUEST_CODE);
                             
                         }catch (Exception e){

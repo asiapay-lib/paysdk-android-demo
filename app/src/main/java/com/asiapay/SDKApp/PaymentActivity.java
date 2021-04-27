@@ -35,6 +35,7 @@ import com.asiapay.sdk.integration.googlepay.PaymentsUtil;
 import com.asiapay.sdk.integration.xecure3ds.ThreeDSParams;
 import com.asiapay.sdk.integration.xecure3ds.spec.ConfigParameters;
 import com.asiapay.sdk.integration.xecure3ds.spec.Factory;
+import com.asiapay.sdk.integration.xecure3ds.spec.ToolbarCustomization;
 import com.asiapay.sdk.integration.xecure3ds.spec.UiCustomization;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.wallet.AutoResolveHelper;
@@ -91,9 +92,10 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     Button btnWeChat;
     Button btnOctopus;
     Button btnMemberDirectPay;
-     Button btnPayMe;
+    Button btnPayMe;
 
 
+    ThreeDSParams threeDSParams;
     PayData payData;
 
     TextInputLayout textOrderRef;
@@ -204,6 +206,56 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         spCurrency.setOnItemSelectedListener(this);
         spnrPayGate.setOnItemSelectedListener(this);
         spnrEnvType.setOnItemSelectedListener(this);
+
+        threeDSParams = new ThreeDSParams();
+        threeDSParams.setCustomerEmail("example@example.com");
+        threeDSParams.setMobilePhoneCountryCode("852");
+        threeDSParams.setMobilePhoneNumber("9000000000");
+        threeDSParams.setHomePhoneCountryCode("852");
+        threeDSParams.setHomePhoneNumber("8000000000");
+        threeDSParams.setWorkPhoneCountryCode("852");
+        threeDSParams.setWorkPhoneNumber("7000000000");
+        threeDSParams.setDeliveryEmail("example@example.com");
+        threeDSParams.setBillingCountryCode("344");
+        threeDSParams.setBillingState("");
+        threeDSParams.setBillingCity("Hong Kong");
+        threeDSParams.setBillingLine1("BillingLine1");
+        threeDSParams.setBillingLine2("BillingLine2");
+        threeDSParams.setBillingLine3("BillingLine3");
+        threeDSParams.setBillingPostalCode("121245");
+        threeDSParams.setShippingDetails("01");
+        threeDSParams.setShippingCountryCode("344");
+        threeDSParams.setShippingState("");
+        threeDSParams.setShippingCity("Hong Kong");
+        threeDSParams.setShippingLine1("ShippingLine1");
+        threeDSParams.setShippingLine2("ShippingLine2");
+        threeDSParams.setShippingLine3("ShippingLine3");
+        threeDSParams.setAcctCreateDate("20190401");
+        threeDSParams.setAcctAgeInd("01");
+        threeDSParams.setAcctCreateDate("20190401");
+        threeDSParams.setAcctAgeInd("01");
+        threeDSParams.setAcctLastChangeDate("20190401");
+        threeDSParams.setAcctLastChangeInd("01");
+        threeDSParams.setAcctPwChangeDate("20190401");
+        threeDSParams.setAcctPwChangeInd("01");
+        threeDSParams.setAcctPurchaseCount("10");
+        threeDSParams.setAcctCardProvisionAttempt("0");
+        threeDSParams.setAcctNumTransDay("0");
+        threeDSParams.setAcctNumTransYear("1");
+        threeDSParams.setAcctPaymentAcctDate("20190401");
+        threeDSParams.setAcctPaymentAcctInd("01");
+        threeDSParams.setAcctShippingAddrLastChangeDate("20190401");
+        threeDSParams.setAcctShippingAddrLastChangeInd("01");
+        threeDSParams.setAcctIsShippingAcctNameSame("T");
+        threeDSParams.setAcctIsSuspiciousAcct("F");
+        threeDSParams.setAcctAuthMethod("01");
+        threeDSParams.setAcctAuthTimestamp("20190401");
+        threeDSParams.setDeliveryTime("04");
+        threeDSParams.setPreOrderReason("01");
+        threeDSParams.setPreOrderReadyDate("20190401");
+        threeDSParams.setGiftCardAmount("1");
+        threeDSParams.setGiftCardCurr(EnvBase.Currency.HKD);
+        threeDSParams.setGiftCardCount("1");
 
     }
 
@@ -625,8 +677,53 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     payData.setPayMethod("3DSSDK");
                     payData.setRemark(" ");
 
-                    Intent intent = new Intent(PaymentActivity.this, ThreeDSActivity.class);
-                    startActivityForResult(intent, PAY_CODE);
+                    Factory factory = new com.asiapay.sdk.integration.xecure3ds.Factory();
+                    ConfigParameters configParameters = factory.newConfigParameters();
+                    UiCustomization uiCustomization = factory.newUiCustomization();
+                    ToolbarCustomization toolbarCustomization = factory.newToolbarCustomization();
+                    if (toolbarCustomization != null) {
+                        toolbarCustomization.setHeaderText("Challange Demo");
+                        toolbarCustomization.setBackgroundColor("#ff8000");
+                        toolbarCustomization.setTextColor("#ffffff");
+                        toolbarCustomization.setButtonText("Hello");
+                        toolbarCustomization.setTextFontName("pacifico.ttf");
+                        uiCustomization.setToolbarCustomization(toolbarCustomization);
+                    }
+                    payData.setConfigParameters(configParameters);
+                    payData.setUiCustomization(uiCustomization);
+                    payData.setActivity(PaymentActivity.this);
+
+                    Map<String, String> extraData = new HashMap<>();
+                    payData.setExtraData(extraData);
+                    payData.setExtraData(extraData);
+
+                    payData.setThreeDSParams(threeDSParams);
+
+                    paySDK.setRequestData(payData);
+
+                    paySDK.process();
+
+                    paySDK.responseHandler(new PaymentResponse() {
+                        @Override
+                        public void getResponse(PayResult payResult) {
+
+                            cancelProgressDialog();
+                            //showAlert(payResult.getSuccessMsg());
+
+                        }
+
+                        @Override
+                        public void onError(Data data) {
+
+                            cancelProgressDialog();
+                            //showAlert(data.getMessage());
+                        }
+                    });
+
+
+
+//                    Intent intent = new Intent(PaymentActivity.this, ThreeDSActivity.class);
+//                    startActivityForResult(intent, PAY_CODE);
 
                 }
 
@@ -663,7 +760,9 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     payData.setPayMethod("PayMe");
 
                     // handle result callback with deeplink
-                    payData.setSuccessUrl("mcd://www.apin.com/succ");
+
+
+                    payData.setSuccessUrl("https://campaign.mcdonalds.com.hk/payme/");
                     payData.setCancelUrl("xxx://abc//cancelled");
                     payData.setFailUrl("mcd://www.apin.com//fail");
                     payData.setErrorUrl("xxx://abc//fail");
@@ -846,9 +945,9 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 showProgressDialog("Processing payment, please wait...");
                 payData = new PayData();
                 payData.setChannel(EnvBase.PayChannel.DIRECT);
-                payData.setEnvType(EnvBase.EnvType.SANDBOX);
-                payData.setPayGate(EnvBase.PayGate.PAYDOLLAR);
-                payData.setCurrCode(EnvBase.Currency.HKD);
+                payData.setEnvType(selectedEnvType);
+                payData.setPayGate(selectedPayGate);
+                payData.setCurrCode(selectedCurrency);
                 payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
                 payData.setLang(EnvBase.Language.ENGLISH);
                 payData.setAmount(textAmount.getEditText().getText().toString());
@@ -869,14 +968,14 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                        // showAlert(payResult.getSuccessMsg());
 
                         try {
-                            byte[] data = Base64.decode(payResult.getErrMsg(), Base64.DEFAULT);
+                           /* byte[] data = Base64.decode(payResult.getErrMsg(), Base64.DEFAULT);
                             String text = new String(data, "UTF-8");
 
                             // method to get the URI in response data.
-                            String octopusuri = text;
+                            String octopusuri = text;*/
                             // if installed package is OctopusApp
                             Intent intent = new Intent(Intent.ACTION_VIEW, Uri
-                                    .parse(octopusuri));
+                                    .parse(payResult.getErrMsg()));
                             startActivityForResult(intent, OCTOPUS_APP_REQUEST_CODE);
                         }catch (Exception e){
 
@@ -889,7 +988,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     public void onError(Data data) {
 
                         cancelProgressDialog();
-                        //showAlert(data.getMessage()+data.getError());
+                        showAlert(data.getMessage()+data.getError());
                     }
                 });
 
@@ -1275,16 +1374,17 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                                 public void getResponse(PayResult payResult) {
 
                                     cancelProgressDialog();
-                                    showAlert(payResult.getSuccessMsg());
+                                    Log.d("ghdsf", "getResponse: "+payResult.getErrMsg());
+                                    //showAlert(payResult.getSuccessMsg());
 
                                 }
 
                                 @Override
                                 public void onError(Data data) {
 
-
+                                    Log.d("ghdsf", "onError: "+data.getError());
                                     cancelProgressDialog();
-                                    showAlert(data.getMessage());
+                                    //showAlert(data.getMessage());
                                 }
                             });
 
@@ -1343,6 +1443,8 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         } else if(requestCode == OCTOPUS_APP_REQUEST_CODE &&
                 resultCode == Activity.RESULT_OK){
             showAlert("Transaction Completed.");
+        }else {
+            showAlert("Transaction Incomplete.");
         }
     }
     void handleGooglePay(String strResp){

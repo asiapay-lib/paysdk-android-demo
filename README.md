@@ -101,6 +101,9 @@ Payment Methods Query | [Payment Methods Query](https://github.com/asiapay-lib/p
 EVoucher | [EVoucher](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/EVoucher)
 PayMe | [PayMe](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/PayMe)
 
+### Look & Feel Feature
+
+[UI Customization](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/DirectPay/README.md)
 ### Collect Payment Result
 
 ```

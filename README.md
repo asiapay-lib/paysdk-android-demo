@@ -103,7 +103,7 @@ PayMe | [PayMe](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/P
 
 ### Look & Feel Feature
 
-[UI Customization](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/DirectPay/README.md)
+[UI Customization](https://github.com/asiapay-lib/paysdk-android-demo/tree/master/uicustomization)
 ### Collect Payment Result
 
 ```

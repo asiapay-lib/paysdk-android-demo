@@ -32,7 +32,7 @@ e.g
 
 ```
 
-Add below code in onCreate method of WXPayEntryActivity
+Add below code in onCreate method of [WXPayEntryActivity](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/app/src/main/java/com/asiapay/SDKApp/wxapi/WXPayEntryActivity.java)
 
 ```
 

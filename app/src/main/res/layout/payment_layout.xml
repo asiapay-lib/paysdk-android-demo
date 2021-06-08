@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Amount"
-                android:text="2" />
+                android:text="0.81" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -207,7 +207,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            android:visibility="visible">
 
             <Button
                 android:id="@+id/btn_directcall"
@@ -235,7 +236,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:visibility="gone">
             <Button
                 android:id="@+id/btn_new_member"
                 android:layout_width="0dp"
@@ -293,7 +295,8 @@
             android:orientation="horizontal"
             android:weightSum="2"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:visibility="gone">
 
             <Button
                 android:id="@+id/btn_promocode"
@@ -355,7 +358,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:visibility="gone">
 
             <Button
                 android:id="@+id/btn_google_pay"
@@ -386,7 +390,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:visibility="gone">
 
             <Button
                 android:id="@+id/btn_alipayhk"
@@ -417,7 +422,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:visibility="gone"
+            >
 
             <Button
                 android:id="@+id/btn_octopus"
@@ -449,7 +456,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:visibility="gone">
 
             <Button
                 android:id="@+id/btn_memberpay_direc"
@@ -460,7 +468,7 @@
                 style="@style/Button.Blue.Padded_32"
                 android:layout_marginRight="5dp"
                 android:textColor="#fff"
-                android:visibility="visible"/>
+                />
 
             <Button
                 android:id="@+id/btn_payme"

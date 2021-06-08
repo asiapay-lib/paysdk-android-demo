@@ -64,7 +64,7 @@
                     android:textSize="16sp"
                     android:visibility="visible" />
 
-                <com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout
+                <com.asiapay.demo.expandableview.ExpandableRelativeLayout
                     android:id="@+id/expandable_dc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -81,7 +81,7 @@
                         layout="@layout/card"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
-                </com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout>
+                </com.asiapay.demo.expandableview.ExpandableRelativeLayout>
 
                 <View
                     android:id="@+id/dvdr_cc"
@@ -112,7 +112,7 @@
                     android:textSize="16sp"
                     android:visibility="gone" />
 
-                <com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout
+                <com.asiapay.demo.expandableview.ExpandableRelativeLayout
                     android:id="@+id/expandable_wc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -128,7 +128,7 @@
                         layout="@layout/card"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
-                </com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout>
+                </com.asiapay.demo.expandableview.ExpandableRelativeLayout>
 
 
                 <View
@@ -160,7 +160,7 @@
                     android:textSize="16sp"
                     android:visibility="gone" />
 
-                <com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout
+                <com.asiapay.demo.expandableview.ExpandableRelativeLayout
                     android:id="@+id/expandable_mp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -172,7 +172,7 @@
                     app:ael_interpolator="accelerate"
                     app:ael_orientation="vertical">
 
-                </com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout>
+                </com.asiapay.demo.expandableview.ExpandableRelativeLayout>
 
                 <View
                     android:id="@+id/dvdr_nb"
@@ -202,7 +202,7 @@
                     android:textSize="16sp"
                     android:visibility="gone" />
 
-                <com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout
+                <com.asiapay.demo.expandableview.ExpandableRelativeLayout
                     android:id="@+id/expandable_sp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -214,7 +214,7 @@
                     app:ael_orientation="vertical"
                     android:visibility="gone">
 
-                </com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout>
+                </com.asiapay.demo.expandableview.ExpandableRelativeLayout>
 
                 <View
                     android:id="@+id/dvdr_upi"
@@ -242,7 +242,7 @@
                     android:text="Installment Pay"
                     android:visibility="gone" />
 
-                <com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout
+                <com.asiapay.demo.expandableview.ExpandableRelativeLayout
                     android:id="@+id/expandable_ip"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -254,7 +254,7 @@
                     app:ael_interpolator="accelerate"
                     app:ael_orientation="vertical">
 
-                </com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout>
+                </com.asiapay.demo.expandableview.ExpandableRelativeLayout>
 
                 <View
                     android:id="@+id/dvdr_cashpickup"
@@ -285,7 +285,7 @@
                     android:textSize="16sp"
                     android:visibility="gone" />
 
-                <com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout
+                <com.asiapay.demo.expandableview.ExpandableRelativeLayout
                     android:id="@+id/expandable_pb"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -296,7 +296,7 @@
                     app:ael_interpolator="accelerate"
                     app:ael_orientation="vertical">
 
-                </com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout>
+                </com.asiapay.demo.expandableview.ExpandableRelativeLayout>
 
                 <View
                     android:id="@+id/dvdr_pb"
@@ -327,7 +327,7 @@
                     android:textSize="16sp"
                     android:visibility="gone" />
 
-                <com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout
+                <com.asiapay.demo.expandableview.ExpandableRelativeLayout
                     android:id="@+id/expandable_center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -338,7 +338,7 @@
                     app:ael_interpolator="accelerate"
                     app:ael_orientation="vertical">
 
-                </com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout>
+                </com.asiapay.demo.expandableview.ExpandableRelativeLayout>
 
 
                 <View
@@ -370,7 +370,7 @@
                     android:textSize="16sp"
                     android:visibility="gone" />
 
-                <com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout
+                <com.asiapay.demo.expandableview.ExpandableRelativeLayout
                     android:id="@+id/expandable_cashpay"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -381,7 +381,7 @@
                     app:ael_interpolator="accelerate"
                     app:ael_orientation="vertical">
 
-                </com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout>
+                </com.asiapay.demo.expandableview.ExpandableRelativeLayout>
 
                 <View
                     android:id="@+id/dvdr_cashpayment"
@@ -412,7 +412,7 @@
                     android:textSize="16sp"
                     android:visibility="gone" />
 
-                <com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout
+                <com.asiapay.demo.expandableview.ExpandableRelativeLayout
                     android:id="@+id/expandable_paypal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -423,7 +423,7 @@
                     app:ael_interpolator="accelerate"
                     app:ael_orientation="vertical">
 
-                </com.asiapay.SDKApp.expandableview.ExpandableRelativeLayout>
+                </com.asiapay.demo.expandableview.ExpandableRelativeLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.asiapay.SDKApp">
+    package="com.asiapay.samsungpay.demo">
 
     <application
         android:allowBackup="false"
@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FailAct">
+        <activity android:name="com.asiapay.samsungpay.demo.FailAct">
             <intent-filter>
             <action android:name="android.intent.action.VIEW" />
             <category android:name="android.intent.category.DEFAULT" />
@@ -21,27 +21,30 @@
                 android:pathPrefix="/fail" />
             </intent-filter>
         </activity>
-        <activity android:name=".SuccessAct" >
+        <activity android:name="com.asiapay.samsungpay.demo.SuccessAct" >
             <intent-filter>
             <action android:name="android.intent.action.VIEW" />
             <category android:name="android.intent.category.DEFAULT" />
             <category android:name="android.intent.category.BROWSABLE" />
 
-            <data
-                android:scheme="mcd"
-                android:host="www.apin.com"
-                android:pathPrefix="/succ" />
+                <data
+                    android:host="www.apin.com"
+                    android:pathPrefix="/succ"
+                    android:scheme="mcd" />
+
             </intent-filter>
 
         </activity>
+
+
         <activity
-            android:name=".wxapi.WXPayEntryActivity"
+            android:name="com.asiapay.samsungpay.demo.wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop" />
-        <activity android:name=".ThreeDSActivity" />
-        <activity android:name=".MemberPayActivity" />
+        <activity android:name="com.asiapay.samsungpay.demo.ThreeDSActivity" />
+        <activity android:name="com.asiapay.samsungpay.demo.MemberPayActivity" />
         <activity
-            android:name=".PaymentActivity"
+            android:name="com.asiapay.samsungpay.demo.PaymentActivity"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,10 +53,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.asiapay.samsungpay.demo.MainActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".VASActivity"
+            android:name="com.asiapay.samsungpay.demo.VASActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <meta-data

@@ -55,6 +55,15 @@ payData.setThreeDSParams(threeDSParams);
 Factory factory = new com.asiapay.sdk.integration.xecure3ds.Factory();
 ConfigParametersconfigParameters = factory.newConfigParameters();
 UiCustomizationuiCustomization = factory.newUiCustomization();
+ToolbarCustomization toolbarCustomization = factory.newToolbarCustomization();
+if (toolbarCustomization != null) {
+toolbarCustomization.setHeaderText("Challange Demo");
+toolbarCustomization.setBackgroundColor("#ff8000");
+toolbarCustomization.setTextColor("#ffffff");
+toolbarCustomization.setButtonText("Hello");
+toolbarCustomization.setTextFontName("pacifico.ttf");
+uiCustomization.setToolbarCustomization(toolbarCustomization);
+ }
 payData.setConfigParameters(configParameters);
 payData.setUiCustomization(uiCustomization);
 payData.setActivity(AuthActivity.this);

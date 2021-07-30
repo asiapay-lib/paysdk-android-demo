@@ -13,6 +13,7 @@
                 payData.setLang(EnvBase.Language.ENGLISH);
                 payData.setMerchantId("1");
                 payData.setRemark("additional remark");
+                payData.setShowCloseButton(true);//If not specified, then by default this value is set to false
                 paySDK.setRequestData(payData);
                 paySDK.process();
 

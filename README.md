@@ -1,5 +1,5 @@
 
-## PaySDK -   
+## PaySDK   
 ##### Android SDK which seamlessly integrate PayDollar Payment Gateway
 
 ### Overview

@@ -19,7 +19,7 @@
 ### PaySdk Configuration
 
 *  Requirements
-Android API level 19 (4.4 - Kitkat) & above 
+Android API level 19 (4.4 - Kitkat) & above <br />
 Android Gradle Plugin 3.5.1
 
 * Download the latest sdk from https://github.com/asiapay-lib/paysdk-android-lib
@@ -59,6 +59,13 @@ Android Gradle Plugin 3.5.1
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 	``` 
 
+* Add following permission to manifest file
+
+	```  
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+	``` 
 
 ### Add Security Key and Domain
 

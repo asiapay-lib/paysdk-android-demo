@@ -3,6 +3,7 @@
 # Octopus Payment
 
 ```
+                String orderRef = "", payRef = "";
                 PayData payData = new PayData();
                 payData = new PayData();
                 payData.setChannel(EnvBase.PayChannel.DIRECT);
@@ -28,7 +29,9 @@
                         cancelProgressDialog();
 
                         try {
-
+                            //orderRef and payRef value is required in onActivityResult method to query transaction status
+                            orderRef = payResult.getRef();
+                            payRef = payResult.getPayRef();
                             Intent intent = new Intent(Intent.ACTION_VIEW, Uri
                                     .parse(payResult.getErrMsg()));
                             startActivityForResult(intent, OCTOPUS_APP_REQUEST_CODE);
@@ -53,9 +56,32 @@
 ## Handle onActivityResult in following way-
 
 ```
-if(requestCode == OCTOPUS_APP_REQUEST_CODE && resultCode == Activity.RESULT_OK)
+if(requestCode == OCTOPUS_APP_REQUEST_CODE)
 {
-            showAlert("Transaction Completed.");
+    payData = new PayData();
+    payData.setMerchantId(textMerchantId.getEditText().getText().toString());
+    payData.setEnvType(envType);
+    payData.setPayGate(EnvBase.PayGate.PAYDOLLAR);
+    payData.setOrderRef(orderRef);//this value we have received in getResponse callback method of "paySDK.responseHandler"
+    payData.setPayRef(payRef);//this value we have received in getResponse callback method of "paySDK.responseHandler"
+    payData.setRemark("");
+
+    paySDK.setRequestData(payData);
+    paySDK.query(EnvBase.Action.TX_QUERY);
+
+    paySDK.queryResponseHandler(new QueryResponse() {
+        @Override
+        public void getResponse(TransactionStatus transactionStatus) {
+            if (transactionStatus.getDetail() != null) {
+                Toast.makeText(AuthActivity.this, transactionStatus.getDetail().get(0).getOrderStatus(), Toast.LENGTH_LONG).show();
+            }
+        }
+
+        @Override
+        public void onError(Data data) {
+            Toast.makeText(AuthActivity.this, data.getError(), Toast.LENGTH_LONG).show();
+        }
+    });
 }
 
 ```

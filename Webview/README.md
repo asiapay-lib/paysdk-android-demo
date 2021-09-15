@@ -16,6 +16,26 @@
                 payData.setShowCloseButton(true);//If not specified, then by default this value is set to false
                 paySDK.setRequestData(payData);
                 paySDK.process();
+                
+                paySDK.responseHandler(new PaymentResponse() {
+                    @Override
+                    public void getResponse(PayResult payResult) {
+                        if (payResult.getErrMsg().startsWith("No app installed to handle the request")) {
+                            Toast.makeText(AuthActivity.this, payResult.getErrMsg(), Toast.LENGTH_SHORT).show();
+                        }
+                        else if (payResult.getErrMsg().equals("Transaction page closed by user")) {
+                            Toast.makeText(AuthActivity.this, payResult.getErrMsg(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(AuthActivity.this, String.valueOf(payResult.isSuccess()), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Data data) {
+                        Toast.makeText(AuthActivity.this, data.getError(), Toast.LENGTH_SHORT).show();
+                        //Log.d("webresdkd", "onError: " + data.getError());
+                    }
+                });
 
 ```
 ![image](https://user-images.githubusercontent.com/57220911/78635133-26046700-78c3-11ea-83cb-b6bad3511485.png) ![image](https://user-images.githubusercontent.com/57220911/78635172-39173700-78c3-11ea-86e2-75c870031954.png)

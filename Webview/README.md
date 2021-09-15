@@ -33,7 +33,6 @@
                     @Override
                     public void onError(Data data) {
                         Toast.makeText(AuthActivity.this, data.getError(), Toast.LENGTH_SHORT).show();
-                        //Log.d("webresdkd", "onError: " + data.getError());
                     }
                 });
 

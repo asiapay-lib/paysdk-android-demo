@@ -14,6 +14,8 @@
                 payData.setMerchantId("1");
                 payData.setRemark("additional remark");
                 payData.setShowCloseButton(true);//If not specified, then by default this value is set to false
+                //hide toolbar from Payment Page WebView
+                payData.setShowToolbar(false);//If not spesified, then by default this value is set to true
                 paySDK.setRequestData(payData);
                 paySDK.process();
                 

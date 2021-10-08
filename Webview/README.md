@@ -16,6 +16,8 @@
                 payData.setShowCloseButton(true);//If not specified, then by default this value is set to false
                 //hide toolbar from Payment Page WebView
                 payData.setShowToolbar(false);//If not spesified, then by default this value is set to true
+                //use below attribute to customise prompt message which user will see when they decide to close Payment Page
+                payData.setWebViewClosePrompt("Do you really want to close this page ?");
                 paySDK.setRequestData(payData);
                 paySDK.process();
                 

@@ -21,6 +21,13 @@
                 paySDK.setRequestData(payData);
                 paySDK.process();
                 
+                
+```
+```
+//PaySDK will trigger payment result handle with failed status at WebView integration if the requested url scheme is failed to trigger.
+
+//Merchant can prompt the message for this case and ignore the result handle if they received the error message started with "No app installed to handle the request"
+
                 paySDK.responseHandler(new PaymentResponse() {
                     @Override
                     public void getResponse(PayResult payResult) {

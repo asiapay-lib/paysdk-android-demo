@@ -56,7 +56,7 @@ Android Gradle Plugin 3.5.1
     implementation 'com.google.android.gms:play-services-wallet:16.0.1'
 
     //WeChat
-    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+     implementation 'com.tencent.mm.opensdk:wechat-sdk-android:+'
 	``` 
 
 * Add following permission to manifest file

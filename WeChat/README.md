@@ -6,7 +6,7 @@
 
 *   Add below line in gradle file
 ```
-implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+ implementation 'com.tencent.mm.opensdk:wechat-sdk-android:+'
 ```
 
 * Create Activity  WXPayEntryActivity under package wxapi & export in Manifest

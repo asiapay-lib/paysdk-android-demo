@@ -209,14 +209,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void getResponse(PayResult payResult) {
+                try {
+      Toast.makeText(MainActivity.this, "Result: "+payResult.getErrMsg(), Toast.LENGTH_SHORT).show();
+} catch (Exception e) {
+   
+}
 
-                Toast.makeText(MainActivity.this, "Result: "+payResult.getErrMsg(), Toast.LENGTH_SHORT).show();
+          
             }
 
             @Override
             public void onError(Data data) {
-
-                Toast.makeText(MainActivity.this,"Result: "+data.getError(),Toast.LENGTH_SHORT).show();
+try {
+ Toast.makeText(MainActivity.this,"Result: "+data.getError(),Toast.LENGTH_SHORT).show();
+} catch (Exception e) {
+   
+}
+               
             }
         });
 
@@ -358,16 +367,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 paySDK.responseHandler(new PaymentResponse() {
                     @Override
                     public void getResponse(PayResult payResult) {
-                        cancelProgressDialog();
+                        try {
+cancelProgressDialog();
 
                         Toast.makeText(MainActivity.this,"Success "+ payResult.getErrMsg(),Toast.LENGTH_SHORT).show();
+} catch (Exception e) {
+   
+}
+                        
                     }
 
                     @Override
                     public void onError(Data data) {
 
-                        cancelProgressDialog();
-                        Toast.makeText(getApplicationContext(), "Error "+data.getMessage(),Toast.LENGTH_SHORT ).show();
+try {
+cancelProgressDialog();
+                        Toast.makeText(getApplicationContext(), "Error "+data.getMessage(),Toast.LENGTH_SHORT ).show();        
+} catch (Exception e) {
+   
+}
+                        
                     }
                 });
                 paySDK.process();

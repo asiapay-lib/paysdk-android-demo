@@ -20,15 +20,25 @@
                             @Override
                             public void getResponse(TransactionStatus transactionStatus) {
 
-                                cancelProgressDialog();
+                            try {
+                                 cancelProgressDialog();
                                 showAlert(transactionStatus.getResultCode());
+                            } catch (Exception e) {
+                               
+                            }
+                               
                             }
 
                             @Override
                             public void onError(Data data) {
 
-                                cancelProgressDialog();
+                            try {
+                                 cancelProgressDialog();
                                 showAlert(data.getMessage());
+                            } catch (Exception e) {
+                               
+                            }
+                                
                             }
                         });
 

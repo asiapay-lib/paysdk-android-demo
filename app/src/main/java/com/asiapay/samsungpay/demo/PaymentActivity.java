@@ -476,16 +476,25 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                         @Override
                         public void getResponse(PayResult payResult) {
 
-                            cancelProgressDialog();
+try {
+   cancelProgressDialog();
                             showAlert(payResult.getErrMsg());
+} catch (Exception e) {
+   
+}
+                         
 
                         }
 
                         @Override
                         public void onError(Data data) {
-
-                            cancelProgressDialog();
+try {
+ cancelProgressDialog();
                             showAlert(data.getMessage());
+} catch (Exception e) {
+   
+}
+                           
                         }
                     });
 
@@ -596,17 +605,26 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                         @Override
                         public void getResponse(PayResult payResult) {
 
-                            //cancelProgressDialog();
+try {
+  //cancelProgressDialog();
                             showAlert(payResult.getErrMsg());
+} catch (Exception e) {
+   
+}
+                          
 
 
                         }
 
                         @Override
                         public void onError(Data data) {
-
-                            //cancelProgressDialog();
+try {
+ //cancelProgressDialog();
                             showAlert(data.getMessage());
+} catch (Exception e) {
+   
+}
+                           
                         }
                     });
 
@@ -732,16 +750,25 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                         @Override
                         public void getResponse(PayResult payResult) {
 
-                            cancelProgressDialog();
+try {
+ cancelProgressDialog();
                             //showAlert(payResult.getSuccessMsg());
+} catch (Exception e) {
+   
+}
+                           
 
                         }
 
                         @Override
                         public void onError(Data data) {
-
-                            cancelProgressDialog();
+try {
+cancelProgressDialog();
                             //showAlert(data.getMessage());
+} catch (Exception e) {
+   
+}
+                            
                         }
                     });
 
@@ -810,20 +837,32 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                         @Override
                         public void getResponse(PayResult payResult) {
 
-                            //For successful transaction order will get using payResult.getOrderId()
+                            try {
+ //For successful transaction order will get using payResult.getOrderId()
                             cancelProgressDialog();
 
                             Log.d("dsfs", "getResponse: "+payResult.getErrMsg());
                             //showAlert(payResult.getErrMsg());
+                            } catch (Exception e) {
+                                //Log.d("paymeData Error", e.getMessage());
+                            }
+
+                           
 
                         }
 
                         @Override
                         public void onError(Data data) {
+                              try {
 
-                            cancelProgressDialog();
+                             cancelProgressDialog();
                             showAlert(data.getError());
                             Log.d("dsfs", "onError: "+data.getError());
+                        } catch (Exception e) {
+                            //Log.d("paymeData Error", e.getMessage());
+                        }
+
+                           
                         }
                     });
                 }
@@ -848,14 +887,25 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     paySDK.payMethodResponseHandler(new PayMethodResponse() {
                         @Override
                         public void getResponse(PayMethodResult payMethodResult) {
-                            cancelProgressDialog();
+                            try {
+ cancelProgressDialog();
                             showAlert("List Of PayMethods available in payMethodResult obj");
+} catch (Exception e) {
+    //Log.d("paymeData Error", e.getMessage());
+}
+
+                           
                         }
 
                         @Override
                         public void onError(Data data) {
-                            cancelProgressDialog();
+                            try {
+cancelProgressDialog();
                             showAlert(data.getError());
+} catch (Exception e) {
+    //Log.d("paymeData Error", e.getMessage());
+}
+                            
                         }
                     });
                 }
@@ -918,16 +968,26 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     @Override
                     public void getResponse(PayResult payResult) {
 
+try {
                         cancelProgressDialog();
                         showAlert(payResult.getSuccessMsg());
+} catch (Exception e) {
+    //Log.d("paymeData Error", e.getMessage());
+}
+
 
                     }
 
                     @Override
                     public void onError(Data data) {
 
-                        cancelProgressDialog();
+try {
+cancelProgressDialog();
                         showAlert(data.getMessage());
+} catch (Exception e) {
+    //Log.d("paymeData Error", e.getMessage());
+}
+                        
                     }
                 });
 
@@ -954,17 +1014,25 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 paySDK.responseHandler(new PaymentResponse() {
                     @Override
                     public void getResponse(PayResult payResult) {
-
-                        cancelProgressDialog();
+try {
+   cancelProgressDialog();
                         showAlert(payResult.getSuccessMsg()+" - "+payResult.getErrMsg());
+} catch (Exception e) {
+    //Log.d("paymeData Error", e.getMessage());
+}
+                     
 
                     }
 
                     @Override
                     public void onError(Data data) {
-
-                        cancelProgressDialog();
+try {
+cancelProgressDialog();
                         showAlert(data.getMessage()+data.getError());
+} catch (Exception e) {
+    //Log.d("paymeData Error", e.getMessage());
+}
+                        
                     }
                 });
                 break;
@@ -1014,9 +1082,13 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
 
                     @Override
                     public void onError(Data data) {
-
-                        cancelProgressDialog();
+try {
+cancelProgressDialog();
                         showAlert(data.getMessage()+data.getError());
+} catch (Exception e) {
+    //Log.d("paymeData Error", e.getMessage());
+}
+                        
                     }
                 });
 
@@ -1043,17 +1115,25 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 paySDK.responseHandler(new PaymentResponse() {
                     @Override
                     public void getResponse(PayResult payResult) {
-
-                        cancelProgressDialog();
+try {
+cancelProgressDialog();
                         showAlert(payResult.getSuccessMsg());
+} catch (Exception e) {
+    //Log.d("paymeData Error", e.getMessage());
+}
+                        
 
                     }
 
                     @Override
                     public void onError(Data data) {
-
-                        cancelProgressDialog();
+try {
+cancelProgressDialog();
                         showAlert(data.getMessage()+data.getError());
+} catch (Exception e) {
+    //Log.d("paymeData Error", e.getMessage());
+}
+                        
                     }
                 });
 
@@ -1127,16 +1207,25 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                             @Override
                             public void getResponse(PayResult payResult) {
 
-                                cancelProgressDialog();
+try {
+ cancelProgressDialog();
                                 showAlert(payResult.getErrMsg());
+} catch (Exception e) {
+    //Log.d("paymeData Error", e.getMessage());
+}
+                               
 
                             }
 
                             @Override
                             public void onError(Data data) {
-
-                                cancelProgressDialog();
+try {
+cancelProgressDialog();
                                 showAlert(data.getMessage());
+} catch (Exception e) {
+    //Log.d("paymeData Error", e.getMessage());
+}
+                                
                             }
                         });
                         break;
@@ -1157,17 +1246,25 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                         paySDK.responseHandler(new PaymentResponse() {
                             @Override
                             public void getResponse(PayResult payResult) {
-
-                                cancelProgressDialog();
+try {
+  cancelProgressDialog();
                                 showAlert(payResult.getErrMsg());
+} catch (Exception e) {
+    //Log.d("paymeData Error", e.getMessage());
+}
+                              
 
                             }
 
                             @Override
                             public void onError(Data data) {
-
-                                cancelProgressDialog();
+try {
+cancelProgressDialog();
                                 showAlert(data.getError());
+} catch (Exception e) {
+    //Log.d("paymeData Error", e.getMessage());
+}
+                                
                             }
                         });
                         break;
@@ -1197,17 +1294,25 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                         paySDK.responseHandler(new PaymentResponse() {
                             @Override
                             public void getResponse(PayResult payResult) {
-
-                                cancelProgressDialog();
+try {
+   cancelProgressDialog();
                                 showAlert(payResult.getErrMsg());
+} catch (Exception e) {
+    //Log.d("paymeData Error", e.getMessage());
+}
+                             
 
                             }
 
                             @Override
                             public void onError(Data data) {
-
-                                cancelProgressDialog();
+try {
+cancelProgressDialog();
                                 showAlert(data.getMessage());
+} catch (Exception e) {
+    //Log.d("paymeData Error", e.getMessage());
+}
+                                
                             }
                         });
                         break;
@@ -1228,17 +1333,25 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                         paySDK.responseHandler(new PaymentResponse() {
                             @Override
                             public void getResponse(PayResult payResult) {
-
-                                cancelProgressDialog();
+try {
+ cancelProgressDialog();
                                 showAlert(payResult.getErrMsg());
+} catch (Exception e) {
+   
+}
+                               
 
                             }
 
                             @Override
                             public void onError(Data data) {
-
-                                cancelProgressDialog();
+try {
+  cancelProgressDialog();
                                 showAlert(data.getMessage());
+} catch (Exception e) {
+   
+}
+                              
                             }
                         });
                         break;
@@ -1257,17 +1370,25 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                         paySDK.responseHandler(new PaymentResponse() {
                             @Override
                             public void getResponse(PayResult payResult) {
-
-                                cancelProgressDialog();
+try {
+  cancelProgressDialog();
                                 showAlert(payResult.getErrMsg());
+} catch (Exception e) {
+   
+}
+                              
 
                             }
 
                             @Override
                             public void onError(Data data) {
-
-                                cancelProgressDialog();
+try {
+ cancelProgressDialog();
                                 showAlert(data.getMessage());
+} catch (Exception e) {
+   
+}
+                               
                             }
                         });
                         break;
@@ -1287,16 +1408,25 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                             @Override
                             public void getResponse(PayResult payResult) {
 
-                                cancelProgressDialog();
+try {
+ cancelProgressDialog();
                                 showAlert(payResult.getErrMsg());
+} catch (Exception e) {
+   
+}
+                               
 
                             }
 
                             @Override
                             public void onError(Data data) {
-
-                                cancelProgressDialog();
+try {
+cancelProgressDialog();
                                 showAlert(data.getMessage());
+} catch (Exception e) {
+   
+}
+                                
                             }
                         });
 
@@ -1312,16 +1442,24 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                         paySDK.queryResponseHandler(new QueryResponse() {
                             @Override
                             public void getResponse(TransactionStatus transactionStatus) {
-
-                                cancelProgressDialog();
+try {
+ cancelProgressDialog();
                                 showAlert(transactionStatus.getResultCode());
+} catch (Exception e) {
+   
+}
+                               
                             }
 
                             @Override
                             public void onError(Data data) {
-
-                                cancelProgressDialog();
+try {
+ cancelProgressDialog();
                                 showAlert(data.getMessage());
+} catch (Exception e) {
+   
+}
+                               
                             }
                         });
 
@@ -1400,19 +1538,27 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                             paySDK.responseHandler(new PaymentResponse() {
                                 @Override
                                 public void getResponse(PayResult payResult) {
-
-                                    cancelProgressDialog();
+try {
+   cancelProgressDialog();
                                     Log.d("ghdsf", "getResponse: "+payResult.getErrMsg());
                                     //showAlert(payResult.getSuccessMsg());
+} catch (Exception e) {
+   
+}
+                                 
 
                                 }
 
                                 @Override
                                 public void onError(Data data) {
-
-                                    Log.d("ghdsf", "onError: "+data.getError());
+try {
+ Log.d("ghdsf", "onError: "+data.getError());
                                     cancelProgressDialog();
                                     //showAlert(data.getMessage());
+} catch (Exception e) {
+   
+}
+                                   
                                 }
                             });
 
@@ -1505,18 +1651,26 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         paySDK.responseHandler(new PaymentResponse() {
             @Override
             public void getResponse(PayResult payResult) {
-
-
-                cancelProgressDialog();
+try {
+ cancelProgressDialog();
                 showAlert(payResult.getErrMsg());
+} catch (Exception e) {
+   
+}
+
+               
 
             }
 
             @Override
             public void onError(Data data) {
-
-                cancelProgressDialog();
+try {
+ cancelProgressDialog();
                 showAlert(data.getError());
+} catch (Exception e) {
+   
+}
+               
             }
         });
     }

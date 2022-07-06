@@ -62,23 +62,29 @@ GooglePayAuth.CRYPTOGRAM_3DS | This authentication method is associated with car
 GooglePayAuth.PAN_CRYPTO | This method will support payment cards and Android device tokens from all supported card networks , i.e GooglePayAuth.PAN_ONLY & GooglePayAuth.CRYPTOGRAM_3DS
 
 ```
- 		payData = new PayData();
-                payData.setChannel(EnvBase.PayChannel.DIRECT);
-                payData.setEnvType(selectedEnvType);
-                payData.setGooglePayAuth(EnvBase.GooglePayAuth.PAN_CRYPTO);
-                payData.setAmount(textAmount.getEditText().getText().toString());
-                payData.setPayGate(selectedPayGate);
-                payData.setCurrCode(selectedCurrency);
-                payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
-                payData.setOrderRef(textOrderRef.getEditText().getText().toString());
-                payData.setOrderRef(textOrderRef.getEditText().getText().toString());
-                payData.setPayMethod("GOOGLE");  
-                payData.setLang(EnvBase.Language.ENGLISH);
-                payData.setMerchantId(textMerchantId.getEditText().getText().toString());
+payData = new PayData();
+payData.setChannel(EnvBase.PayChannel.DIRECT);
+payData.setEnvType(selectedEnvType);
+payData.setGooglePayAuth(EnvBase.GooglePayAuth.PAN_CRYPTO);
+payData.setAmount(textAmount.getEditText().getText().toString());
+payData.setPayGate(selectedPayGate);
+payData.setCurrCode(selectedCurrency);
+payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
+payData.setOrderRef(textOrderRef.getEditText().getText().toString());
+payData.setOrderRef(textOrderRef.getEditText().getText().toString());
+payData.setPayMethod("GOOGLE");  
+payData.setLang(EnvBase.Language.ENGLISH);
+payData.setMerchantId(textMerchantId.getEditText().getText().toString());
 
 
-                payData.setRemark(" ");
+payData.setRemark(" ");
 
+// Set card network
+ArrayList<GPayBrand> brands = new ArrayList<>();
+brands.add(GPayBrand.VISA);
+brands.add(GPayBrand.MASTERCARD);
+brands.add(GPayBrand.AMERICANEXPRESS);
+payData.setGpayBrands(brands);
 
 Optional<JSONObject> paymentDataRequestJson = GooglePay.getPaymentDataRequest(payData);
 

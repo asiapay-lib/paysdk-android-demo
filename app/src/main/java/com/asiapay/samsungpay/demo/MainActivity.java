@@ -21,11 +21,11 @@ import android.widget.Toast;
 
 import com.asiapay.samsungpay.demo.expandableview.ExpandableRelativeLayout;
 import com.asiapay.sdk.PaySDK;
-import com.asiapay.sdk.integration.CardDetails;
-import com.asiapay.sdk.integration.Data;
-import com.asiapay.sdk.integration.EnvBase;
-import com.asiapay.sdk.integration.PayData;
-import com.asiapay.sdk.integration.PayResult;
+import com.asiapay.sdk.model.CardDetails;
+import com.asiapay.sdk.model.Data;
+import com.asiapay.sdk.enums.EnvBase;
+import com.asiapay.sdk.model.PayData;
+import com.asiapay.sdk.model.PayResult;
 import com.asiapay.sdk.integration.PaymentResponse;
 import com.asiapay.sdk.integration.xecure3ds.Factory;
 import com.asiapay.sdk.integration.xecure3ds.ThreeDSParams;

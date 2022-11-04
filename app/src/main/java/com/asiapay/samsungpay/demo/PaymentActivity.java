@@ -20,16 +20,16 @@ import android.widget.Spinner;
 
 
 import com.asiapay.sdk.PaySDK;
-import com.asiapay.sdk.integration.CardDetails;
-import com.asiapay.sdk.integration.Data;
-import com.asiapay.sdk.integration.EnvBase;
-import com.asiapay.sdk.integration.PayData;
+import com.asiapay.sdk.model.CardDetails;
+import com.asiapay.sdk.model.Data;
+import com.asiapay.sdk.enums.EnvBase;
+import com.asiapay.sdk.model.PayData;
 import com.asiapay.sdk.integration.PayMethodResponse;
-import com.asiapay.sdk.integration.PayMethodResult;
-import com.asiapay.sdk.integration.PayResult;
+import com.asiapay.sdk.model.PayMethodResult;
+import com.asiapay.sdk.model.PayResult;
 import com.asiapay.sdk.integration.PaymentResponse;
 import com.asiapay.sdk.integration.QueryResponse;
-import com.asiapay.sdk.integration.TransactionStatus;
+import com.asiapay.sdk.model.TransactionStatus;
 import com.asiapay.sdk.integration.googlepay.GooglePay;
 import com.asiapay.sdk.integration.googlepay.PaymentsUtil;
 import com.asiapay.sdk.integration.xecure3ds.ThreeDSParams;

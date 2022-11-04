@@ -1,6 +1,6 @@
 package com.asiapay.samsungpay.demo;
 
-import com.asiapay.sdk.integration.EnvBase;
+import com.asiapay.sdk.enums.EnvBase;
 
 public class SpinnerData {
     String value;

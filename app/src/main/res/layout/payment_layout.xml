@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_mid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Merchant Id"
+                android:text="88146271" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_orderref"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Order Reference"
+                android:text="123" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Amount"
+                android:text="0.81" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Currency"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spCurrency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Pay Gate"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spnr_paygate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Environment Type"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spnr_envtype"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_cardno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Card Number (Not required for old Member, Webview)"
+                android:text="4333880000200027" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_month"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Expiry Month (Not required for old Member, Webview)"
+                android:text="07" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Expiry Year (Not required for old Member, Webview)"
+                android:text="2030" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_cardholder_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Card Holder Name (Not required for old Member, Webview)"
+                android:text="Test Card" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_sec_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Security Code (Not required for Webview)"
+                android:inputType="numberPassword"
+                android:text="123" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RedErrorTextInput">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Remark (Optional)"
+                android:text="Cycle Payment" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btn_directcall"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Direct Call"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"
+                android:layout_marginRight="5dp"/>
+
+            <Button
+                android:id="@+id/btn_webview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Webview Call"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="10dp"
+            android:visibility="visible">
+            <Button
+                android:id="@+id/btn_new_member"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="New Member"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"
+                android:layout_marginRight="5dp"/>
+
+            <Button
+                android:id="@+id/btn_old_member"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Old Member Pay"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="10dp"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btn_schedule_pay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Schedule Pay"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"
+                android:layout_marginRight="5dp"/>
+
+            <Button
+                android:id="@+id/btn_installment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Installment"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btn_promocode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Promo Code"
+                style="@style/Button.Blue.Padded_32"
+                android:layout_marginRight="5dp"
+                android:textColor="#fff"/>
+
+
+            <Button
+                android:id="@+id/btn_evoucher"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="EVoucher"
+                android:visibility="visible"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="20dp"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btn_querystatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Transaction Status"
+                style="@style/Button.Blue.Padded_32"
+                android:layout_marginRight="5dp"
+                android:textColor="#fff"/>
+
+            <Button
+                android:id="@+id/btn_paymethods"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pay Methods"
+                android:visibility="visible"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="20dp"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btn_google_pay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Google Pay"
+                style="@style/Button.Blue.Padded_32"
+                android:layout_marginRight="5dp"
+                android:textColor="#fff"
+                android:visibility="visible"/>
+
+
+            <Button
+                android:id="@+id/btn_threeds"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="3DS 2.0"
+                android:visibility="visible"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="20dp"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btn_alipayhk"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ali Pay HK"
+                style="@style/Button.Blue.Padded_32"
+                android:layout_marginRight="5dp"
+                android:textColor="#fff"
+                android:visibility="visible"/>
+
+            <Button
+                android:id="@+id/btn_alipay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ali Pay"
+                android:visibility="visible"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="20dp"
+            android:visibility="visible"
+            >
+
+            <Button
+                android:id="@+id/btn_octopus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Octopus"
+                style="@style/Button.Blue.Padded_32"
+                android:layout_marginRight="5dp"
+                android:textColor="#fff"
+                android:visibility="visible"/>
+
+            <Button
+                android:id="@+id/btn_wechat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="WeChat"
+                android:visibility="visible"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="20dp"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btn_memberpay_direc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="OldMember"
+                style="@style/Button.Blue.Padded_32"
+                android:layout_marginRight="5dp"
+                android:textColor="#fff"
+                />
+
+            <Button
+                android:id="@+id/btn_payme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="PayMe"
+                android:visibility="visible"
+                style="@style/Button.Blue.Padded_32"
+                android:textColor="#fff"
+                />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

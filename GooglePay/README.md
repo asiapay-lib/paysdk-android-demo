@@ -9,7 +9,7 @@
 * Add a payment method to Google.
 * Please read and accept the following policy for Google Pay™: [Google Pay™ API Acceptable Use Policy](https://payments.developers.google.com/terms/aup) and [Google Pay™ API Terms of Service](https://payments.developers.google.com/terms/sellertos).
 * For the "Buy with G Pay" button, please follow [Google Pay™ Android Brand Guide](https://developers.google.com/pay/api/android/guides/brand-guidelines)
-
+* For GooglePay min api level is 24
 ## Sdk Setup
 
 * Enable Google Pay™ in your app by adding below line to Manifest file.

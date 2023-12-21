@@ -39,9 +39,9 @@ paySDK.process();
 
 ```
 
+Kindly select payment method according to below description -:
 
-
-* AliPay Payment Methods | Description
+AliPay Payment Methods | Description
 --- | --- 
 ALIPAYHKAPP | FOR ALIPAY HK.
 ALIPAYCNAPP | FOR ALIPAY CHINA. 

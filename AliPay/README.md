@@ -10,19 +10,16 @@
 
 * Setup paySDK Configuration:
 
-```
 paySDK.setPayConfig(Activity activity, PayData payData, String merchantId, EnvBase.EnvType EnvType, EnvBase.PayGate PayGate);
 
-```
 
 
 
 * Setup Payment Data:
 
-```
 paySDK.setPayData(String Amount,EnvBase.Currency currency,EnvBase.PayType payType,String orderRef, String payMethod,EnvBase.PayChannel payChannel,EnvBase.Language language,String remark);
 
-```
+
        
 
 

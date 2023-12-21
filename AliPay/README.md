@@ -26,6 +26,8 @@ paySDK.setPayData(String Amount,EnvBase.Currency currency,EnvBase.PayType payTyp
        
 
 
+
+
 * Payment Call Example:      
 
 ```
@@ -37,6 +39,9 @@ paySDK.process();
 
 ```
 
+
+
+
 * Replace the payment method as per your requirement
 
   "ALIPAYHKAPP" ==>  // FOR ALIPAY HK
@@ -44,6 +49,8 @@ paySDK.process();
   "ALIPAYCNAPP" ==>  // FOR ALIPAY CHINA
 
   "ALIPAYAPP" ==>  // FOR ALIPAY GLOBAL
+
+
 
 
 * Collect Payment Response

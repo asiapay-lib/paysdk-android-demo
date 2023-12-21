@@ -41,14 +41,11 @@ paySDK.process();
 
 
 
-
-* Replace the payment method as per your requirement
-
-  "ALIPAYHKAPP" ==>  // FOR ALIPAY HK
-  "ALIPAYCNAPP" ==>  // FOR ALIPAY CHINA
-  "ALIPAYAPP" ==>  // FOR ALIPAY GLOBAL
-
-
+* AliPay Payment Methods | Description
+--- | --- 
+ALIPAYHKAPP | FOR ALIPAY HK.
+ALIPAYCNAPP | FOR ALIPAY CHINA. 
+ALIPAYAPP | FOR ALIPAY GLOBAL
 
 
 * Collect Payment Response

@@ -6,28 +6,48 @@
 * Add following dependencies in gradle file
 
   implementation(name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
-    
+
+
+
+* Add following dependencies in gradle file
+
+  implementation(name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
+
+
+* Setup paySDK Configuration
 
 ```
-                PayData payData = new PayData();
-                payData.setChannel(EnvBase.PayChannel.DIRECT);
-                payData.setEnvType(EnvBase.EnvType.SANDBOX);
-                payData.setAmount("10");
-                payData.setPayGate(EnvBase.PayGate.PAYDOLLAR);
-                payData.setCurrCode(EnvBase.Currency.HKD);
-                payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
-                payData.setOrderRef("abcde12345");
-                payData.setPayMethod("ALIPAYHKAPP"); // FOR ALIPAY HK
-                //payData.setPayMethod("ALIPAYCNAPP"); // FOR ALIPAY CHINA
-                //payData.setPayMethod("ALIPAYAPP"); // FOR ALIPAY GLOBAL
-                payData.setLang(EnvBase.Language.ENGLISH);
-                payData.setMerchantId("1");
-                payData.setRemark("additional remark");
-                paySDK.setRequestData(payData);
-
-                paySDK.process();
+			paySDK.setPayConfig(Activity activity, PayData payData, String merchantId, EnvBase.EnvType EnvType, EnvBase.PayGate PayGate);
 
 ```
+
+
+* Setup Payment Data
+
+```
+			paySDK.setPayData(String Amount,EnvBase.Currency currency,EnvBase.PayType payType,String orderRef, String payMethod,EnvBase.PayChannel payChannel,EnvBase.Language language,String remark);
+
+```
+       
+
+* Payment Call Example      
+
+```
+			payData = new PayData();
+			paySDK.setPayConfig(PaymentActivity.this,payData,"1",EnvBase.EnvType.SANDBOX,EnvBase.PayGate.PAYDOLLAR);
+			paySDK.setPayData("10",EnvBase.Currency.HKD,EnvBase.PayType.NORMAL_PAYMENT,"abcde12345","ALIPAYAPP",EnvBase.PayChannel.DIRECT, EnvBase.Language.ENGLISH,"additional remark");
+			paySDK.setRequestData(payData);
+			paySDK.process();
+
+```
+
+* Replace the payment method as per your requirement
+
+  "ALIPAYHKAPP" ==>  // FOR ALIPAY HK
+  "ALIPAYCNAPP" ==>  // FOR ALIPAY CHINA
+  "ALIPAYAPP" ==>  // FOR ALIPAY GLOBAL
+
+
 * Collect Payment Response
 ```
 paySDK.responseHandler(new PaymentResponse() {

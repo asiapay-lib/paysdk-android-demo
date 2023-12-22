@@ -59,6 +59,7 @@ remark | No | String | remark | This Parameter is used to setup payment remark f
 
 
 * Payment Call Example:      
+Initialize the PayData object and prepare the payment detail for the transaction.
 
 ```
 payData = new PayData();

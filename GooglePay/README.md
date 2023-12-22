@@ -63,9 +63,10 @@ GooglePayAuth.PAN_CRYPTO | This method will support payment cards and Android de
 
 ```
 payData = new PayData();
+payData.setGooglePayAuth(EnvBase.GooglePayAuth.PAN_CRYPTO);
 paySDK.setPayConfig(PaymentActivity.this,payData,"1",EnvBase.EnvType.SANDBOX,EnvBase.PayGate.PAYDOLLAR);
 paySDK.setPayData("10",EnvBase.Currency.HKD,EnvBase.PayType.NORMAL_PAYMENT,"abcde12345","GOOGLE",EnvBase.PayChannel.WEBVIEW, EnvBase.Language.ENGLISH,"additional remark");
-payData.setGooglePayAuth(EnvBase.GooglePayAuth.PAN_CRYPTO);
+
 
 // Set card network
 ArrayList<GPayBrand> brands = new ArrayList<>();

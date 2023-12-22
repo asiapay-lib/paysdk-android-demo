@@ -30,6 +30,7 @@ PayGate | Yes | EnvBase.PayGate | EnvBase.PayGate.PAYDOLLAR | This Parameter is 
 
 
 
+
 * Setup Payment Data:
 
 ```
@@ -38,7 +39,9 @@ paySDK.setPayData(String Amount,EnvBase.Currency currency,EnvBase.PayType payTyp
 
 ```
 
-       
+    
+
+
 Parameters -:
 
 Name | Mandatory | Data Type | Sample Data | Description
@@ -47,10 +50,12 @@ Amount | Yes | String | 20.00 | This Parameter is used to setup transaction amou
 currency | Yes | EnvBase.Currency | EnvBase.Currency.HKD | This Parameter is used to setup currency for the transaction.
 payType | Yes | EnvBase.PayType | EnvBase.PayType.NORMAL_PAYMENT | This Parameter is used setup the payment type for the transaction. i.e (NORMAL_PAYMENT, HOLD_PAYMENT)
 orderRef | Yes | String | 156487515598 | This Parameter is used to setup the order reference number for the transaction.
-payMethod | Yes | String | VISA | This Parameter is used to setup payment method for the transaction.
+payMethod | Yes | String | ALIPAYHKAPP | This Parameter is used to setup payment method for the transaction.
 payChannel | Yes | EnvBase.PayChannel | EnvBase.PayChannel.WEBVIEW | This Parameter is used to setup payment channel for the transaction. i.e (WEBVIEW, DIRECT)
 language | Yes | EnvBase.Language | EnvBase.Language.ENGLISH | This Parameter is used to setup payment language for the transaction.
 remark | No | String | remark | This Parameter is used to setup payment remark for the transaction.
+
+
 
 
 * Payment Call Example:      

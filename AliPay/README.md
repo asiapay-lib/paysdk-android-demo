@@ -82,6 +82,8 @@ ALIPAYAPP | FOR ALIPAY GLOBAL
 
 
 ### Collect Payment Response
+*   Initialize a payment event handler to capture the payment response and result.
+
 ```
 paySDK.responseHandler(new PaymentResponse() {
                     @Override

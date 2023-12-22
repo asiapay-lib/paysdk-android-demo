@@ -81,7 +81,7 @@ ALIPAYCNAPP | FOR ALIPAY CHINA.
 ALIPAYAPP | FOR ALIPAY GLOBAL
 
 
-### Collect Payment Response
+### Collect Payment Response:
 *   Initialize a payment event handler to capture the payment response and result.
 
 ```

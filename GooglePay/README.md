@@ -51,7 +51,7 @@ PaymentsUtil.isGooglePayAvailable(this, mPaymentsClient, new PaymentsUtil.ICheck
 
 ```
 
-* Request Payment Via Google Pay™ using PayData
+## Request Payment Via Google Pay™ using PayData
 
 
 ### Setup paySDK Configuration:      

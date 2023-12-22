@@ -15,6 +15,12 @@
 paySDK.setPayConfig(Activity activity, PayData payData, String merchantId, EnvBase.EnvType EnvType, EnvBase.PayGate PayGate);
 
 ```
+* Parameters
+Name | Mandatory | Data Type | Sample Data | Description |
+--- | --- | --- | --- | --- | --- 
+activity | Yes | Activity | currentActivity | This Parameter is used to setup payData activity for further uses.|
+
+
 
 
 

@@ -64,7 +64,7 @@ remark | No | String | remark | This Parameter is used to setup payment remark f
 *   Initialize the PayData object and prepare the payment detail for the transaction.
 
 ```
-PayData payData = new PayData();
+payData = new PayData();
 paySDK.setPayConfig(PaymentActivity.this,payData,"1",EnvBase.EnvType.SANDBOX,EnvBase.PayGate.PAYDOLLAR);
 paySDK.setPayData("10",EnvBase.Currency.HKD,EnvBase.PayType.NORMAL_PAYMENT,"abcde12345","ALIPAYAPP",EnvBase.PayChannel.DIRECT, EnvBase.Language.ENGLISH,"additional remark");
 paySDK.setRequestData(payData);

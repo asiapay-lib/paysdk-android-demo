@@ -19,9 +19,9 @@ paySDK.setPayConfig(Activity activity, PayData payData, String merchantId, EnvBa
 
 Parameters -:
 
-Name | Mandatory | Data Type
---- | --- | ---
-activity | Yes | Activity
+Name | Mandatory | Data Type | Sample Data
+--- | --- | --- | ---
+activity | Yes | Activity | currentActivity
 
 
 

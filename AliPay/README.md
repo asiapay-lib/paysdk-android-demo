@@ -17,12 +17,11 @@ paySDK.setPayConfig(Activity activity, PayData payData, String merchantId, EnvBa
 ```
 
 
-Parameters -:
+Kindly select payment method according to below description -:
 
-Name | Mandatory | Data Type | Sample Data | Description 
+Name | Mandatory | Data Type | Sample Data | Description  
 --- | --- | --- | --- | --- | --- 
-activity | Yes | Activity | currentActivity | This Parameter is used to setup payData activity for further uses.
-
+activity | Yes | Activity | currentActivity | This Parameter is used to setup payData activity for further uses. 
 
 
 

@@ -22,6 +22,11 @@ Parameters -:
 Name | Mandatory | Data Type | Sample Data | Description
 --- | --- | --- | --- | ---
 activity | Yes | Activity | currentActivity | This Parameter is used to setup payData activity for further uses.
+payData | Yes | PayData Class | payData | This Parameter is used to setup payData POJO data.
+merchantId | Yes | String | 35001282 | This Parameter is used to pass merchant id for the payment configuration.
+EnvType | Yes | EnvBase.EnvType | EnvBase.EnvType.SANDBOX | This Parameter is used to setup the environment type. i.e (SANDBOX, PRODUCTION)
+PayGate | Yes | EnvBase.PayGate | EnvBase.PayGate.PAYDOLLAR | This Parameter is used to setup payment Gateway type. i.e (PAYDOLLAR, SIAMPAY, PESOPAY)
+
 
 
 

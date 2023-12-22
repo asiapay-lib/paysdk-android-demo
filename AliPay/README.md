@@ -9,6 +9,7 @@
 
 
 * Setup paySDK Configuration:
+    This method is used to setup the payment configurations like merchantId, environmentType and paymentGateway.
 
 ```
 
@@ -32,6 +33,7 @@ PayGate | Yes | EnvBase.PayGate | EnvBase.PayGate.PAYDOLLAR | This Parameter is 
 
 
 * Setup Payment Data:
+    This method is used to setup the payment basic information like Amount,currency,orderRef,payMethod etc.
 
 ```
 
@@ -59,7 +61,7 @@ remark | No | String | remark | This Parameter is used to setup payment remark f
 
 
 * Payment Call Example:      
-Initialize the PayData object and prepare the payment detail for the transaction.
+    Initialize the PayData object and prepare the payment detail for the transaction.
 
 ```
 payData = new PayData();

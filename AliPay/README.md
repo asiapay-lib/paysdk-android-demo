@@ -8,7 +8,7 @@
   implementation(name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
 
 
-* Setup paySDK Configuration:
+* Setup paySDK Configuration:      
     This method is used to setup the payment configurations like merchantId, environmentType and paymentGateway.
 
 ```
@@ -32,7 +32,7 @@ PayGate | Yes | EnvBase.PayGate | EnvBase.PayGate.PAYDOLLAR | This Parameter is 
 
 
 
-* Setup Payment Data:
+* Setup Payment Data:      
     This method is used to setup the payment basic information like Amount,currency,orderRef,payMethod etc.
 
 ```

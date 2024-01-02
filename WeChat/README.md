@@ -1,6 +1,6 @@
 
 
-#### Payment via WeChat
+# Payment via WeChat
 
 *	Create your app in the admin panel: https://open.weixin.qq.com
 

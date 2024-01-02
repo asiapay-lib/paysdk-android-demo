@@ -54,8 +54,6 @@ remark | No | String | remark | This Parameter is used to setup payment remark f
 
 ```
 
-                void handlePayment() {
-
                 PayData payData = new PayData();
                 paySDK.setPayConfig(PaymentActivity.this,payData,"1",EnvBase.EnvType.SANDBOX,EnvBase.PayGate.PAYDOLLAR);
                 paySDK.setPayData("1.81",EnvBase.Currency.HKD,EnvBase.PayType.NORMAL_PAYMENT,"abcde12345","PayMe",EnvBase.PayChannel.DIRECT, EnvBase.Language.ENGLISH,"additional remark");
@@ -71,9 +69,7 @@ remark | No | String | remark | This Parameter is used to setup payment remark f
                paySDK.setRequestData(payData);
                paySDK.process();
                 
-                }
-
-
+               
          
 ```
 

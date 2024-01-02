@@ -39,7 +39,7 @@ Parameters -:
 
 Name | Mandatory | Data Type | Sample Data | Description
 --- | --- | --- | --- | ---
-Amount | Yes | String | 20.00 | This Parameter is used to setup transaction amount.
+Amount | Yes | String | 1.81 | This Parameter is used to setup transaction amount.
 currency | Yes | EnvBase.Currency | EnvBase.Currency.HKD | This Parameter is used to setup currency for the transaction.
 payType | Yes | EnvBase.PayType | EnvBase.PayType.NORMAL_PAYMENT | This Parameter is used setup the payment type for the transaction. i.e (NORMAL_PAYMENT, HOLD_PAYMENT)
 orderRef | Yes | String | 156487515598 | This Parameter is used to setup the order reference number for the transaction.

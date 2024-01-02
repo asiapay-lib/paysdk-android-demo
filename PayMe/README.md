@@ -53,20 +53,18 @@ remark | No | String | remark | This Parameter is used to setup payment remark f
 *   Initialize the PayData object and prepare the payment detail for the transaction.
 
 ```
-                PayData payData = new PayData();
-                paySDK.setPayConfig(PaymentActivity.this,payData,"1",EnvBase.EnvType.SANDBOX,EnvBase.PayGate.PAYDOLLAR);
-                paySDK.setPayData("1.81",EnvBase.Currency.HKD,EnvBase.PayType.NORMAL_PAYMENT,"abcde12345","PayMe",EnvBase.PayChannel.DIRECT, EnvBase.Language.ENGLISH,"additional remark");
-
+  PayData payData = new PayData();
+  paySDK.setPayConfig(PaymentActivity.this,payData,"1",EnvBase.EnvType.SANDBOX,EnvBase.PayGate.PAYDOLLAR);
+  paySDK.setPayData("1.81",EnvBase.Currency.HKD,EnvBase.PayType.NORMAL_PAYMENT,"abcde12345","PayMe",EnvBase.PayChannel.DIRECT, EnvBase.Language.ENGLISH,"additional remark");
+               
+   // handle result callback with deeplink 
+   payData.setSuccessUrl("xxx://abc//success");
+   payData.setCancelUrl("xxx://abc//cancelled");
+   payData.setFailUrl("xxx://abc//error");
+   payData.setErrorUrl("xxx://abc//fail");
                 
-               // handle result callback with deeplink 
-               payData.setSuccessUrl("xxx://abc//success");
-               payData.setCancelUrl("xxx://abc//cancelled");
-               payData.setFailUrl("xxx://abc//error");
-               payData.setErrorUrl("xxx://abc//fail");
-                
-
-               paySDK.setRequestData(payData);
-               paySDK.process();
+    paySDK.setRequestData(payData);
+    paySDK.process();
          
 ```
 

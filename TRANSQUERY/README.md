@@ -1,7 +1,7 @@
 
 
 # Transaction Query
-
+* "Transaction Query" function is utilized to retrieve status for a specific transaction or order ID.
 
 ### Setup paySDK Configuration:      
 *   This method is used to setup the payment configurations like merchantId, environmentType and paymentGateway.

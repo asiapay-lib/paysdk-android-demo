@@ -1,5 +1,7 @@
 
 # Pay Method
+* "Pay Method" function is utilized to retrieve a list of acceptable payment methods available for a specific merchant ID.
+
 
 ### Setup paySDK Configuration:      
 *   This method is used to setup the payment configurations like merchantId, environmentType and paymentGateway.

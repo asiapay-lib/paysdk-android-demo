@@ -98,7 +98,7 @@ payMethod | Yes | String | VISA | This Parameter is used to setup payment method
 payChannel | Yes | EnvBase.PayChannel | EnvBase.PayChannel.WEBVIEW | This Parameter is used to setup payment channel for the transaction. i.e (WEBVIEW, DIRECT)
 language | Yes | EnvBase.Language | EnvBase.Language.ENGLISH | This Parameter is used to setup payment language for the transaction.
 remark | No | String | remark | This Parameter is used to setup payment remark for the transaction.
-MerchantName | Yes | String | Merchant Name | Information about the merchant requesting payment information.
+
 
 
 Kindly select GooglePayAuth param according to below description -:
@@ -115,7 +115,6 @@ payData.setGooglePayAuth(EnvBase.GooglePayAuth.PAN_CRYPTO);
 paySDK.setPayConfig(PaymentActivity.this,payData,"1",EnvBase.EnvType.SANDBOX,EnvBase.PayGate.PAYDOLLAR);
 paySDK.setPayData("10",EnvBase.Currency.HKD,EnvBase.PayType.NORMAL_PAYMENT,"abcde12345","GOOGLE",EnvBase.PayChannel.WEBVIEW, EnvBase.Language.ENGLISH,"additional remark");
 
-payData.setMerchantName("example");
 
 // Set card network
 ArrayList<GPayBrand> brands = new ArrayList<>();

@@ -181,19 +181,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     void webviewCall(){
 
+
+
+
         payData = new PayData();
         payData.setChannel(EnvBase.PayChannel.WEBVIEW);
         payData.setEnvType(EnvBase.EnvType.SANDBOX);
-        payData.setAmount("10");
-        payData.setPayGate(EnvBase.PayGate.PAYDOLLAR);
-        payData.setCurrCode(EnvBase.Currency.HKD);
+        payData.setAmount("100");
+        payData.setPayGate(EnvBase.PayGate.BIMOPAY);
+        payData.setCurrCode(EnvBase.Currency.IDR);
         payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
-        payData.setOrderRef("1234465465");
-        payData.setPayMethod("VISA");
+        payData.setOrderRef("12344654656");
+        payData.setPayMethod("ALL");
         payData.setLang(EnvBase.Language.ENGLISH);
-        payData.setMerchantId("88146271");
+        payData.setMerchantId("36000937");
         payData.setRemark(" ");
-
+        payData.setSecureHashSecret("EDCPPI5F0Et7knqUhV7slMNjCGMUJa3r"); //production
 
         // Optional Parameter (For Value-Added Service)
         Map<String, String> extraDataHosted = new HashMap<String, String>();

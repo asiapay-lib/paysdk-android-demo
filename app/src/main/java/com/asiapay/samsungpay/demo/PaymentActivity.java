@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 
+
 import com.asiapay.sdk.PaySDK;
 import com.asiapay.sdk.model.CardDetails;
 import com.asiapay.sdk.model.Data;
@@ -414,7 +415,8 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
             listPayGate.add(payGate);
             payGate = new SpinnerData("pesopay", EnvBase.PayGate.PESOPAY);
             listPayGate.add(payGate);
-
+            payGate = new SpinnerData("bimopay", EnvBase.PayGate.BIMOPAY);
+            listPayGate.add(payGate);
             ArrayAdapter<SpinnerData> payGateAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listPayGate);
             payGateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -567,8 +569,9 @@ try {
                     payData = new PayData();
                     payData.setChannel(EnvBase.PayChannel.WEBVIEW);
                     basicDetails(payData);
-                    payData.setPayMethod("CC");
+                    payData.setPayMethod("ALL");
                     payData.setRemark(" ");
+                    payData.setSecureHashSecret("EDCPPI5F0Et7knqUhV7slMNjCGMUJa3r"); //production
 
                     // Optional Parameter (For Value-Added Service)
                     Map<String, String> extraData = new HashMap<String, String>();

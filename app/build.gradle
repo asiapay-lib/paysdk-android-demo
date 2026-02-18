@@ -9,13 +9,15 @@ android {
             keyPassword 'android'
         }
     }
-    compileSdkVersion 30
+  //  compileSdkVersion 30
 
-
+    namespace "com.asiapay.samsungpay.demo"
+    compileSdk 35
     defaultConfig {
-        applicationId "com.asiapay.SDKApp"
-        minSdkVersion 19
-        targetSdkVersion 30
+        applicationId "com.asiapay.samsungpay.demo"
+       // minSdkVersion 19 // For GooglePay min api level is 24
+        minSdkVersion 24
+        targetSdkVersion 35
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -45,15 +47,21 @@ dependencies {
     //implementation files('libs/volley-6.0.0_r1.jar')
 
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+   /* androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'*/
 
-    implementation(name: 'PaySDK-2.7.69', ext: 'aar')
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+
+
+    implementation(name: 'PaySDK-2.7.70', ext: 'aar')
     implementation(name: 'alipaySdk-15.6.2-20190416165036', ext: 'aar')
     implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
     implementation 'com.google.code.gson:gson:2.3.1'
     implementation 'org.bouncycastle:bcprov-jdk15on:1.60'
-    implementation 'com.android.volley:volley:1.1.1'
+    implementation 'com.android.volley:volley:1.2.1'
 
     //api files('libs/volley-6.0.0_r1.jar')
 

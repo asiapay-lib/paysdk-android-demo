@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.asiapay.samsungpay.demo">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.asiapay.samsungpay.demo">
 
     <application
         android:allowBackup="false"
@@ -9,7 +8,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.asiapay.samsungpay.demo.FailAct">
+        <activity android:name="com.asiapay.samsungpay.demo.FailAct"
+            android:exported="true">
             <intent-filter>
             <action android:name="android.intent.action.VIEW" />
             <category android:name="android.intent.category.DEFAULT" />
@@ -21,7 +21,8 @@
                 android:pathPrefix="/fail" />
             </intent-filter>
         </activity>
-        <activity android:name="com.asiapay.samsungpay.demo.SuccessAct" >
+        <activity android:name="com.asiapay.samsungpay.demo.SuccessAct"
+            android:exported="true">
             <intent-filter>
             <action android:name="android.intent.action.VIEW" />
             <category android:name="android.intent.category.DEFAULT" />
@@ -45,7 +46,8 @@
         <activity android:name="com.asiapay.samsungpay.demo.MemberPayActivity" />
         <activity
             android:name="com.asiapay.samsungpay.demo.PaymentActivity"
-            android:windowSoftInputMode="stateAlwaysHidden">
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -62,6 +64,9 @@
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5020202357803272~6754187131" />
     </application>
 
 </manifest>

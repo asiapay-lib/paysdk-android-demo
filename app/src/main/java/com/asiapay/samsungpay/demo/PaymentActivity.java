@@ -19,7 +19,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 
-
 import com.asiapay.sdk.PaySDK;
 import com.asiapay.sdk.model.CardDetails;
 import com.asiapay.sdk.model.Data;
@@ -132,7 +131,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         //Initialize PaySDK
         paySDK = new PaySDK(getApplicationContext());
 
-        Log.d(TAG, "Version : "+paySDK.getSDKVersion());
+        Log.d(TAG, "Version : " + paySDK.getSDKVersion());
         //Initialize PaymentCLient for GooglePay with Environment Specification
         mPaymentsClient = PaymentsUtil.createPaymentsClient(this, EnvBase.EnvType.PRODUCTION);
 
@@ -261,7 +260,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         threeDSParams.setGiftCardCount("1");
 
         IWXAPI api;
-        api = WXAPIFactory.createWXAPI(this, "wxa89ca4d0b0508980",true);
+        api = WXAPIFactory.createWXAPI(this, "wxa89ca4d0b0508980", true);
         api.registerApp("wxa89ca4d0b0508980");
     }
 
@@ -478,25 +477,25 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                         @Override
                         public void getResponse(PayResult payResult) {
 
-try {
-   cancelProgressDialog();
-                            showAlert(payResult.getErrMsg());
-} catch (Exception e) {
-   
-}
-                         
+                            try {
+                                cancelProgressDialog();
+                                showAlert(payResult.getErrMsg());
+                            } catch (Exception e) {
+
+                            }
+
 
                         }
 
                         @Override
                         public void onError(Data data) {
-try {
- cancelProgressDialog();
-                            showAlert(data.getMessage());
-} catch (Exception e) {
-   
-}
-                           
+                            try {
+                                cancelProgressDialog();
+                                showAlert(data.getMessage());
+                            } catch (Exception e) {
+
+                            }
+
                         }
                     });
 
@@ -511,7 +510,7 @@ try {
                     payData = new PayData();
                     payData.setChannel(EnvBase.PayChannel.WEBVIEW);
                     basicDetails(payData);
-                   // cardDetails(false);
+                    // cardDetails(false);
                     payData.setPayMethod("VISA");
                     payData.setRemark(" ");
 
@@ -531,7 +530,7 @@ try {
                     payData = new PayData();
                     payData.setChannel(EnvBase.PayChannel.WEBVIEW);
                     basicDetails(payData);
-                   // cardDetails(true);
+                    // cardDetails(true);
                     payData.setPayMethod("CC");
                     payData.setRemark(" ");
 
@@ -576,7 +575,7 @@ try {
                     // Optional Parameter (For Value-Added Service)
                     Map<String, String> extraData = new HashMap<String, String>();
 
-                    extraData.put("redirect","30");
+                    extraData.put("redirect", "30");
 
                     payData.setExtraData(extraData);
 
@@ -608,26 +607,25 @@ try {
                         @Override
                         public void getResponse(PayResult payResult) {
 
-try {
-  //cancelProgressDialog();
-                            showAlert(payResult.getErrMsg());
-} catch (Exception e) {
-   
-}
-                          
+                            try {
+                                //cancelProgressDialog();
+                                showAlert(payResult.getErrMsg());
+                            } catch (Exception e) {
+
+                            }
 
 
                         }
 
                         @Override
                         public void onError(Data data) {
-try {
- //cancelProgressDialog();
-                            showAlert(data.getMessage());
-} catch (Exception e) {
-   
-}
-                           
+                            try {
+                                //cancelProgressDialog();
+                                showAlert(data.getMessage());
+                            } catch (Exception e) {
+
+                            }
+
                         }
                     });
 
@@ -676,7 +674,7 @@ try {
                 break;
             case R.id.btn_evoucher:
 
-                if (validatePayData() ) {
+                if (validatePayData()) {
                     strPayMethod = E_VOUCHER;
 
                     payData = new PayData();
@@ -717,11 +715,13 @@ try {
                     strPayMethod = THREE_DS;
 
                     payData = new PayData();
-                    payData.setChannel(EnvBase.PayChannel.DIRECT);
+                    payData.setChannel(EnvBase.PayChannel.WEBVIEW);
                     basicDetails(payData);
                     cardDetails(false);
                     payData.setPayMethod("3DSSDK");
                     payData.setRemark(" ");
+
+                    payData.setSecureHashSecret("EDCPPI5F0Et7knqUhV7slMNjCGMUJa3r"); //production
 
                     Factory factory = new com.asiapay.sdk.integration.xecure3ds.Factory();
                     ConfigParameters configParameters = factory.newConfigParameters();
@@ -753,28 +753,27 @@ try {
                         @Override
                         public void getResponse(PayResult payResult) {
 
-try {
- cancelProgressDialog();
-                            //showAlert(payResult.getSuccessMsg());
-} catch (Exception e) {
-   
-}
-                           
+                            try {
+                                cancelProgressDialog();
+                                showAlert(payResult.getErrMsg());
+                            } catch (Exception e) {
+
+                            }
+
 
                         }
 
                         @Override
                         public void onError(Data data) {
-try {
-cancelProgressDialog();
-                            //showAlert(data.getMessage());
-} catch (Exception e) {
-   
-}
-                            
+                            try {
+                                cancelProgressDialog();
+                                showAlert(data.getMessage());
+                            } catch (Exception e) {
+
+                            }
+
                         }
                     });
-
 
 
 //                    Intent intent = new Intent(PaymentActivity.this, ThreeDSActivity.class);
@@ -786,9 +785,8 @@ cancelProgressDialog();
 
             case R.id.btn_querystatus:
 
-                if(validateQueryPayData())
-                {
-                    strPayMethod=QUERY_ACTION;
+                if (validateQueryPayData()) {
+                    strPayMethod = QUERY_ACTION;
 
                     payData = new PayData();
                     payData.setMerchantId(textMerchantId.getEditText().getText().toString());
@@ -841,31 +839,30 @@ cancelProgressDialog();
                         public void getResponse(PayResult payResult) {
 
                             try {
- //For successful transaction order will get using payResult.getOrderId()
-                            cancelProgressDialog();
+                                //For successful transaction order will get using payResult.getOrderId()
+                                cancelProgressDialog();
 
-                            Log.d("dsfs", "getResponse: "+payResult.getErrMsg());
-                            //showAlert(payResult.getErrMsg());
+                                Log.d("dsfs", "getResponse: " + payResult.getErrMsg());
+                                //showAlert(payResult.getErrMsg());
                             } catch (Exception e) {
                                 //Log.d("paymeData Error", e.getMessage());
                             }
 
-                           
 
                         }
 
                         @Override
                         public void onError(Data data) {
-                              try {
+                            try {
 
-                             cancelProgressDialog();
-                            showAlert(data.getError());
-                            Log.d("dsfs", "onError: "+data.getError());
-                        } catch (Exception e) {
-                            //Log.d("paymeData Error", e.getMessage());
-                        }
+                                cancelProgressDialog();
+                                showAlert(data.getError());
+                                Log.d("dsfs", "onError: " + data.getError());
+                            } catch (Exception e) {
+                                //Log.d("paymeData Error", e.getMessage());
+                            }
 
-                           
+
                         }
                     });
                 }
@@ -875,7 +872,7 @@ cancelProgressDialog();
                 showProgressDialog("Fetching List of Pay Methods, please wait ...");
 
                 //This will SHow list of PayMethods available
-                if(PaySdkUtils.hasText(textMerchantId)) {
+                if (PaySdkUtils.hasText(textMerchantId)) {
                     payData = new PayData();
                     payData.setMerchantId(textMerchantId.getEditText().getText().toString());
                     payData.setEnvType(selectedEnvType);
@@ -891,24 +888,24 @@ cancelProgressDialog();
                         @Override
                         public void getResponse(PayMethodResult payMethodResult) {
                             try {
- cancelProgressDialog();
-                            showAlert("List Of PayMethods available in payMethodResult obj");
-} catch (Exception e) {
-    //Log.d("paymeData Error", e.getMessage());
-}
+                                cancelProgressDialog();
+                                showAlert("List Of PayMethods available in payMethodResult obj");
+                            } catch (Exception e) {
+                                //Log.d("paymeData Error", e.getMessage());
+                            }
 
-                           
+
                         }
 
                         @Override
                         public void onError(Data data) {
                             try {
-cancelProgressDialog();
-                            showAlert(data.getError());
-} catch (Exception e) {
-    //Log.d("paymeData Error", e.getMessage());
-}
-                            
+                                cancelProgressDialog();
+                                showAlert(data.getError());
+                            } catch (Exception e) {
+                                //Log.d("paymeData Error", e.getMessage());
+                            }
+
                         }
                     });
                 }
@@ -928,7 +925,7 @@ cancelProgressDialog();
                 payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
                 payData.setOrderRef(textOrderRef.getEditText().getText().toString());
                 payData.setOrderRef(textOrderRef.getEditText().getText().toString());
-                payData.setPayMethod("GOOGLE");  
+                payData.setPayMethod("GOOGLE");
                 payData.setLang(EnvBase.Language.ENGLISH);
                 payData.setMerchantId(textMerchantId.getEditText().getText().toString());
 
@@ -971,12 +968,12 @@ cancelProgressDialog();
                     @Override
                     public void getResponse(PayResult payResult) {
 
-try {
-                        cancelProgressDialog();
-                        showAlert(payResult.getSuccessMsg());
-} catch (Exception e) {
-    //Log.d("paymeData Error", e.getMessage());
-}
+                        try {
+                            cancelProgressDialog();
+                            showAlert(payResult.getSuccessMsg());
+                        } catch (Exception e) {
+                            //Log.d("paymeData Error", e.getMessage());
+                        }
 
 
                     }
@@ -984,13 +981,13 @@ try {
                     @Override
                     public void onError(Data data) {
 
-try {
-cancelProgressDialog();
-                        showAlert(data.getMessage());
-} catch (Exception e) {
-    //Log.d("paymeData Error", e.getMessage());
-}
-                        
+                        try {
+                            cancelProgressDialog();
+                            showAlert(data.getMessage());
+                        } catch (Exception e) {
+                            //Log.d("paymeData Error", e.getMessage());
+                        }
+
                     }
                 });
 
@@ -1017,25 +1014,25 @@ cancelProgressDialog();
                 paySDK.responseHandler(new PaymentResponse() {
                     @Override
                     public void getResponse(PayResult payResult) {
-try {
-   cancelProgressDialog();
-                        showAlert(payResult.getSuccessMsg()+" - "+payResult.getErrMsg());
-} catch (Exception e) {
-    //Log.d("paymeData Error", e.getMessage());
-}
-                     
+                        try {
+                            cancelProgressDialog();
+                            showAlert(payResult.getSuccessMsg() + " - " + payResult.getErrMsg());
+                        } catch (Exception e) {
+                            //Log.d("paymeData Error", e.getMessage());
+                        }
+
 
                     }
 
                     @Override
                     public void onError(Data data) {
-try {
-cancelProgressDialog();
-                        showAlert(data.getMessage()+data.getError());
-} catch (Exception e) {
-    //Log.d("paymeData Error", e.getMessage());
-}
-                        
+                        try {
+                            cancelProgressDialog();
+                            showAlert(data.getMessage() + data.getError());
+                        } catch (Exception e) {
+                            //Log.d("paymeData Error", e.getMessage());
+                        }
+
                     }
                 });
                 break;
@@ -1064,7 +1061,7 @@ cancelProgressDialog();
                     public void getResponse(PayResult payResult) {
 
                         cancelProgressDialog();
-                       // showAlert(payResult.getSuccessMsg());
+                        // showAlert(payResult.getSuccessMsg());
 
                         try {
                            /* byte[] data = Base64.decode(payResult.getErrMsg(), Base64.DEFAULT);
@@ -1076,22 +1073,22 @@ cancelProgressDialog();
                             Intent intent = new Intent(Intent.ACTION_VIEW, Uri
                                     .parse(payResult.getErrMsg()));
                             startActivityForResult(intent, OCTOPUS_APP_REQUEST_CODE);
-                        }catch (Exception e){
+                        } catch (Exception e) {
 
-                            Log.d(TAG, "octopus: exp "+e.getMessage());
+                            Log.d(TAG, "octopus: exp " + e.getMessage());
                         }
 
                     }
 
                     @Override
                     public void onError(Data data) {
-try {
-cancelProgressDialog();
-                        showAlert(data.getMessage()+data.getError());
-} catch (Exception e) {
-    //Log.d("paymeData Error", e.getMessage());
-}
-                        
+                        try {
+                            cancelProgressDialog();
+                            showAlert(data.getMessage() + data.getError());
+                        } catch (Exception e) {
+                            //Log.d("paymeData Error", e.getMessage());
+                        }
+
                     }
                 });
 
@@ -1118,25 +1115,25 @@ cancelProgressDialog();
                 paySDK.responseHandler(new PaymentResponse() {
                     @Override
                     public void getResponse(PayResult payResult) {
-try {
-cancelProgressDialog();
-                        showAlert(payResult.getSuccessMsg());
-} catch (Exception e) {
-    //Log.d("paymeData Error", e.getMessage());
-}
-                        
+                        try {
+                            cancelProgressDialog();
+                            showAlert(payResult.getSuccessMsg());
+                        } catch (Exception e) {
+                            //Log.d("paymeData Error", e.getMessage());
+                        }
+
 
                     }
 
                     @Override
                     public void onError(Data data) {
-try {
-cancelProgressDialog();
-                        showAlert(data.getMessage()+data.getError());
-} catch (Exception e) {
-    //Log.d("paymeData Error", e.getMessage());
-}
-                        
+                        try {
+                            cancelProgressDialog();
+                            showAlert(data.getMessage() + data.getError());
+                        } catch (Exception e) {
+                            //Log.d("paymeData Error", e.getMessage());
+                        }
+
                     }
                 });
 
@@ -1146,15 +1143,16 @@ cancelProgressDialog();
     }
 
 
-
-    String getOrderRef(){
+    String getOrderRef() {
         SimpleDateFormat s = new SimpleDateFormat("ddMMyyyyhhmmss");
         String format = s.format(new Date());
         return format;
     }
+
     private void cardDetails(boolean isOldMember) {
 
         CardDetails cardDetails = new CardDetails();
+
         if (!isOldMember) {
             cardDetails.setCardNo(textCardNo.getEditText().getText().toString());
             cardDetails.setEpMonth(textExpiryMonth.getEditText().getText().toString());
@@ -1178,6 +1176,8 @@ cancelProgressDialog();
         payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
         payData.setOrderRef(textOrderRef.getEditText().getText().toString());
         payData.setLang(EnvBase.Language.ENGLISH);
+
+
 
 
     }
@@ -1210,25 +1210,25 @@ cancelProgressDialog();
                             @Override
                             public void getResponse(PayResult payResult) {
 
-try {
- cancelProgressDialog();
-                                showAlert(payResult.getErrMsg());
-} catch (Exception e) {
-    //Log.d("paymeData Error", e.getMessage());
-}
-                               
+                                try {
+                                    cancelProgressDialog();
+                                    showAlert(payResult.getErrMsg());
+                                } catch (Exception e) {
+                                    //Log.d("paymeData Error", e.getMessage());
+                                }
+
 
                             }
 
                             @Override
                             public void onError(Data data) {
-try {
-cancelProgressDialog();
-                                showAlert(data.getMessage());
-} catch (Exception e) {
-    //Log.d("paymeData Error", e.getMessage());
-}
-                                
+                                try {
+                                    cancelProgressDialog();
+                                    showAlert(data.getMessage());
+                                } catch (Exception e) {
+                                    //Log.d("paymeData Error", e.getMessage());
+                                }
+
                             }
                         });
                         break;
@@ -1249,25 +1249,25 @@ cancelProgressDialog();
                         paySDK.responseHandler(new PaymentResponse() {
                             @Override
                             public void getResponse(PayResult payResult) {
-try {
-  cancelProgressDialog();
-                                showAlert(payResult.getErrMsg());
-} catch (Exception e) {
-    //Log.d("paymeData Error", e.getMessage());
-}
-                              
+                                try {
+                                    cancelProgressDialog();
+                                    showAlert(payResult.getErrMsg());
+                                } catch (Exception e) {
+                                    //Log.d("paymeData Error", e.getMessage());
+                                }
+
 
                             }
 
                             @Override
                             public void onError(Data data) {
-try {
-cancelProgressDialog();
-                                showAlert(data.getError());
-} catch (Exception e) {
-    //Log.d("paymeData Error", e.getMessage());
-}
-                                
+                                try {
+                                    cancelProgressDialog();
+                                    showAlert(data.getError());
+                                } catch (Exception e) {
+                                    //Log.d("paymeData Error", e.getMessage());
+                                }
+
                             }
                         });
                         break;
@@ -1297,25 +1297,25 @@ cancelProgressDialog();
                         paySDK.responseHandler(new PaymentResponse() {
                             @Override
                             public void getResponse(PayResult payResult) {
-try {
-   cancelProgressDialog();
-                                showAlert(payResult.getErrMsg());
-} catch (Exception e) {
-    //Log.d("paymeData Error", e.getMessage());
-}
-                             
+                                try {
+                                    cancelProgressDialog();
+                                    showAlert(payResult.getErrMsg());
+                                } catch (Exception e) {
+                                    //Log.d("paymeData Error", e.getMessage());
+                                }
+
 
                             }
 
                             @Override
                             public void onError(Data data) {
-try {
-cancelProgressDialog();
-                                showAlert(data.getMessage());
-} catch (Exception e) {
-    //Log.d("paymeData Error", e.getMessage());
-}
-                                
+                                try {
+                                    cancelProgressDialog();
+                                    showAlert(data.getMessage());
+                                } catch (Exception e) {
+                                    //Log.d("paymeData Error", e.getMessage());
+                                }
+
                             }
                         });
                         break;
@@ -1336,25 +1336,25 @@ cancelProgressDialog();
                         paySDK.responseHandler(new PaymentResponse() {
                             @Override
                             public void getResponse(PayResult payResult) {
-try {
- cancelProgressDialog();
-                                showAlert(payResult.getErrMsg());
-} catch (Exception e) {
-   
-}
-                               
+                                try {
+                                    cancelProgressDialog();
+                                    showAlert(payResult.getErrMsg());
+                                } catch (Exception e) {
+
+                                }
+
 
                             }
 
                             @Override
                             public void onError(Data data) {
-try {
-  cancelProgressDialog();
-                                showAlert(data.getMessage());
-} catch (Exception e) {
-   
-}
-                              
+                                try {
+                                    cancelProgressDialog();
+                                    showAlert(data.getMessage());
+                                } catch (Exception e) {
+
+                                }
+
                             }
                         });
                         break;
@@ -1373,25 +1373,25 @@ try {
                         paySDK.responseHandler(new PaymentResponse() {
                             @Override
                             public void getResponse(PayResult payResult) {
-try {
-  cancelProgressDialog();
-                                showAlert(payResult.getErrMsg());
-} catch (Exception e) {
-   
-}
-                              
+                                try {
+                                    cancelProgressDialog();
+                                    showAlert(payResult.getErrMsg());
+                                } catch (Exception e) {
+
+                                }
+
 
                             }
 
                             @Override
                             public void onError(Data data) {
-try {
- cancelProgressDialog();
-                                showAlert(data.getMessage());
-} catch (Exception e) {
-   
-}
-                               
+                                try {
+                                    cancelProgressDialog();
+                                    showAlert(data.getMessage());
+                                } catch (Exception e) {
+
+                                }
+
                             }
                         });
                         break;
@@ -1411,25 +1411,25 @@ try {
                             @Override
                             public void getResponse(PayResult payResult) {
 
-try {
- cancelProgressDialog();
-                                showAlert(payResult.getErrMsg());
-} catch (Exception e) {
-   
-}
-                               
+                                try {
+                                    cancelProgressDialog();
+                                    showAlert(payResult.getErrMsg());
+                                } catch (Exception e) {
+
+                                }
+
 
                             }
 
                             @Override
                             public void onError(Data data) {
-try {
-cancelProgressDialog();
-                                showAlert(data.getMessage());
-} catch (Exception e) {
-   
-}
-                                
+                                try {
+                                    cancelProgressDialog();
+                                    showAlert(data.getMessage());
+                                } catch (Exception e) {
+
+                                }
+
                             }
                         });
 
@@ -1445,24 +1445,24 @@ cancelProgressDialog();
                         paySDK.queryResponseHandler(new QueryResponse() {
                             @Override
                             public void getResponse(TransactionStatus transactionStatus) {
-try {
- cancelProgressDialog();
-                                showAlert(transactionStatus.getResultCode());
-} catch (Exception e) {
-   
-}
-                               
+                                try {
+                                    cancelProgressDialog();
+                                    showAlert(transactionStatus.getResultCode());
+                                } catch (Exception e) {
+
+                                }
+
                             }
 
                             @Override
                             public void onError(Data data) {
-try {
- cancelProgressDialog();
-                                showAlert(data.getMessage());
-} catch (Exception e) {
-   
-}
-                               
+                                try {
+                                    cancelProgressDialog();
+                                    showAlert(data.getMessage());
+                                } catch (Exception e) {
+
+                                }
+
                             }
                         });
 
@@ -1541,27 +1541,27 @@ try {
                             paySDK.responseHandler(new PaymentResponse() {
                                 @Override
                                 public void getResponse(PayResult payResult) {
-try {
-   cancelProgressDialog();
-                                    Log.d("ghdsf", "getResponse: "+payResult.getErrMsg());
-                                    //showAlert(payResult.getSuccessMsg());
-} catch (Exception e) {
-   
-}
-                                 
+                                    try {
+                                        cancelProgressDialog();
+                                        Log.d("ghdsf", "getResponse: " + payResult.getErrMsg());
+                                        //showAlert(payResult.getSuccessMsg());
+                                    } catch (Exception e) {
+
+                                    }
+
 
                                 }
 
                                 @Override
                                 public void onError(Data data) {
-try {
- Log.d("ghdsf", "onError: "+data.getError());
-                                    cancelProgressDialog();
-                                    //showAlert(data.getMessage());
-} catch (Exception e) {
-   
-}
-                                   
+                                    try {
+                                        Log.d("ghdsf", "onError: " + data.getError());
+                                        cancelProgressDialog();
+                                        //showAlert(data.getMessage());
+                                    } catch (Exception e) {
+
+                                    }
+
                                 }
                             });
 
@@ -1571,7 +1571,7 @@ try {
                 }
 
             }
-        } else if(requestCode == LOAD_PAYMENT_DATA_REQUEST_CODE){
+        } else if (requestCode == LOAD_PAYMENT_DATA_REQUEST_CODE) {
 
             switch (resultCode) {
                 case Activity.RESULT_OK:
@@ -1598,8 +1598,7 @@ try {
                         final String token = tokenizationData.getString("token");
 
                         handleGooglePay(paymentInfo);
-                    }catch (Exception e)
-                    {
+                    } catch (Exception e) {
 
                     }
 
@@ -1617,33 +1616,33 @@ try {
                 default:
                     // Do nothing.
             }
-        } else if(requestCode == OCTOPUS_APP_REQUEST_CODE &&
-                resultCode == Activity.RESULT_OK){
+        } else if (requestCode == OCTOPUS_APP_REQUEST_CODE &&
+                resultCode == Activity.RESULT_OK) {
             showAlert("Transaction Completed.");
-        }else {
+        } else {
             showAlert("Transaction Incomplete.");
         }
     }
-    void handleGooglePay(String strResp){
-        String base64encodedString=null;
+
+    void handleGooglePay(String strResp) {
+        String base64encodedString = null;
 
         try {
 
-            byte[] byteString=strResp.getBytes("UTF-8");
-            base64encodedString= android.util.Base64.encodeToString(byteString, Base64.NO_WRAP);
+            byte[] byteString = strResp.getBytes("UTF-8");
+            base64encodedString = android.util.Base64.encodeToString(byteString, Base64.NO_WRAP);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-
         //Pass Google Pay response to PaySdk
         Map<String, String> extraDataGP = new HashMap<String, String>();
 
-        extraDataGP.put("eWalletPaymentData",base64encodedString);
-        extraDataGP.put("eWalletService","T");
-        extraDataGP.put("eWalletBrand","GOOGLE");
+        extraDataGP.put("eWalletPaymentData", base64encodedString);
+        extraDataGP.put("eWalletService", "T");
+        extraDataGP.put("eWalletBrand", "GOOGLE");
 
         payData.setExtraData(extraDataGP);
 
@@ -1654,29 +1653,29 @@ try {
         paySDK.responseHandler(new PaymentResponse() {
             @Override
             public void getResponse(PayResult payResult) {
-try {
- cancelProgressDialog();
-                showAlert(payResult.getErrMsg());
-} catch (Exception e) {
-   
-}
+                try {
+                    cancelProgressDialog();
+                    showAlert(payResult.getErrMsg());
+                } catch (Exception e) {
 
-               
+                }
+
 
             }
 
             @Override
             public void onError(Data data) {
-try {
- cancelProgressDialog();
-                showAlert(data.getError());
-} catch (Exception e) {
-   
-}
-               
+                try {
+                    cancelProgressDialog();
+                    showAlert(data.getError());
+                } catch (Exception e) {
+
+                }
+
             }
         });
     }
+
     private void showProgressDialog(String message) {
         if (progressDialog == null) {
             progressDialog = new ProgressDialog(PaymentActivity.this);
@@ -1724,6 +1723,7 @@ try {
 
         return isMID && isOrdREf;
     }
+
     private boolean validateCardDetaiils() {
         boolean isCardNo, isMonth, isYear, isName, isCode;
 
@@ -1762,14 +1762,15 @@ try {
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-    private void handleIntent(Intent intent){
 
-        String appLinkAction=intent.getAction();
-        Uri appLinkData=intent.getData();
+    private void handleIntent(Intent intent) {
+
+        String appLinkAction = intent.getAction();
+        Uri appLinkData = intent.getData();
         showDeepLinkOffer(appLinkAction, appLinkData);
     }
 
-    private void showDeepLinkOffer(String appLinkAction,Uri appLinkData) {
+    private void showDeepLinkOffer(String appLinkAction, Uri appLinkData) {
         // 1
         if (Intent.ACTION_VIEW == appLinkAction && appLinkData != null) {
             // 2

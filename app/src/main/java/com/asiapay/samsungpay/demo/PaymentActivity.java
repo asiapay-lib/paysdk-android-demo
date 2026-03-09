@@ -570,7 +570,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     basicDetails(payData);
                     payData.setPayMethod("ALL");
                     payData.setRemark(" ");
-                    payData.setSecureHashSecret("EDCPPI5F0Et7knqUhV7slMNjCGMUJa3r"); //production
+                    //payData.setSecureHashSecret("EDCPPI5F0Et7knqUhV7slMNjCGMUJa3r");
 
                     // Optional Parameter (For Value-Added Service)
                     Map<String, String> extraData = new HashMap<String, String>();
@@ -721,7 +721,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     payData.setPayMethod("3DSSDK");
                     payData.setRemark(" ");
 
-                    payData.setSecureHashSecret("EDCPPI5F0Et7knqUhV7slMNjCGMUJa3r"); //production
+                    //payData.setSecureHashSecret("EDCPPI5F0Et7knqUhV7slMNjCGMUJa3r");
 
                     Factory factory = new com.asiapay.sdk.integration.xecure3ds.Factory();
                     ConfigParameters configParameters = factory.newConfigParameters();

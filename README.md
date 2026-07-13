@@ -38,8 +38,8 @@ Android Gradle Plugin 3.5.1
 * Add following libraries to gradle file
 
 	```  
-    implementation(name: 'PaySDK-2.7.70', ext: 'aar')
-    implementation(name: 'alipaySdk-15.6.2-20190416165036', ext: 'aar')
+    implementation(name: 'PaySDK-2.7.71', ext: 'aar')
+    implementation(name: 'alipaysdk-15.8.42.260429154144', ext: 'aar')
     implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
     implementation 'com.google.code.gson:gson:2.3.1'
     implementation 'org.bouncycastle:bcprov-jdk15on:1.60'

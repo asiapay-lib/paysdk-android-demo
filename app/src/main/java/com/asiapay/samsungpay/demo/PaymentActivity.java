@@ -571,7 +571,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     payData.setPayMethod("ALL");
                     payData.setRemark(" ");
                     //payData.setSecureHashSecret("EDCPPI5F0Et7knqUhV7slMNjCGMUJa3r");
-
+                   // payData.setSecureHashSecret("X94pBGsHxT8YbCI8awVX8RCvyxivM4qf"); //production
                     // Optional Parameter (For Value-Added Service)
                     Map<String, String> extraData = new HashMap<String, String>();
 

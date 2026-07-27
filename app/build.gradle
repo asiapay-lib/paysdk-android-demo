@@ -3,10 +3,10 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         release {
-            storeFile file('/Users/vaibhav/Desktop/key2.jks')
-            storePassword 'android'
-            keyAlias 'test'
-            keyPassword 'android'
+            storeFile file('../jks/paysdk.jks')
+            storePassword 'asiapay'
+            keyAlias 'asiapay'
+            keyPassword 'asiapay'
         }
     }
   //  compileSdkVersion 30
@@ -14,8 +14,8 @@ android {
     namespace "com.asiapay.samsungpay.demo"
     compileSdk 35
     defaultConfig {
-        applicationId "com.asiapay.samsungpay.demo"
-       // minSdkVersion 19 // For GooglePay min api level is 24
+        applicationId "com.asiapay.SDKApp"
+        minSdkVersion 19 // For GooglePay min api level is 24
         minSdkVersion 24
         targetSdkVersion 35
         versionCode 1
@@ -56,7 +56,7 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.5.0'
 
 
-    implementation(name: 'PaySDK-2.7.71', ext: 'aar')
+    implementation(name: 'PaySDK-2.7.69', ext: 'aar')
 /*    implementation(name: 'alipaySdk-15.6.2-20190416165036', ext: 'aar')*/
     implementation(name: 'alipaysdk-15.8.42.260429154144', ext: 'aar')
 

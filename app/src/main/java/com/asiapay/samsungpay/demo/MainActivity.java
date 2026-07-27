@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         payData.setChannel(EnvBase.PayChannel.WEBVIEW);
         payData.setEnvType(EnvBase.EnvType.SANDBOX);
         payData.setAmount("100");
-        payData.setPayGate(EnvBase.PayGate.BIMOPAY);
+        payData.setPayGate(EnvBase.PayGate.PAYDOLLAR);
         payData.setCurrCode(EnvBase.Currency.IDR);
         payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
         payData.setOrderRef("12344654656");

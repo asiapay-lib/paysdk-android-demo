@@ -414,8 +414,8 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
             listPayGate.add(payGate);
             payGate = new SpinnerData("pesopay", EnvBase.PayGate.PESOPAY);
             listPayGate.add(payGate);
-            payGate = new SpinnerData("bimopay", EnvBase.PayGate.BIMOPAY);
-            listPayGate.add(payGate);
+            /*payGate = new SpinnerData("bimopay", EnvBase.PayGate.BIMOPAY);
+            listPayGate.add(payGate);*/
             ArrayAdapter<SpinnerData> payGateAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listPayGate);
             payGateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -924,13 +924,21 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                 payData.setCurrCode(selectedCurrency);
                 payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
                 payData.setOrderRef(textOrderRef.getEditText().getText().toString());
-                payData.setOrderRef(textOrderRef.getEditText().getText().toString());
+                //payData.setOrderRef(textOrderRef.getEditText().getText().toString());
                 payData.setPayMethod("GOOGLE");
                 payData.setLang(EnvBase.Language.ENGLISH);
                 payData.setMerchantId(textMerchantId.getEditText().getText().toString());
 
-
+                payData.setMerchantName("Abc");
                 payData.setRemark(" ");
+
+
+                //@AT 20220704
+                ArrayList<EnvBase.GPayBrand> brands = new ArrayList<>();
+                brands.add(EnvBase.GPayBrand.VISA);
+                brands.add(EnvBase.GPayBrand.MASTERCARD);
+                brands.add(EnvBase.GPayBrand.AMERICANEXPRESS);
+                payData.setGpayBrands(brands);
 
                 Optional<JSONObject> paymentDataRequestJson = GooglePay.getPaymentDataRequest(payData);
 

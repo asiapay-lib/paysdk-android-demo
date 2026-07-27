@@ -370,7 +370,7 @@
                 style="@style/Button.Blue.Padded_32"
                 android:layout_marginRight="5dp"
                 android:textColor="#fff"
-                android:visibility="gone"/>
+                android:visibility="visible"/>
 
 
             <Button

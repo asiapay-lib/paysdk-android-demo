@@ -15,7 +15,7 @@ android {
     compileSdk 35
     defaultConfig {
         applicationId "com.asiapay.SDKApp"
-        minSdkVersion 19 // For GooglePay min api level is 24
+       // minSdkVersion 19 // For GooglePay min api level is 24
         minSdkVersion 24
         targetSdkVersion 35
         versionCode 1
@@ -56,7 +56,7 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.5.0'
 
 
-    implementation(name: 'PaySDK-2.7.69', ext: 'aar')
+    implementation(name: 'PaySDK-2.7.72', ext: 'aar')
 /*    implementation(name: 'alipaySdk-15.6.2-20190416165036', ext: 'aar')*/
     implementation(name: 'alipaysdk-15.8.42.260429154144', ext: 'aar')
 
@@ -74,7 +74,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0-beta01'
 
     //Updated lib
-    implementation 'com.google.android.gms:play-services-ads:17.2.1'
+    implementation 'com.google.android.gms:play-services-ads:25.4.0'
    /* implementation 'com.google.android.gms:play-services-location:16.0.0'*/
     implementation 'com.google.android.gms:play-services-location:21.2.0'
 

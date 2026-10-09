@@ -56,7 +56,7 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.5.0'
 
 
-    implementation(name: 'PaySDK-2.7.72', ext: 'aar')
+    implementation(name: 'PaySDK-2.7.73', ext: 'aar')
 /*    implementation(name: 'alipaySdk-15.6.2-20190416165036', ext: 'aar')*/
     implementation(name: 'alipaysdk-15.8.42.260429154144', ext: 'aar')
 
